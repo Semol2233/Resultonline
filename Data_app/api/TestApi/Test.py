@@ -1,0 +1,108 @@
+
+# # class DRFPostSerializer(serializers.ModelSerializer):
+# #     #  uri       = serializers.SerializerMethodField(read_only=True)
+# #      channel   = UserPublicSrtilizer(read_only=True)
+# #      Ceatgory  = serializers.CharField()
+# #      class Meta:
+# #         model = PostCreate
+# #         fields = [
+# #             # 'uri',
+# #             'channel',
+# #             'title',
+# #             'photo',
+# #             'Ceatgory',
+# #             'view',
+# #             'uploaded',
+# #         ]
+# #         read_only_fields = ['channel']
+
+
+# #     #  def get_uri(self,obj):
+# #     #      return "/{id}".format(id=obj.id)
+
+
+# # class CeatgryList(serializers.ModelSerializer):
+# #     class Meta:
+# #         model = PostCreate
+# #         fields =[
+# #             'id',
+# #             'Ceatgory'
+# #         ]
+
+# # class UserPublicSrtilizer(serializers.ModelSerializer):
+# #     url      =  serializers.SerializerMethodField(read_only=True)
+# #     class Meta:
+# #         model = User
+# #         fields = [
+# #             'id',
+# #             'username',
+# #             'url',
+# #         ]
+    
+# #     def get_url(self,obj):
+# #          return "/{id}".format(id=obj.id)
+
+# class UserPublicSrtilizer(serializers.ModelSerializer):
+#     url      =  serializers.SerializerMethodField(read_only=True)
+#     class Meta:
+#         model = User
+#         fields = [
+#             'id',
+#             'username',
+#             'url',
+#         ]
+    
+#     def get_url(self,obj):
+#          return "/{id}".format(id=obj.id)
+
+
+
+
+# class UserListView(generics.RetrieveAPIView):
+#     queryset           = User.objects.filter(is_active=True)
+#     serializer_class   = UserDettails
+#     lookup_field       = 'username'
+
+
+# def Login(request):
+#     form_valid = True
+#     next = request.GET.get('next')
+#     form = UserLoginForm(request.POST or None)
+#     if form.is_valid():
+#         username = form.cleaned_data.get('username')
+#         password = form.cleaned_data.get('password')
+#         user = authenticate(username=username,password=password)
+#         login(request,user)
+#         if next:
+#             return redirect(next)
+#         return redirect('home_api')
+#         form_valid = False
+#     context={
+#         'form':form,
+#         'valid':form_valid,
+#     }
+#     return render(request,"login.html",context)
+
+
+# def home(request):
+#     return render(request,'home.html')
+
+
+
+# def logout_request(request):
+#     logout(request)
+#     return redirect('/')
+
+
+# class PostCreate(models.Model):
+#     channel            = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     title              = models.CharField(max_length = 255)
+#     details            = models.TextField(blank=True)
+#     Ceatgory           = models.ForeignKey(Cetagroy_list, related_name='Ceatgory',on_delete=models.CASCADE)
+#     photo              = models.FileField(upload_to='documents/',)
+#     view               = models.IntegerField(blank=True,null=True)
+#     uploaded           = models.DateTimeField(auto_now_add = True)
+
+#     def __str__(self):
+#         return self.title
+    
