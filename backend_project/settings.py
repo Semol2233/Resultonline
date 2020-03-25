@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['167.71.205.55']
 # ALLOWED_HOSTS = []
@@ -102,9 +102,9 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_project',
-        'USER': 'django_project',
-        'PASSWORD': 'django_project',
+        'NAME': 'resultonline',
+        'USER': 'resultonline',
+        'PASSWORD': 'resultonline',
         'HOST': 'localhost',
         'PORT': '',
     }
