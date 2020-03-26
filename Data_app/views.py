@@ -50,7 +50,7 @@ class API_objects(
     generics.ListAPIView
     ):
     # pagination_class       = pagnation
-    parser_classes = [JSONParser]
+    # parser_classes = [JSONParser]
     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     queryset               = PostCreate.objects.all()
     serializer_class       = DRFPostSerializer
