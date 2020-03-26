@@ -102,9 +102,9 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'resultonline',
-        'PASSWORD': 'password',
+        'NAME': 'resultonline',
+        'USER': 'resultonline_user',
+        'PASSWORD': 'semol@12345',
         'HOST': 'localhost',
         'PORT': '',
     }
