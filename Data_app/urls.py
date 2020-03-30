@@ -21,5 +21,6 @@ urlpatterns = [
     path('details/<slug>',views.ServiceDetailAPIView.as_view()),
 
 ]
+
 urlpatterns = format_suffix_patterns(urlpatterns)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

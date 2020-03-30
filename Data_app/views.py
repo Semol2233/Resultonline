@@ -50,7 +50,7 @@ class API_objects(
     generics.ListAPIView
     ):
     # pagination_class       = pagnation
-    # parser_classes = [JSONParser]
+    #parser_classes = [JSONParser]
     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     queryset               = PostCreate.objects.all()
     serializer_class       = DRFPostSerializer
@@ -60,9 +60,9 @@ class API_objects(
 
 #update view -> Api
 class update_objects(
-     generics.RetrieveAPIView,
-     mixins.UpdateModelMixin,
-     mixins.DestroyModelMixin
+      generics.RetrieveAPIView,
+      mixins.UpdateModelMixin,
+      mixins.DestroyModelMixin
     ):
 
     permission_classes     = []

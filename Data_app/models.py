@@ -18,12 +18,11 @@ class Cetagroy_list(models.Model):
 class Channel(models.Model):
     channelname = models.CharField(max_length=20,blank=True)
     channel_profile = models.ImageField(upload_to="channel_profile",blank=True)
-
+    slug_channel = models.CharField(max_length=33,blank=False)
+    
     def __str__(self):
         return self.channelname
     
-
-
 
 class PostCreate(models.Model):
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE)
@@ -31,7 +30,7 @@ class PostCreate(models.Model):
     slug               = models.CharField(max_length=100,unique=True)
     details            = models.TextField(blank=True)
     Ceatgory           = models.ForeignKey(Cetagroy_list, related_name='Ceatgory',on_delete=models.CASCADE ,blank=True,null=True)
-    photo              = models.FileField(upload_to='documents/',)
+    photo              = models.FileField(upload_to='documents/')
     view               = models.IntegerField(blank=True,null=True)
     uploaded           = models.DateTimeField(auto_now_add = True)
     release_date       = models.DateField(auto_now_add = True)
@@ -39,6 +38,12 @@ class PostCreate(models.Model):
     def __str__(self):
         return self.title
     
+
+
+class ImageField(models.ImageField):
+    def value_to_string(self, obj): # obj is Model instance, in this case, obj is 'Class'
+        return obj.fig.url # not return self.url
+
 
 
 class UserProfile(models.Model):
@@ -51,16 +56,10 @@ class UserProfile(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
 def userprofile_receiver(sender, instance, created, *args, **kwargs):
     if created:
         userprofile     = UserProfile.objects.create(user=instance)
 post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
+
+
+# In your models.py add this:

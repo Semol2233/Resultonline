@@ -72,7 +72,6 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'Ceatgory',
             'slug',
             'view',
-            'uploaded',
             'release_date'
         ]
         read_only_fields = ['channel']
@@ -110,5 +109,3 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'release_date'
           ]
           read_only_fields = ['channel']
-
-
