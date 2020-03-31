@@ -12,7 +12,7 @@ from rest_framework.parsers import JSONParser
 
 #user model
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel
-#endauth
+#end
 
 #serializer 
 from Data_app.api.serializers import (
@@ -52,7 +52,7 @@ class API_objects(
     # pagination_class       = pagnation
     #parser_classes = [JSONParser]
     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
-    queryset               = PostCreate.objects.all()
+    queryset               = PostCreate.objects.all().order_by('-id')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo']
