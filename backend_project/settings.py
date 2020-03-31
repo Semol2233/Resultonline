@@ -31,8 +31,6 @@ DEBUG = False
 ALLOWED_HOSTS = ['167.71.205.55']
 #ALLOWED_HOSTS = []
 #f
-#f
-
 #d
 # Application definition
 
