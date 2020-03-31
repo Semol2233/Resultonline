@@ -12,7 +12,7 @@ from rest_framework.parsers import JSONParser
 
 #user model
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel
-#end
+#endauth
 
 #serializer 
 from Data_app.api.serializers import (

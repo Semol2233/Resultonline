@@ -6,19 +6,19 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS':(
-         'auth_global.pagnation.Coustompagnation'
+    # 'DEFAULT_PAGINATION_CLASS':(
+    #      'auth_global.pagnation.Coustompagnation'
+    #      ),
+
+    'DEFAULT_FILTER_BACKENDS': (
+         'django_filters.rest_framework.DjangoFilterBackend'
          ),
 
-    # 'DEFAULT_FILTER_BACKENDS': (
-    #     'django_filters.rest_framework.DjangoFilterBackend'
-    #     )
-
-    # 'DEFAULT_RENDERER_CLASSES': [
-    #     'rest_framework.renderers.JSONRenderer',
-    # ],
-    # 'DEFAULT_PARSER_CLASSES': [
-    #     'rest_framework.parsers.JSONParser',
-    # ]
+     'DEFAULT_RENDERER_CLASSES': [
+         'rest_framework.renderers.JSONRenderer',
+     ],
+     'DEFAULT_PARSER_CLASSES': [
+         'rest_framework.parsers.JSONParser',
+     ]
 
 }
