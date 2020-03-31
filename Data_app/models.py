@@ -31,7 +31,7 @@ class PostCreate(models.Model):
     details            = models.TextField(blank=True)
     Ceatgory           = models.ForeignKey(Cetagroy_list, related_name='Ceatgory',on_delete=models.CASCADE ,blank=True,null=True)
     photo              = models.FileField(upload_to='documents/')
-    view               = models.IntegerField(blank=True,null=True)
+    view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
     release_date       = models.DateField(auto_now_add = True)
 
