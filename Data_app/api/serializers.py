@@ -51,7 +51,9 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
         fields = [
             'id',
             'channelname',
-            'channel_profile'
+            'channel_profile',
+            'slug_channel'
+
         ]
 
 

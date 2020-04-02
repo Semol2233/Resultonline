@@ -16,9 +16,9 @@ class Cetagroy_list(models.Model):
 
 
 class Channel(models.Model):
-    channelname = models.CharField(max_length=20,blank=True)
-    channel_profile = models.ImageField(upload_to="channel_profile",blank=True)
-    slug_channel = models.CharField(max_length=33,blank=False)
+    channelname       = models.CharField(max_length=20,blank=True)
+    channel_profile   = models.ImageField(upload_to="channel_profile",blank=True)
+    slug_channel      = models.CharField(max_length=33,blank=False)
     
     def __str__(self):
         return self.channelname
@@ -39,13 +39,6 @@ class PostCreate(models.Model):
         return self.title
     
 
-
-class ImageField(models.ImageField):
-    def value_to_string(self, obj): # obj is Model instance, in this case, obj is 'Class'
-        return obj.fig.url # not return self.url
-
-
-
 class UserProfile(models.Model):
     user              = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     portfolio_link    = models.URLField(blank=True)
@@ -61,5 +54,3 @@ def userprofile_receiver(sender, instance, created, *args, **kwargs):
         userprofile     = UserProfile.objects.create(user=instance)
 post_save.connect(userprofile_receiver, sender=settings.AUTH_USER_MODEL)
 
-
-# In your models.py add this:

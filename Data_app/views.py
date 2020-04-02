@@ -46,16 +46,25 @@ User = get_user_model()
 #list view -> APi
 
 
-class API_objects(
-    generics.ListAPIView
-    ):
+class API_objects(generics.ListAPIView):
     # pagination_class       = pagnation
-    #parser_classes = [JSONParser]
     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     queryset               = PostCreate.objects.all().order_by('-id')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo']
+
+
+
+
+#channel data query
+class Channel_Data(generics.ListAPIView):
+    # pagination_class       = pagnation
+    permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    queryset               = PostCreate.objects.all().order_by('-id')
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__slug_channel']
 
 
 #update view -> Api
