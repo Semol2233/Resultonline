@@ -32,7 +32,7 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 DEBUG = False 
 
 
-ALLOWED_HOSTS = ['167.71.205.55']
+ALLOWED_HOSTS = ['167.71.205.55','simpledeploy.herokuapp.com']
 #ALLOWED_HOSTS = []
 #f
 #d
