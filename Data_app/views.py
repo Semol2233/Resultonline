@@ -8,8 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 #end
-
-
+import random
 #user model
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel
 #end
@@ -45,11 +44,13 @@ User = get_user_model()
 
 #list view -> APi
 
-
+#Root_Api
 class API_objects(generics.ListAPIView):
     # pagination_class       = pagnation
-    permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
-    queryset               = PostCreate.objects.all().order_by('-id')
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo']
@@ -158,4 +159,10 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 
 
-    
+#Random_Data
+class RandomDtata(generics.ListAPIView):
+    queryset = PostCreate.objects.all().order_by('?')[:10]
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+    lookup_field = ('slug')

@@ -79,7 +79,6 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST=(
     'http://localhost:8080',
-    'https://simpledeploy.herokuapp.com/'
 )
 CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'backend_project.urls'

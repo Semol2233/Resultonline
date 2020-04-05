@@ -20,6 +20,7 @@ urlpatterns = [
     path('user/',views.UserList.as_view()),
     path('details/<slug>',views.ServiceDetailAPIView.as_view()),
     path('channeldel',views.Channel_Data.as_view()),
+    path('randomdata',views. RandomDtata.as_view()),
 
 ]
 
