@@ -10,7 +10,7 @@ from datetime import datetime
 
 class Cetagroy_list(models.Model):
     Channel           = models.CharField(max_length=15)
-    Brand_profile  = models.ImageField(upload_to="Brand_Logo",blank=True)
+    Brand_profiles  = models.ImageField(upload_to="Brand_Logo",blank=True)
 
 
     def __str__(self):
