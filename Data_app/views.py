@@ -162,6 +162,11 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
     lookup_field = ('slug')
 
 
+class StandardResultsSetPdagination(pagination.PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 
 #Top_Data
 class RandomDtata(generics.ListAPIView):
@@ -171,7 +176,8 @@ class RandomDtata(generics.ListAPIView):
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
-    lookup_field = ('slug')
+    lookup_field           = ('slug')
+    pagination_class       = StandardResultsSetPdagination
 
 
 #Trending_Api
