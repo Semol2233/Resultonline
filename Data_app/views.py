@@ -163,7 +163,7 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 
 
-#Random_Data
+#Top_Data
 class RandomDtata(generics.ListAPIView):
 
     # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
