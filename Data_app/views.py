@@ -212,10 +212,14 @@ class TagDtata(generics.ListAPIView):
     serializer_class       = DRFPostSerializer
     lookup_field = ('tag')
 
+class StandadrdResultsSetPdagination(pagination.PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class Brand_InfoDtata(generics.ListAPIView):
 
     # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
     queryset               = PostCreate.objects.order_by('-id').filter(channel__slug_channel='Mobile-Phone')
     serializer_class       = BrandPostInfo
-    lookup_field = ('tag')
+    pagination_class       = StandadrdResultsSetPdagination
