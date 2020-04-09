@@ -1,7 +1,8 @@
 from django.shortcuts import render
 #rest_framwork
 from rest_framework import viewsets
-from rest_framework import generics,permissions,mixins,filters,pagination
+from rest_framework import generics,permissions,mixins,filters
+from rest_framework import pagination
 from rest_framework import authentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,14 +10,15 @@ from rest_framework import status
 from rest_framework.parsers import JSONParser
 #end
 import random
+import datetime
 #user model
-from Data_app.models import PostCreate,UserProfile,UserProfile,Channel
+from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list
 #end
 
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata
+    UseracAlldata,CoverImge,BrandPostInfo
     )
 #end
 
@@ -44,6 +46,13 @@ User = get_user_model()
 
 #list view -> APi
 
+
+class StandardResultsSetPagination(pagination.PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
 #Root_Api
 class API_objects(generics.ListAPIView):
     # pagination_class       = pagnation
@@ -53,9 +62,8 @@ class API_objects(generics.ListAPIView):
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo']
-
-
+    search_fields          = ['channel__id','channel__channelname','title','photo','tag']
+    pagination_class       = StandardResultsSetPagination
 
 
 #channel data query
@@ -114,7 +122,7 @@ class ChannelDataList(generics.ListAPIView):
     queryset               = PostCreate.objects.all()
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+    search_fields          = ['channel__id','channel__channelname','title','photo','slug','Mobile_Brand']
     lookup_field = ('slug')
 
 
@@ -148,10 +156,6 @@ class CarView(generics.ListAPIView):
 
 
 
-# ---------------------
-
-
-
 class ServiceDetailAPIView(generics.RetrieveAPIView):
     queryset = PostCreate.objects.all()
     serializer_class = ClassItemSerializer
@@ -161,8 +165,51 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 #Random_Data
 class RandomDtata(generics.ListAPIView):
-    queryset = PostCreate.objects.all().order_by('?')[:10]
+
+    # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
+    queryset               = PostCreate.objects.order_by('-view')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
     lookup_field = ('slug')
+
+
+#Trending_Api
+class TrendingPost(generics.ListAPIView):
+    data = '2020-01-01'
+    queryset               = PostCreate.objects.order_by('-view').filter(release_date__gte=data).filter(release_date__iso_year__gte=2005)
+    serializer_class       = DRFPostSerializer
+
+
+
+#Cover_Img
+class CoverImgs(generics.ListAPIView):
+    queryset               = CoverImg.objects.all()[:3]
+    serializer_class       = CoverImge
+
+
+
+
+
+class DetailsPageReleteData(generics.ListAPIView):
+
+    queryset               = PostCreate.objects.all().order_by('?')[:2]
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+
+
+#example
+class TagDtata(generics.ListAPIView):
+
+    # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
+    queryset               = PostCreate.objects.order_by('-id')
+    serializer_class       = DRFPostSerializer
+    lookup_field = ('tag')
+
+
+class Brand_InfoDtata(generics.ListAPIView):
+
+    # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
+    queryset               = PostCreate.objects.order_by('-id').filter(channel__slug_channel='Mobile-Phone')
+    serializer_class       = BrandPostInfo
+    lookup_field = ('tag')

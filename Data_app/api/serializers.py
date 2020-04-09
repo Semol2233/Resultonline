@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel
+from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg
 from django.conf import settings
 from django.db import models
 from django.http import HttpRequest
@@ -11,14 +11,14 @@ from rest_framework.reverse import reverse as api_img
 
 #UserAc & User reletet all Data api -> Data relestion  UserDettails
 class UseracAlldata(serializers.ModelSerializer):
-     Ceatgory  = serializers.CharField()
+     Mobile_Brand  = serializers.CharField()
      class Meta:
         model = PostCreate
         fields = [
             'id',
             'title',
             'photo',
-            'Ceatgory',
+            'Mobile_Brand',
             'details',
             'slug',
             'view',
@@ -61,7 +61,7 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
 
      channel   = UserPublicSrtilizer(read_only=True)
-     Ceatgory  = serializers.CharField()
+     Mobile_Brand  = serializers.CharField()
 
      class Meta:
         model = PostCreate
@@ -71,10 +71,11 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'Ceatgory',
+            'Mobile_Brand',
             'slug',
             'view',
-            'release_date'
+            'release_date',
+            'tag'
         ]
         read_only_fields = ['channel']
 
@@ -94,7 +95,7 @@ class Alluser(serializers.ModelSerializer):
 # -------------------------
 class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
       channel   = UserPublicSrtilizer(read_only=True)
-      Ceatgory  = serializers.CharField()
+      Mobile_Brand  = serializers.CharField()
 
       class Meta:
           model = PostCreate
@@ -104,10 +105,62 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'Ceatgory',
+            'Mobile_Brand',
             'slug',
             'view',
             'uploaded',
             'release_date'
           ]
           read_only_fields = ['channel']
+
+class CoverImge(serializers.ModelSerializer):
+      class Meta:
+          model = CoverImg
+          fields = [
+            'id',
+            'Cover_img',
+          ]
+    
+
+
+
+
+
+
+
+
+
+class BrandProfileInfo(serializers.ModelSerializer):
+    class Meta:
+        model = Cetagroy_list
+        fields = [
+            'id',
+            'Channel',
+            'Brand_profile'
+
+        ]
+
+
+
+class BrandPostInfo(serializers.ModelSerializer):
+     Mobile_Brand   = BrandProfileInfo(read_only=True)
+     channel   = UserPublicSrtilizer(read_only=True)
+
+     class Meta:
+        model = PostCreate
+        fields = [
+            'channel',
+            'Mobile_Brand',
+            'id',
+            'title',
+            'details',
+            'photo',
+            'slug',
+            'view',
+            'release_date',
+            'tag'
+        ]
+        read_only_fields = ['channel']
+        read_only_fields = ['Mobile_Brand']
+
+

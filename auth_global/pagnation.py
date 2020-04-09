@@ -1,5 +1,5 @@
-from rest_framework import pagination
+# from rest_framework import pagination
 
-class Coustompagnation(pagination.PageNumberPagination):
-    page_size = 6
-    # max_limit = 2
+# class Coustompagnation(pagination.PageNumberPagination):
+#     page_size = 6
+#     # max_limit = 2

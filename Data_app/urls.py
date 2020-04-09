@@ -21,6 +21,12 @@ urlpatterns = [
     path('details/<slug>',views.ServiceDetailAPIView.as_view()),
     path('channeldel',views.Channel_Data.as_view()),
     path('randomdata',views. RandomDtata.as_view()),
+    path('Coverimgapi',views. CoverImgs.as_view()),
+    path('detailspageR',views. DetailsPageReleteData.as_view()),
+    path('trending',views.TrendingPost.as_view()),
+    path('Tag/<Tag>',views.TagDtata.as_view()),
+    path('Brand',views.Brand_InfoDtata.as_view()),
+
 
 ]
 
