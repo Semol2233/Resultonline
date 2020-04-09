@@ -143,8 +143,8 @@ class BrandProfileInfo(serializers.ModelSerializer):
 
 
 class BrandPostInfo(serializers.ModelSerializer):
-     Mobile_Mobile_BrandBrand   = BrandProfileInfo(read_only=True)
-     channel   = UserPublicSrtilizer(read_only=True)
+     mobilebrand   = BrandProfileInfo(read_only=True)
+     channel       = UserPublicSrtilizer(read_only=True)
 
      class Meta:
         model = PostCreate
