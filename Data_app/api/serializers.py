@@ -11,14 +11,14 @@ from rest_framework.reverse import reverse as api_img
 
 #UserAc & User reletet all Data api -> Data relestion  UserDettails
 class UseracAlldata(serializers.ModelSerializer):
-     Mobile_Brand  = serializers.CharField()
+     mobilebrand  = serializers.CharField()
      class Meta:
         model = PostCreate
         fields = [
             'id',
             'title',
             'photo',
-            'Mobile_Brand',
+            'mobilebrand',
             'details',
             'slug',
             'view',
@@ -61,7 +61,7 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
 
      channel   = UserPublicSrtilizer(read_only=True)
-     Mobile_Brand  = serializers.CharField()
+     mobilebrand  = serializers.CharField()
 
      class Meta:
         model = PostCreate
@@ -71,7 +71,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'Mobile_Brand',
+            'mobilebrand',
             'slug',
             'view',
             'release_date',
@@ -95,7 +95,7 @@ class Alluser(serializers.ModelSerializer):
 # -------------------------
 class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
       channel   = UserPublicSrtilizer(read_only=True)
-      Mobile_Brand  = serializers.CharField()
+      mobilebrand  = serializers.CharField()
 
       class Meta:
           model = PostCreate
@@ -105,7 +105,7 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'Mobile_Brand',
+            'mobilebrand',
             'slug',
             'view',
             'uploaded',
@@ -143,14 +143,14 @@ class BrandProfileInfo(serializers.ModelSerializer):
 
 
 class BrandPostInfo(serializers.ModelSerializer):
-     Mobile_Brand   = BrandProfileInfo(read_only=True)
+     Mobile_Mobile_BrandBrand   = BrandProfileInfo(read_only=True)
      channel   = UserPublicSrtilizer(read_only=True)
 
      class Meta:
         model = PostCreate
         fields = [
             'channel',
-            'Mobile_Brand',
+            'mobilebrand',
             'id',
             'title',
             'details',
@@ -161,6 +161,6 @@ class BrandPostInfo(serializers.ModelSerializer):
             'tag'
         ]
         read_only_fields = ['channel']
-        read_only_fields = ['Mobile_Brand']
+        read_only_fields = ['mobilebrand']
 
 
