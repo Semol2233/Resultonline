@@ -63,7 +63,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-
+#w
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
