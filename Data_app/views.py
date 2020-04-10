@@ -66,6 +66,11 @@ class API_objects(generics.ListAPIView):
     pagination_class       = StandardResultsSetPagination
 
 
+class StandadrdResultsSetPdagfination(pagination.PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 #channel data query
 class Channel_Data(generics.ListAPIView):
     # pagination_class       = pagnation
@@ -74,6 +79,7 @@ class Channel_Data(generics.ListAPIView):
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__slug_channel']
+    pagination_class       = StandadrdResultsSetPdagfination
 
 
 #update view -> Api
