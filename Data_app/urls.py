@@ -26,6 +26,7 @@ urlpatterns = [
     path('trending',views.TrendingPost.as_view()),
     path('Tag/<Tag>',views.TagDtata.as_view()),
     path('Brand',views.Brand_InfoDtata.as_view()),
+    path('listBrand',views.Brand_ListRendring.as_view()),
 
 
 ]

@@ -9,8 +9,9 @@ from datetime import datetime
 
 
 class Cetagroy_list(models.Model):
-    Channel           = models.CharField(max_length=15)
-    Brand_profile  = models.ImageField(upload_to="Brand_Logo",blank=True)
+    Channel              = models.CharField(max_length=15)
+    Brand_profile        = models.ImageField(upload_to="Brand_Logo",blank=True)
+    ChannelDataUrl       = models.CharField(max_length=300, unique=True,blank=True)
 
 
     def __str__(self):
@@ -21,6 +22,7 @@ class Channel(models.Model):
     channelname       = models.CharField(max_length=20,blank=True)
     channel_profile   = models.ImageField(upload_to="channel_profile",blank=True)
     slug_channel      = models.CharField(max_length=33,blank=False)
+   
     
     def __str__(self):
         return self.channelname

@@ -18,7 +18,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo
     )
 #end
 
@@ -229,3 +229,20 @@ class Brand_InfoDtata(generics.ListAPIView):
     queryset               = PostCreate.objects.order_by('-id').filter(channel__slug_channel='Mobile-Phone')
     serializer_class       = BrandPostInfo
     pagination_class       = StandadrdResultsSetPdagination
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['mobilebrand__Channel']
+
+
+
+class StandadrdResultssSetPdagination(pagination.PageNumberPagination):
+    page_size = 15
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+#Brand_ListRendring
+class Brand_ListRendring(generics.ListAPIView):
+
+    queryset               = Cetagroy_list.objects.order_by('?')
+    serializer_class       = BrandProfileInfo
+    pagination_class       = StandadrdResultssSetPdagination
+
+

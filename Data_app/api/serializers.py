@@ -131,15 +131,21 @@ class CoverImge(serializers.ModelSerializer):
 
 
 class BrandProfileInfo(serializers.ModelSerializer):
+    # ChannelDataUrl      = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Cetagroy_list
         fields = [
             'id',
             'Channel',
-            'Brand_profile'
+            'Brand_profile',
+            'ChannelDataUrl',
+            
 
         ]
-
+       
+    # def get_ChannelDataUrl(self,obj):
+    #     data = 'http://127.0.0.1:8000/dd?search=' 
+    #     return "{data}+{Channel}".format(Channel=obj.Channel)
 
 
 class BrandPostInfo(serializers.ModelSerializer):
