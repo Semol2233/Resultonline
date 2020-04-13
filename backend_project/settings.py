@@ -105,23 +105,11 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'onlinedatastore',
-#         'USER': 'onlinedatastoreuser',
-#         'PASSWORD': 'semol@12345',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'resultonlinee',
-        'USER': 'resultonlineusers',
+        'NAME': 'onlinedatastore',
+        'USER': 'onlinedatastoreuser',
         'PASSWORD': 'semol@12345',
         'HOST': 'localhost',
         'PORT': '',
