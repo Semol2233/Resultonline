@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg
+from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg,Ownercontents
 from django.conf import settings
 from django.db import models
 from django.http import HttpRequest
@@ -56,28 +56,28 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
 
         ]
 
-# class ContentOwner(serializers.ModelSerializer):
-#     class Meta:
-#         model = Ownercdontents
-#         fields = [
-#             'id',
-#             'authorsname',
-#             'authorsprofilrimg',
-#             'authorsweblink'
+class ContentOwner(serializers.ModelSerializer):
+    class Meta:
+        model = Ownercontents
+        fields = [
+            'id',
+            'authorsname',
+            'authorsprofilrimg',
+            'authorsweblink'
 
-#         ]
+        ]
 
 #root_api
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
       
-   
+     contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
      mobilebrand     = serializers.CharField()
 
      class Meta:
         model = PostCreate
         fields = [
-  
+            'contentowners',
             'channel',
             'id',
             'title',
@@ -89,7 +89,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'release_date',
             'tag'
         ]
-      
+        read_only_fields = ['contentowners']
         read_only_fields = ['channel']
 
 

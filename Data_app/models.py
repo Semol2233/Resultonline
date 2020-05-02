@@ -7,12 +7,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
-# class Ownercdontents(models.Model):
-#     authorsname = models.CharField(max_length=20,blank=True)
-#     authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
-#     authorsweblink =  models.CharField(max_length=20,blank=True)
-#     def __str__(self):
-#         return self.authorsname
 
 class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
@@ -34,9 +28,14 @@ class Channel(models.Model):
         return self.channelname
 
 
-
+class Ownercontents(models.Model):
+    authorsname = models.CharField(max_length=20,blank=True)
+    authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
+    authorsweblink = models.URLField(max_length = 200)
+    def __str__(self):
+        return self.authorsname
 class PostCreate(models.Model):
-    # contentowners      = models.ForeignKey(Ownercdontents, on_delete=models.CASCADE ,null=True)
+    contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE)
     title              = models.CharField(max_length = 255)
     slug               = models.CharField(max_length=100,unique=True)
