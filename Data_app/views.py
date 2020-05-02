@@ -62,7 +62,7 @@ class API_objects(generics.ListAPIView):
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','tag']
+    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
     pagination_class       = StandardResultsSetPagination
 
 

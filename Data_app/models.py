@@ -26,9 +26,16 @@ class Channel(models.Model):
     
     def __str__(self):
         return self.channelname
-    
 
+
+class Ownercontents(models.Model):
+    authorsname = models.CharField(max_length=20,blank=True)
+    authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
+    authorsweblink = models.URLField(max_length = 200)
+    def __str__(self):
+        return self.authorsname
 class PostCreate(models.Model):
+    contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE)
     title              = models.CharField(max_length = 255)
     slug               = models.CharField(max_length=100,unique=True)
