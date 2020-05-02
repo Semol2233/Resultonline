@@ -12,13 +12,13 @@ from rest_framework.parsers import JSONParser
 import random
 import datetime
 #user model
-from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list
+from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents
 #end
 
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer
     )
 #end
 
@@ -246,3 +246,21 @@ class Brand_ListRendring(generics.ListAPIView):
     pagination_class       = StandadrdResultssSetPdagination
 
 
+class Content_owners(generics.RetrieveAPIView):
+     queryset               = Ownercontents.objects.order_by('-id')
+     serializer_class       = ContensstOwner
+     lookup_field           = ('authorsname')
+
+
+
+class Constent_owners(generics.ListAPIView):
+     queryset               = PostCreate.objects.order_by('-id')
+     serializer_class       = DRFPostSesssrializer
+     filter_backends        = [filters.SearchFilter]
+     search_fields          = ['contentowners__authorsname']
+
+
+
+
+
+     

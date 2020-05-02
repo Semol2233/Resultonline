@@ -34,6 +34,9 @@ class Ownercontents(models.Model):
     authorsweblink = models.URLField(max_length = 200)
     def __str__(self):
         return self.authorsname
+
+
+        
 class PostCreate(models.Model):
     contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE)

@@ -15,7 +15,7 @@ urlpatterns = [
     path('facebook/', views.FacebookLogin.as_view(), name='fb_login'),
     path('socialaccounts/',SocialAccountListView.as_view(),name='social_account_list'),
     path('update/<int:pk>/',views.update_objects.as_view()),
-    path('channel/<channelname>/',views.UserListView.as_view()),
+    path('channels/<channelname>/',views.UserListView.as_view()),
     path('ChannelDataList',views.ChannelDataList.as_view()),
     path('user/',views.UserList.as_view()),
     path('details/<slug>',views.ServiceDetailAPIView.as_view()),
@@ -27,6 +27,9 @@ urlpatterns = [
     path('tsssssag/<tag>',views.TagDtata.as_view()),
     path('Brand',views.Brand_InfoDtata.as_view()),
     path('listBrand',views.Brand_ListRendring.as_view()),
+    path('channel/<authorsname>',views.Content_owners.as_view()),
+    path('extra',views.Constent_owners.as_view()),
+
 
 
 ]

@@ -11,36 +11,69 @@ from rest_framework.reverse import reverse as api_img
 
 #UserAc & User reletet all Data api -> Data relestion  UserDettails
 class UseracAlldata(serializers.ModelSerializer):
-     mobilebrand  = serializers.CharField()
+     photo = serializers.SerializerMethodField('get_photo_url')
      class Meta:
         model = PostCreate
         fields = [
             'id',
             'title',
             'photo',
-            'mobilebrand',
             'details',
             'slug',
             'view',
             'uploaded',  
         ]
+     def get_photo_url(self, obj):
+         return obj.photo.url
+
+
+#root_content_owner
+class ContensstOwner(serializers.ModelSerializer):
+    Status_list = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = Ownercontents
+        fields = [
+          'id',
+          'authorsname',
+          'authorsprofilrimg',
+          'authorsweblink',
+          'Status_list'
+        ]
+    def get_Status_list(self,obj):
+        qs = obj.postcreate_set.all()
+        return UseracAlldata(qs,many=True).data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 #UserAc & User reletet all Data api -> Api
 class UserDettails(serializers.ModelSerializer):
-    Status_list = serializers.SerializerMethodField(read_only=True)
+    # Status_list = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Channel
         fields = [
             'id',
             'channelname',
             'channel_profile',
-            'Status_list'
+            # 'Status_list'
         ]
-    def get_Status_list(self,obj):
-        qs = obj.postcreate_set.all()
-        return UseracAlldata(qs,many=True).data
+    # def get_Status_list(self,obj):
+    #     qs = obj.postcreate_set.all()
+    #     return UseracAlldata(qs,many=True).data
     
 
 
@@ -91,6 +124,38 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
+
+
+
+
+
+
+class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
+     contentowners   = ContentOwner(read_only=True)
+     channel         = UserPublicSrtilizer(read_only=True)
+     mobilebrand     = serializers.CharField()
+
+     class Meta:
+        model = PostCreate
+        fields = [
+            'contentowners',
+            'channel',
+            'id',
+            'title',
+            'details',
+            'photo',
+            'mobilebrand',
+            'slug',
+            'view',
+            'release_date',
+            'tag'
+        ]
+        read_only_fields = ['contentowners']
+        read_only_fields = ['channel']
+
+
+
+
 
 
 
