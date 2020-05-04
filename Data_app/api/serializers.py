@@ -96,7 +96,9 @@ class ContentOwner(serializers.ModelSerializer):
             'id',
             'authorsname',
             'authorsprofilrimg',
-            'authorsweblink'
+            'authorsweblink',
+            'about',
+            'coverImg'
 
         ]
 
