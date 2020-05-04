@@ -37,6 +37,8 @@ class ContensstOwner(serializers.ModelSerializer):
           'authorsname',
           'authorsprofilrimg',
           'authorsweblink',
+          'about',
+          'coverImg',
           'Status_list'
         ]
     def get_Status_list(self,obj):
