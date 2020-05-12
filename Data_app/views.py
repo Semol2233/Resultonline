@@ -245,24 +245,25 @@ class Brand_ListRendring(generics.ListAPIView):
     serializer_class       = BrandProfileInfo
     pagination_class       = StandadrdResultssSetPdagination
 
+class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
+    page_size = 11
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class Content_owners(generics.RetrieveAPIView):
      queryset               = Ownercontents.objects.order_by('-id')
      serializer_class       = ContensstOwner
      lookup_field           = ('authorsname')
+     pagination_class       = StandadsrdResultsSetPdagination
 
 
-class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 11
-    page_size_query_param = 'page_size'
-    max_page_size = 100
 
 class Constent_owners(generics.ListAPIView):
      queryset               = PostCreate.objects.order_by('-id')
      serializer_class       = DRFPostSesssrializer
      filter_backends        = [filters.SearchFilter]
      search_fields          = ['contentowners__authorsname']
-     pagination_class       = StandadsrdResultsSetPdagination
+    
 
 
 
