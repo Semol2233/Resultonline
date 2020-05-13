@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from rest_framework.reverse import reverse as api_img
-
+from rest_framework.pagination import PageNumberPagination
 
 #UserAc & User reletet all Data api -> Data relestion  UserDettails
 class UseracAlldata(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class ContensstOwner(serializers.ModelSerializer):
           'Status_list'
         ]
     def get_Status_list(self,obj):
-        qs = obj.postcreate_set.all()
+        qs = obj.postcreate_set.all()[:40]
         return UseracAlldata(qs,many=True).data
 
 
