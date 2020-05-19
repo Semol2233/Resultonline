@@ -18,7 +18,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata
     )
 #end
 
@@ -64,6 +64,19 @@ class API_objects(generics.ListAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
     pagination_class       = StandardResultsSetPagination
+
+
+#Latest_Api
+class Latest_data(generics.ListAPIView):
+    # pagination_class       = pagnation
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset               = PostCreate.objects.all().order_by('-id')[:5]
+    serializer_class       = latestdata
+    # filter_backends        = [filters.SearchFilter]
+    # search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    # pagination_class       = StandardResultsSetPagination
 
 
 class StandadrdResultsSetPdagfination(pagination.PageNumberPagination):
@@ -254,7 +267,6 @@ class Content_owners(generics.RetrieveAPIView):
      queryset               = Ownercontents.objects.order_by('-id')
      serializer_class       = ContensstOwner
      lookup_field           = ('authorsname')
-     pagination_class       = StandadsrdResultsSetPdagination
 
 
 

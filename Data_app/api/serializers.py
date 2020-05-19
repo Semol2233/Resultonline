@@ -28,8 +28,8 @@ class UseracAlldata(serializers.ModelSerializer):
 
 
 #root_content_owner
-class ContensstOwner(serializers.ModelSerializer):
-    Status_list = serializers.SerializerMethodField(read_only=True)
+class ContensstOwner(serializers.HyperlinkedModelSerializer):
+    List = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Ownercontents
         fields = [
@@ -39,25 +39,11 @@ class ContensstOwner(serializers.ModelSerializer):
           'authorsweblink',
           'about',
           'coverImg',
-          'Status_list'
+          'List'
         ]
-    def get_Status_list(self,obj):
+    def get_List(self,obj):
         qs = obj.postcreate_set.all()[:40]
         return UseracAlldata(qs,many=True).data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -132,9 +118,9 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
 
 
 
-
-
-class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
+#root_api
+class latestdata(serializers.HyperlinkedModelSerializer):
+      
      contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
      mobilebrand     = serializers.CharField()
@@ -162,6 +148,29 @@ class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
 
 
 
+class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
+     contentowners   = ContentOwner(read_only=True)
+     channel         = UserPublicSrtilizer(read_only=True)
+     mobilebrand     = serializers.CharField()
+
+     class Meta:
+        model = PostCreate
+        fields = [
+            'contentowners',
+            'channel',
+            'id',
+            'title',
+            'details',
+            'photo',
+            'mobilebrand',
+            'slug',
+            'view',
+            'release_date',
+            'tag'
+        ]
+        read_only_fields = ['contentowners']
+        read_only_fields = ['channel']
+
 
 
 class Alluser(serializers.ModelSerializer):
@@ -169,10 +178,6 @@ class Alluser(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = ('portfolio_link','photo')
-
-
-
-
 
 
 # -------------------------
@@ -204,12 +209,6 @@ class CoverImge(serializers.ModelSerializer):
             'Cover_img',
           ]
     
-
-
-
-
-
-
 
 
 

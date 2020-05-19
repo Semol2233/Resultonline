@@ -29,6 +29,7 @@ urlpatterns = [
     path('listBrand',views.Brand_ListRendring.as_view()),
     path('channel/<authorsname>',views.Content_owners.as_view()),
     path('extra',views.Constent_owners.as_view()),
+    path('latestdata',views.Latest_data.as_view()),
 
 
 
