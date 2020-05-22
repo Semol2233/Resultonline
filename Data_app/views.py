@@ -48,7 +48,7 @@ User = get_user_model()
 
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
-    page_size = 3
+    page_size = 4
     page_size_query_param = 'page_size'
     max_page_size = 100
 
