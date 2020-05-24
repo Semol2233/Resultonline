@@ -203,6 +203,7 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'contentlock',
             'contentlenth',
             'contentlink',
+            'Persentase',
             'tag'
           ]
           read_only_fields = ['contentowners']
