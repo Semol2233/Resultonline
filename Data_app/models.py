@@ -51,6 +51,9 @@ class PostCreate(models.Model):
     view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
     release_date       = models.DateField(auto_now_add = True)
+    contentlock        = models.BooleanField(default=False)
+    contentlenth       = models.IntegerField(default=0, blank=True)
+
 
     def __str__(self):
         return self.title

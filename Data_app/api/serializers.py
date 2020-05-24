@@ -182,12 +182,14 @@ class Alluser(serializers.ModelSerializer):
 
 # -------------------------
 class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
+      contentowners   = ContentOwner(read_only=True)
       channel   = UserPublicSrtilizer(read_only=True)
       mobilebrand  = serializers.CharField()
 
       class Meta:
           model = PostCreate
           fields = [
+            'contentowners',
             'channel',
             'id',
             'title',
@@ -197,8 +199,12 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'uploaded',
-            'release_date'
+            'release_date',
+            'contentlock',
+            'contentlenth',
+            'tag'
           ]
+          read_only_fields = ['contentowners']
           read_only_fields = ['channel']
 
 class CoverImge(serializers.ModelSerializer):
