@@ -53,6 +53,7 @@ class PostCreate(models.Model):
     release_date       = models.DateField(auto_now_add = True)
     contentlock        = models.BooleanField(default=False)
     contentlenth       = models.IntegerField(default=0, blank=True)
+    contentlink        = models.URLField(max_length=200, blank= True , default='http://www.jagobd.com/makkahlive')
 
 
     def __str__(self):
