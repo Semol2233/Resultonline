@@ -80,7 +80,7 @@ class Latest_data(generics.ListAPIView):
 
 
 class StandadrdResultsSetPdagfination(pagination.PageNumberPagination):
-    page_size = 10
+    page_size = 8
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -182,7 +182,7 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 
 class StandardResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 10
+    page_size = 8
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -232,7 +232,7 @@ class TagDtata(generics.ListAPIView):
     lookup_field = ('tag')
 
 class StandadrdResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 10
+    page_size = 8
     page_size_query_param = 'page_size'
     max_page_size = 100
 

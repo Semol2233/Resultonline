@@ -42,7 +42,7 @@ class ContensstOwner(serializers.HyperlinkedModelSerializer):
           'List'
         ]
     def get_List(self,obj):
-        qs = obj.postcreate_set.all()[:40]
+        qs = obj.postcreate_set.all()[:25]
         return UseracAlldata(qs,many=True).data
 
 
