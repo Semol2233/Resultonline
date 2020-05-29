@@ -18,7 +18,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass
     )
 #end
 
@@ -80,7 +80,7 @@ class Latest_data(generics.ListAPIView):
 
 
 class StandadrdResultsSetPdagfination(pagination.PageNumberPagination):
-    page_size = 3
+    page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -182,7 +182,7 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 
 class StandardResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 3
+    page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -275,10 +275,12 @@ class Constent_owners(generics.ListAPIView):
      serializer_class       = DRFPostSesssrializer
      filter_backends        = [filters.SearchFilter]
      search_fields          = ['contentowners__authorsname']
+
     
-
-
-
-
+#Brand_ListRendring
+class Releted_Data(generics.ListAPIView):
+    queryset               = PostCreate.objects.all().order_by('?')[:4]
+    serializer_class       = Releted_Datass
+    
 
      

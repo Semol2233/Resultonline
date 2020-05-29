@@ -260,3 +260,25 @@ class BrandPostInfo(serializers.ModelSerializer):
         read_only_fields = ['mobilebrand']
 
 
+class Releted_Datass(serializers.ModelSerializer):
+     mobilebrand   = BrandProfileInfo(read_only=True)
+     channel       = UserPublicSrtilizer(read_only=True)
+
+     class Meta:
+        model = PostCreate
+        fields = [
+            'channel',
+            'mobilebrand',
+            'id',
+            'title',
+            'details',
+            'photo',
+            'slug',
+            'view',
+            'release_date',
+            'tag'
+        ]
+        read_only_fields = ['channel']
+        read_only_fields = ['mobilebrand']
+
+

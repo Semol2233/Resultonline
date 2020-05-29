@@ -30,6 +30,8 @@ urlpatterns = [
     path('channel/<authorsname>',views.Content_owners.as_view()),
     path('extra',views.Constent_owners.as_view()),
     path('latestdata',views.Latest_data.as_view()),
+    path('Releted_Data',views.Releted_Data.as_view()),
+
 
 
 
