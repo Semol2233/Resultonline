@@ -18,7 +18,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass,recommended_data
     )
 #end
 
@@ -48,7 +48,7 @@ User = get_user_model()
 
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
-    page_size = 4
+    page_size = 13
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -66,6 +66,27 @@ class API_objects(generics.ListAPIView):
     pagination_class       = StandardResultsSetPagination
 
 
+class channel_Data(pagination.PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+#channel_Api
+class channel_Dataapi(generics.ListAPIView):
+    # pagination_class       = pagnation
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset = PostCreate.objects.all().order_by('?')
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    pagination_class       = channel_Data
+
+
+
+
 #Latest_Api
 class Latest_data(generics.ListAPIView):
     # pagination_class       = pagnation
@@ -80,7 +101,7 @@ class Latest_data(generics.ListAPIView):
 
 
 class StandadrdResultsSetPdagfination(pagination.PageNumberPagination):
-    page_size = 8
+    page_size = 9
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -182,7 +203,7 @@ class ServiceDetailAPIView(generics.RetrieveAPIView):
 
 
 class StandardResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 8
+    page_size = 9
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -232,7 +253,7 @@ class TagDtata(generics.ListAPIView):
     lookup_field = ('tag')
 
 class StandadrdResultsSetPdagination(pagination.PageNumberPagination):
-    page_size = 8
+    page_size = 9
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -279,8 +300,35 @@ class Constent_owners(generics.ListAPIView):
     
 #Brand_ListRendring
 class Releted_Data(generics.ListAPIView):
-    queryset               = PostCreate.objects.all().order_by('?')[:4]
+    queryset               = PostCreate.objects.all().order_by('?')[8:16]
     serializer_class       = Releted_Datass
     
+#recommended_api
+class recommended_datapagenation(pagination.PageNumberPagination):
+    page_size = 4
+    page_size_query_param = 'page_size'
+    max_page_size = 4
 
-     
+#recommended_api
+class recommended(generics.ListAPIView):
+    queryset               = PostCreate.objects.order_by('-view')[5:18]
+    serializer_class       = recommended_data
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+    lookup_field           = ('slug')
+    pagination_class       = recommended_datapagenation
+
+#high_ratetd_api
+class high_ratetdpagnation(pagination.PageNumberPagination):
+    page_size = 4
+    page_size_query_param = 'page_size'
+    max_page_size = 4
+
+#high_ratetd_api
+class high_ratetd(generics.ListAPIView):
+    queryset               = PostCreate.objects.order_by('-view')
+    serializer_class       = recommended_data
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+    lookup_field           = ('slug')
+    pagination_class       = recommended_datapagenation
