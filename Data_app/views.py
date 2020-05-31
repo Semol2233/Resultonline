@@ -77,11 +77,10 @@ class channel_Dataapi(generics.ListAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
-
-    queryset = PostCreate.objects.all().order_by('?')
+    queryset               = PostCreate.objects.all().order_by('-id')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    search_fields          = ['channel__slug_channel']
     pagination_class       = channel_Data
 
 
