@@ -311,7 +311,7 @@ class recommended_datapagenation(pagination.PageNumberPagination):
 
 #recommended_api
 class recommended(generics.ListAPIView):
-    queryset               = PostCreate.objects.order_by('-view')[5:18]
+    queryset               = PostCreate.objects.order_by('-view')[8:24]
     serializer_class       = recommended_data
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
