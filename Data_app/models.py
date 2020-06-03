@@ -55,6 +55,8 @@ class PostCreate(models.Model):
     contentlenth       = models.IntegerField(default=0, blank=True)
     contentlink        = models.URLField(max_length=200, blank= True , default='http://www.jagobd.com/makkahlive')
     Persentase         = models.IntegerField(blank=True, default= 5)
+    reviewcount        = models.IntegerField(blank=True, default= 0)
+
 
 
     def __str__(self):
