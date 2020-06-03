@@ -134,7 +134,8 @@ class DRFPostSerializer(serializers.ModelSerializer):
             'contentlock',
             'contentlenth',
             'contentlink',
-            'Persentase'
+            'Persentase',
+            'reviewcount'
 
         ]
     
