@@ -90,18 +90,38 @@ class ContentOwner(serializers.ModelSerializer):
 
         ]
 
+
+
+class BrandProfileInfo(serializers.ModelSerializer):
+    # ChannelDataUrl      = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = Cetagroy_list
+        fields = [
+            'id',
+            'Channel',
+            'Brand_profile',
+            'ChannelDataUrl'
+            
+        ]
 #root_api
-class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
-      
+class DRFPostSerializer(serializers.ModelSerializer):
      contentowners   = ContentOwner(read_only=True)
+     contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
+
      channel         = UserPublicSrtilizer(read_only=True)
-     mobilebrand     = serializers.CharField()
+     channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
+
+     mobilebrand     = BrandProfileInfo(read_only=True)
+     mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True)
 
      class Meta:
         model = PostCreate
         fields = [
             'contentowners',
             'channel',
+            'contentowner',
+            'channellist',
+            'mobilebarand',
             'id',
             'title',
             'details',
@@ -110,15 +130,18 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag',
+            'contentlock',
+            'contentlenth',
+            'contentlink',
+            'Persentase'
+
         ]
-        read_only_fields = ['contentowners']
-        read_only_fields = ['channel']
+    
 
 
 
 
-#root_api
 class latestdata(serializers.HyperlinkedModelSerializer):
       
      contentowners   = ContentOwner(read_only=True)
@@ -220,18 +243,6 @@ class CoverImge(serializers.ModelSerializer):
 
 
 
-class BrandProfileInfo(serializers.ModelSerializer):
-    # ChannelDataUrl      = serializers.SerializerMethodField(read_only=True)
-    class Meta:
-        model = Cetagroy_list
-        fields = [
-            'id',
-            'Channel',
-            'Brand_profile',
-            'ChannelDataUrl',
-            
-
-        ]
        
     # def get_ChannelDataUrl(self,obj):
     #     data = 'http://127.0.0.1:8000/dd?search=' 

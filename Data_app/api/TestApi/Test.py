@@ -106,3 +106,35 @@
 #     def __str__(self):
 #         return self.title
     
+
+
+# #root_api
+# class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
+#      contentowners   = ContentOwner(read_only=True)
+#      contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
+
+#      channel         = UserPublicSrtilizer(read_only=True)
+#      channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
+
+#      mobilebrand     = BrandProfileInfo(read_only=True)
+#      mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='BrandProfileInfo' ,write_only=True)
+
+#      class Meta:
+#         model = PostCreate
+#         fields = [
+#             'contentowners',
+#             'channel',
+#             'contentowner',
+#             'channellist',
+#             'mobilebarand',
+#             'id',
+#             'title',
+#             'details',
+#             'photo',
+#             'mobilebrand',
+#             'slug',
+#             'view',
+#             'release_date',
+#             'tag'
+#         ]
+    

@@ -18,7 +18,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass,recommended_data
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass,recommended_data,ContentOwner
     )
 #end
 
@@ -54,7 +54,7 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
 
 
 #Root_Api
-class API_objects(generics.ListAPIView):
+class API_objects(generics.ListCreateAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
@@ -171,7 +171,7 @@ class ChannelDataList(generics.ListAPIView):
 #     serializer_class   = UserDettails
 #     lookup_field       = 'username'
 
-class UserListView(generics.RetrieveAPIView):
+class UserListView(generics.RetrieveAPIView,generics.ListCreateAPIView):
     queryset           = Channel.objects.all()
     serializer_class   = UserDettails
     lookup_field       = ('channelname')
@@ -186,12 +186,12 @@ class UserList(generics.ListAPIView):
 
 
 
-class CarView(generics.ListAPIView):
+# class CarView(generics.ListAPIView):
 
-    def get(self, request, *args, **kwargs):
-        queryset = Channel.objects.all()
-        serializer = UseracAlldata(queryset, many=True, context={"request":request})
-        return Response(serializer.data, status=status.HTTP_200_OK)
+#     def get(self, request, *args, **kwargs):
+#         queryset = Channel.objects.all()
+#         serializer = UseracAlldata(queryset, many=True, context={"request":request})
+#         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 
@@ -272,7 +272,7 @@ class StandadrdResultssSetPdagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 #Brand_ListRendring
-class Brand_ListRendring(generics.ListAPIView):
+class Brand_ListRendring(generics.ListCreateAPIView,):
 
     queryset               = Cetagroy_list.objects.order_by('?')
     serializer_class       = BrandProfileInfo
@@ -283,14 +283,14 @@ class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class Content_owners(generics.RetrieveAPIView):
+class Content_owners(generics.RetrieveAPIView ,generics.ListCreateAPIView,):
      queryset               = Ownercontents.objects.order_by('-id')
      serializer_class       = ContensstOwner
      lookup_field           = ('authorsname')
 
 
 
-class Constent_owners(generics.ListAPIView):
+class Constent_owners(generics.ListAPIView ,generics.ListCreateAPIView,):
      queryset               = PostCreate.objects.order_by('-id')
      serializer_class       = DRFPostSesssrializer
      filter_backends        = [filters.SearchFilter]
@@ -299,7 +299,7 @@ class Constent_owners(generics.ListAPIView):
     
 #Brand_ListRendring
 class Releted_Data(generics.ListAPIView):
-    queryset               = PostCreate.objects.all().order_by('?')[3:7]
+    queryset               = PostCreate.objects.all().order_by('?')[3:8]
     serializer_class       = Releted_Datass
     
 #recommended_api
@@ -331,3 +331,13 @@ class high_ratetd(generics.ListAPIView):
     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
     lookup_field           = ('slug')
     pagination_class       = recommended_datapagenation
+
+
+class highss_rsatetd(generics.ListAPIView ,generics.ListCreateAPIView,):
+    queryset               = Ownercontents.objects.all()
+    serializer_class       = ContentOwner
+
+
+
+
+    

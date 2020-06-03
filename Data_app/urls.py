@@ -35,6 +35,8 @@ urlpatterns = [
     path('recommended_data',views.recommended.as_view()),
     path('channel_Dataapi',views.channel_Dataapi.as_view()),
     path('high_ratetd',views.high_ratetd.as_view()),
+    path('posslink',views.highss_rsatetd.as_view()),
+
 
 ]
 
