@@ -64,6 +64,17 @@ class API_objects(generics.ListCreateAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
     pagination_class       = StandardResultsSetPagination
+#rootupdate
+class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
+    # pagination_class       = pagnation
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset = PostCreate.objects.all().order_by('?')
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    pagination_class       = StandardResultsSetPagination
 
 
 class channel_Data(pagination.PageNumberPagination):

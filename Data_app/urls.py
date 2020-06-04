@@ -37,7 +37,8 @@ urlpatterns = [
     path('high_ratetd',views.high_ratetd.as_view()),
     path('posslink',views.highss_rsatetd.as_view()),
 
-
+    path('count/<int:pk>/',views.API_osbjects.as_view()),
+ 
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
