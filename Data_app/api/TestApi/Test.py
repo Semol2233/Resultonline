@@ -138,3 +138,21 @@
 #             'tag'
 #         ]
     
+
+
+
+
+    # class highss_rsatetd(APIView,):
+    # parser_classes = (MultiPartParser,FormParser,JSONParser)
+
+    # def get(self, request, format=None):
+    #     snippets = Ownercontents.objects.all()
+    #     serializer = ContentOwner(snippets, many=True)
+    #     return Response(serializer.data)
+
+    # def post(self, request, format=None):
+    #     serializer = ContentOwner(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,7 +7,8 @@ from rest_framework import authentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
+
 #end
 import random
 import datetime
@@ -18,7 +19,8 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,latestdata,Releted_Datass,recommended_data,ContentOwner
+    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer
     )
 #end
 
@@ -45,6 +47,7 @@ User = get_user_model()
 #end
 
 #list view -> APi
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
@@ -71,7 +74,8 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     # permission_classes     = [permissions.IsAuthenticated]
 
     queryset = PostCreate.objects.all().order_by('?')
-    serializer_class       = DRFPostSerializer
+    parser_classes = (MultiPartParser,FormParser,JSONParser)
+    serializer_class       = DRFPostSdderializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
     lookup_field           = ('slug')
@@ -348,6 +352,18 @@ class high_ratetd(generics.ListAPIView):
 class highss_rsatetd(generics.ListAPIView ,generics.ListCreateAPIView,):
     queryset               = Ownercontents.objects.all()
     serializer_class       = ContentOwner
+    parser_classes = (MultiPartParser,FormParser)
+
+
+class hisghss_rsatetd(generics.RetrieveUpdateDestroyAPIView):
+    queryset               = Ownercontents.objects.all()
+    serializer_class       = ContddentOwner
+    lookup_field           = ('authorsname')
+    parser_classes = (MultiPartParser,FormParser)
+
+
+
+
 
 
 

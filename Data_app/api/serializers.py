@@ -90,6 +90,21 @@ class ContentOwner(serializers.ModelSerializer):
 
         ]
 
+class ContddentOwner(serializers.ModelSerializer):
+    class Meta:
+        model = Ownercontents
+        fields = [
+            'id',
+            'authorsname',
+            'authorsprofilrimg',
+            'authorsweblink',
+            'about',
+            'coverImg'
+
+        ]
+        lookup_field = 'authorsname'
+
+
 
 
 class BrandProfileInfo(serializers.ModelSerializer):
@@ -104,7 +119,7 @@ class BrandProfileInfo(serializers.ModelSerializer):
             
         ]
 #root_api
-class DRFPostSerializer(serializers.ModelSerializer):
+class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
      contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
 
@@ -138,7 +153,39 @@ class DRFPostSerializer(serializers.ModelSerializer):
             'reviewcount'
 
         ]
+
+        
+
     
+#detilsapiview
+class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
+     contentowners   = ContentOwner(read_only=True)
+     channel         = UserPublicSrtilizer(read_only=True)
+     mobilebrand     = BrandProfileInfo(read_only=True)
+     class Meta:
+        model = PostCreate
+        fields = [
+            'channel',
+            'contentowners',
+            'id',
+            'title',
+            'details',
+            'photo',
+            'mobilebrand',
+            'slug',
+            'view',
+            'release_date',
+            'tag',
+            'contentlock',
+            'contentlenth',
+            'contentlink',
+            'Persentase',
+            'reviewcount'
+
+        ]
+        lookup_field = 'slug'
+        read_only_fields = ['details','Persentase','title','slug','tag','photo','contentlenth','contentlock','contentlink']
+        
 
 
 
