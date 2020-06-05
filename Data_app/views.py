@@ -315,7 +315,7 @@ class Constent_owners(generics.ListAPIView ,generics.ListCreateAPIView,):
     
 #Brand_ListRendring
 class Releted_Data(generics.ListAPIView):
-    queryset               = PostCreate.objects.all().order_by('?')[3:8]
+    queryset               = PostCreate.objects.all().order_by('?')[3:7]
     serializer_class       = Releted_Datass
     
 #recommended_api

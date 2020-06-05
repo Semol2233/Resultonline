@@ -45,7 +45,7 @@ class PostCreate(models.Model):
     title              = models.CharField(max_length = 255)
     slug               = models.CharField(max_length=100,unique=True)
     details            = models.TextField(blank=True)
-    mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE,default="")
+    mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE)
     photo              = models.FileField(upload_to='documents/' ,default='media/channel_profile/1_93A43jqOXZYUr0yFMkcnNw.png')
     tag                = models.CharField(max_length=233,null=True)
     view               = models.IntegerField(blank=True, default=0)
