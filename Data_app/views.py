@@ -74,6 +74,7 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    lookup_field           = ('slug')
     pagination_class       = StandardResultsSetPagination
 
 
