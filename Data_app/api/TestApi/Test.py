@@ -156,3 +156,42 @@
     #         serializer.save()
     #         return Response(serializer.data, status=status.HTTP_201_CREATED)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# class Profile(models.Model):
+# user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+# trusted = models.BooleanField(default=False)
+# address = models.CharField(max_length=100, default="")
+
+# COUNTRIES = (
+#     ('CZ', 'Czech Republic'),
+#     ('EN', 'England'),
+# )
+# country = models.CharField(max_length=2, choices=COUNTRIES, default="CZ")
+
+# score = models.BigIntegerField(default=0)
+
+# achievements = models.ManyToManyField(Achievement, blank=True)
+
+# USER_TYPES = (
+#     ('N', 'Normal'),
+#     ('C', 'Contributor'),
+#     ('A', 'Admin'),
+# )
+# user_type = models.CharField(max_length=1, choices=USER_TYPES, default='N')
+
+
+# @receiver(post_save, sender=settings.AUTH_USER_MODEL)
+# def create_auth_token(sender, instance=None, created=False, **kwargs):
+# if created:
+#     Token.objects.create(user=instance)
+
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created=False, **kwargs):
+# if created:
+#     profile, created = Profile.objects.get_or_create(user=instance)
+# profile.save()
+#user-auth
+# https://stackoverflow.com/questions/52113890/django-rest-framework-how-to-create-serializer-from-multiple-models

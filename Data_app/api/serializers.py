@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg,Ownercontents
+from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg,Ownercontents,tag_data
 from django.conf import settings
 from django.db import models
 from django.http import HttpRequest
@@ -118,10 +118,28 @@ class BrandProfileInfo(serializers.ModelSerializer):
             'ChannelDataUrl'
             
         ]
+
+
+
+class tag_data_seri(serializers.ModelSerializer):
+    class Meta:
+        model = tag_data
+        fields = [
+            'id',
+            'tag_channel_name',
+            'tag_name',
+            'tag_icon',
+            'tag_content_link'
+
+        ]
 #root_api
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
      contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
+
+     selete_channel_tag   = tag_data_seri(read_only=True)
+     selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag' ,write_only=True)
+
 
      channel         = UserPublicSrtilizer(read_only=True)
      channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
@@ -137,6 +155,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'contentowner',
             'channellist',
             'mobilebarand',
+            'selete_channel_tag',
+            'selete_channel_tags',
             'id',
             'title',
             'details',
@@ -362,3 +382,34 @@ class recommended_data(serializers.ModelSerializer):
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
+
+
+
+
+class tagmanager(serializers.ModelSerializer):
+    class Meta:
+        model = Channel
+        fields = [
+            'id',
+            'channelname',       
+
+        ]
+
+       
+
+class tag_manager_serilizar(serializers.ModelSerializer):
+
+     tag_channel_name       = tagmanager(read_only=True)
+     
+     class Meta:
+        model = tag_data
+        fields = [
+           'tag_name',
+           'tag_icon',
+           'tag_content_link',
+           'tag_channel_name',
+        ]
+        read_only_fields = ['tag_channel_name']
+        read_only_fields = ['tag_name']
+
+

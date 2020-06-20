@@ -13,14 +13,14 @@ from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 import random
 import datetime
 #user model
-from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents
+from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data
 #end
 
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
     UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar
     )
 #end
 
@@ -362,8 +362,18 @@ class hisghss_rsatetd(generics.RetrieveUpdateDestroyAPIView):
     parser_classes = (MultiPartParser,FormParser)
 
 
+#high_ratetd_api
+class tag_manager_pagenation(pagination.PageNumberPagination):
+    page_size = 8
+    page_size_query_param = 'page_size'
+    max_page_size = 4
 
-
+class tag_mangager(generics.ListAPIView):
+    queryset                 = tag_data.objects.all()
+    serializer_class         = tag_manager_serilizar
+    filter_backends          = [filters.SearchFilter]
+    search_fields            = ['tag_channel_name__channelname']
+    pagination_class         = tag_manager_pagenation
 
 
 

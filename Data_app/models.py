@@ -8,6 +8,12 @@ from datetime import datetime
 
 
 
+
+
+
+
+
+
 class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
     Brand_profile        = models.ImageField(upload_to="Brand_Logo",blank=True)
@@ -28,6 +34,20 @@ class Channel(models.Model):
         return self.channelname
 
 
+
+
+class tag_data(models.Model):
+    tag_channel_name  = models.ForeignKey(Channel, on_delete=models.CASCADE)
+    tag_name          = models.CharField(max_length=50)
+    tag_icon          = models.ImageField(upload_to="tag_icon",blank=False)
+    tag_content_link  = models.URLField(max_length=200, blank= True,unique=True)
+
+    def __str__(self):
+        return str('%s %s' % (self.tag_name,self.tag_channel_name))
+
+
+
+
 class Ownercontents(models.Model):
     authorsname       = models.CharField(max_length=20,blank=True)
     authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
@@ -35,19 +55,20 @@ class Ownercontents(models.Model):
     about             = models.CharField(max_length = 5000, blank=True,default="hello" )
     coverImg          = models.ImageField(upload_to="author_img",blank=True ,default="author_profile/dasfdad.png")
     def __str__(self):
-        return self.authorsname
+        return self.authorsname 
 
 
         
 class PostCreate(models.Model):
-    contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE)
-    channel            = models.ForeignKey(Channel, on_delete=models.CASCADE)
+    contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE ,blank=True, null=True)
+    channel            = models.ForeignKey(Channel, on_delete=models.CASCADE ,blank=True, null=True)
     title              = models.CharField(max_length = 255)
     slug               = models.CharField(max_length=100,unique=True)
     details            = models.TextField(blank=True)
-    mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE)
+    selete_channel_tag = models.ForeignKey(tag_data, on_delete=models.CASCADE ,blank=True, null=True)
+    mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE ,blank=True, null=True )
     photo              = models.FileField(upload_to='documents/' ,default='media/channel_profile/1_93A43jqOXZYUr0yFMkcnNw.png')
-    tag                = models.CharField(max_length=233,null=True)
+    tag                = models.CharField(max_length=233,null=True)   
     view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
     release_date       = models.DateField(auto_now_add = True)

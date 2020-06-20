@@ -114,7 +114,15 @@ DATABASES = {
         'PASSWORD': 'semol@12345',
         'HOST': 'localhost',
         'PORT': '',
-    }
+    # },
+    # 'primary': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'onlinedatastore',
+    #     'USER': 'onlinedatastoreuser',
+    #     'PASSWORD': 'semol@12345',
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # },
 }
 
 # DATABASES = {
