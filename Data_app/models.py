@@ -7,13 +7,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
-
-
-
-
-
-
-
 class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
     Brand_profile        = models.ImageField(upload_to="Brand_Logo",blank=True)
@@ -83,6 +76,11 @@ class PostCreate(models.Model):
     def __str__(self):
         return self.title
     
+
+
+
+
+
 
 class UserProfile(models.Model):
     user              = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

@@ -29,7 +29,7 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 #DEBUG = False production_server
 #DEBUG = False production_server
 
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Data_app',
+    'Blog',
     'rest_framework',
     'corsheaders',
     'account_admin_app',
