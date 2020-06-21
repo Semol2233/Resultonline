@@ -77,6 +77,15 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
 
         ]
 
+
+class UserPublssicSrtilizer(serializers.ModelSerializer):
+    class Meta:
+        model = Channel
+        fields = [
+            'channelname',
+
+        ]
+
 class ContentOwner(serializers.ModelSerializer):
     class Meta:
         model = Ownercontents
@@ -122,14 +131,15 @@ class BrandProfileInfo(serializers.ModelSerializer):
 
 
 class tag_data_seri(serializers.ModelSerializer):
+    tag_channel_name         = UserPublssicSrtilizer(read_only=True)
     class Meta:
         model = tag_data
         fields = [
             'id',
-            'tag_channel_name',
             'tag_name',
             'tag_icon',
-            'tag_content_link'
+            'tag_content_link',
+            'tag_channel_name',
 
         ]
 #root_api
