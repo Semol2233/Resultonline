@@ -32,6 +32,7 @@ class Channel(models.Model):
 class tag_data(models.Model):
     tag_channel_name  = models.ForeignKey(Channel, on_delete=models.CASCADE)
     tag_name          = models.CharField(max_length=50)
+    query_slug        = models.CharField(max_length=50,default="0")
     tag_icon          = models.ImageField(upload_to="tag_icon",blank=False)
     tag_content_link  = models.URLField(max_length=200, blank= True,unique=True)
 
