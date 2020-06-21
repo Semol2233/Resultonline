@@ -138,6 +138,7 @@ class tag_data_seri(serializers.ModelSerializer):
             'id',
             'tag_name',
             'tag_icon',
+            'query_slug',
             'tag_content_link',
             'tag_channel_name',
 
@@ -416,6 +417,7 @@ class tag_manager_serilizar(serializers.ModelSerializer):
         fields = [
            'tag_name',
            'tag_icon',
+           'query_slug',
            'tag_content_link',
            'tag_channel_name',
         ]
