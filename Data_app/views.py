@@ -65,7 +65,7 @@ class API_objects(generics.ListCreateAPIView):
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname','selete_channel_tag__tag_name']
+    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
 #rootupdate
 class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
