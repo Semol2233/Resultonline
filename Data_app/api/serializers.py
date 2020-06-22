@@ -153,7 +153,7 @@ class tag_dddata_seri(serializers.ModelSerializer):
             'tag_icon',
             'query_slug',
             'tag_content_link',
-
+            'tag_channel_name',
 
         ]
 
