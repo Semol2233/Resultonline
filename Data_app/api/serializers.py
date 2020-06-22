@@ -143,9 +143,18 @@ class tag_data_seri(serializers.ModelSerializer):
             'tag_channel_name',
 
         ]
+class tag_dddata_seri(serializers.ModelSerializer):
+    tag_channel_name         = UserPublssicSrtilizer(read_only=True)
+    class Meta:
+        model = tag_data
+        fields = [
+            'tag_content_link',
+        ]
+
+
 
 class tag_data_crators(serializers.ModelSerializer):
-    main_tag_select   = tag_data_seri(read_only=True)
+    main_tag_select   = tag_dddata_seri(read_only=True)
     class Meta:
         model = tag_createors
         fields = [
@@ -153,6 +162,9 @@ class tag_data_crators(serializers.ModelSerializer):
             'tag_target_link',
             'tag_name'
         ]
+
+
+        
 #root_api
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
