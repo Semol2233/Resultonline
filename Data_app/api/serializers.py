@@ -148,6 +148,8 @@ class tag_data_crators(serializers.ModelSerializer):
     class Meta:
         model = tag_createors
         fields = [
+            'main_tag_select',
+            'tag_target_link',
             'tag_name'
         ]
 #root_api
