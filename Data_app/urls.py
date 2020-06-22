@@ -43,6 +43,7 @@ urlpatterns = [
     path('tagmanager',views.tag_mangager.as_view()),
 
     path('sub_tag_manager',views.API_objedfcts.as_view()),
+    path('Tag_creator',views.Tag_creatoe_view.as_view()),
 
 
 

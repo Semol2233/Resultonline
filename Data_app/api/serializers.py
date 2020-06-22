@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg,Ownercontents,tag_data
+from Data_app.models import PostCreate,UserProfile,Cetagroy_list,Channel,CoverImg,Ownercontents,tag_data,tag_createors
 from django.conf import settings
 from django.db import models
 from django.http import HttpRequest
@@ -143,6 +143,13 @@ class tag_data_seri(serializers.ModelSerializer):
             'tag_channel_name',
 
         ]
+
+class tag_data_crators(serializers.ModelSerializer):
+    class Meta:
+        model = tag_createors
+        fields = [
+            'tag_name'
+        ]
 #root_api
 class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
@@ -155,8 +162,11 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      channel         = UserPublicSrtilizer(read_only=True)
      channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
 
+     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
+     tag_creators = serializers.PrimaryKeyRelatedField(queryset=tag_createors.objects.all(), source='tag_creator' ,write_only=True,many=True) 
+
      mobilebrand     = BrandProfileInfo(read_only=True)
-     mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True)
+     mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True,required=False)
 
      class Meta:
         model = PostCreate
@@ -170,13 +180,14 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'selete_channel_tags',
             'id',
             'title',
+            'tag_creator',
+            'tag_creators',
             'details',
             'photo',
             'mobilebrand',
             'slug',
             'view',
             'release_date',
-            'tag',
             'contentlock',
             'contentlenth',
             'contentlink',

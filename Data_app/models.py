@@ -51,8 +51,14 @@ class Ownercontents(models.Model):
     def __str__(self):
         return self.authorsname 
 
+class tag_createors(models.Model):
+    main_tag_select           = models.ForeignKey(tag_data,on_delete=models.CASCADE,blank= True,null=True)
+    tag_name           = models.CharField(max_length=233,null=True)
+    tag_target_link    = models.URLField(max_length=100,unique=True,default="0")   
 
-        
+    def __str__(self):
+        return self.tag_name 
+
 class PostCreate(models.Model):
     contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE ,blank=True, null=True)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE ,blank=True, null=True)
@@ -62,7 +68,7 @@ class PostCreate(models.Model):
     selete_channel_tag = models.ForeignKey(tag_data, on_delete=models.CASCADE ,blank=True, null=True)
     mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE ,blank=True, null=True )
     photo              = models.FileField(upload_to='documents/' ,default='media/channel_profile/1_93A43jqOXZYUr0yFMkcnNw.png')
-    tag                = models.CharField(max_length=233,null=True)   
+    tag_creator        = models.ManyToManyField('tag_createors',default="0") 
     view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
     release_date       = models.DateField(auto_now_add = True)

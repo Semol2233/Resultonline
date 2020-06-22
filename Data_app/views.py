@@ -13,14 +13,14 @@ from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 import random
 import datetime
 #user model
-from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data
+from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data,tag_createors
 #end
 
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
     UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators
     )
 #end
 
@@ -396,3 +396,25 @@ class API_objedfcts(generics.ListCreateAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['selete_channel_tag__query_slug']
     pagination_class       = StandadrdResultsSetPagination
+
+
+
+
+    
+class Tag_viewr(pagination.PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+#sub_tag_page_Api
+class Tag_creatoe_view(generics.ListCreateAPIView):
+    # pagination_class       = pagnation
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset               = tag_createors.objects.all().order_by('?')
+    serializer_class       = tag_data_crators
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['selete_channel_tag__query_slug']
+    pagination_class       = Tag_viewr
