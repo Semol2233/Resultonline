@@ -42,6 +42,9 @@ urlpatterns = [
     path('count/<slug>/',views.API_osbjects.as_view()),
     path('tagmanager',views.tag_mangager.as_view()),
 
+    path('sub_tag_manager',views.API_objedfcts.as_view()),
+
+
 
  
 ]

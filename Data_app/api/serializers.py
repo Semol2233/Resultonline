@@ -402,7 +402,7 @@ class tagmanager(serializers.ModelSerializer):
         model = Channel
         fields = [
             'id',
-            'channelname',       
+            'channelname',    
 
         ]
 
@@ -411,6 +411,7 @@ class tagmanager(serializers.ModelSerializer):
 class tag_manager_serilizar(serializers.ModelSerializer):
 
      tag_channel_name       = tagmanager(read_only=True)
+     
      
      class Meta:
         model = tag_data

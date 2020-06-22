@@ -379,3 +379,20 @@ class tag_mangager(generics.ListAPIView):
 
 
     
+class StandadrdResultsSetPagination(pagination.PageNumberPagination):
+    page_size = 13
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+#sub_tag_page_Api
+class API_objedfcts(generics.ListCreateAPIView):
+    # pagination_class       = pagnation
+    #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes     = [permissions.IsAuthenticated]
+
+    queryset = PostCreate.objects.all().order_by('-id')
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['selete_channel_tag__query_slug']
+    pagination_class       = StandadrdResultsSetPagination
