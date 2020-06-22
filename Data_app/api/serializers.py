@@ -144,7 +144,6 @@ class tag_data_seri(serializers.ModelSerializer):
 
         ]
 class tag_dddata_seri(serializers.ModelSerializer):
-    tag_channel_name         = UserPublssicSrtilizer(read_only=True)
     class Meta:
         model = tag_data
         fields = [
