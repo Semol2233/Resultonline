@@ -147,7 +147,8 @@ class tag_dddata_seri(serializers.ModelSerializer):
     class Meta:
         model = tag_data
         fields = [
-            'tag_content_link',
+            'tag_name',
+
         ]
 
 
