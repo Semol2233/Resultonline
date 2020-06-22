@@ -52,7 +52,7 @@ class Ownercontents(models.Model):
         return self.authorsname 
 
 class tag_createors(models.Model):
-    main_tag_select           = models.ForeignKey(tag_data,on_delete=models.CASCADE,blank= True,null=True)
+    main_tag_select    = models.ForeignKey(tag_data,on_delete=models.CASCADE,blank= True,null=True)
     tag_name           = models.CharField(max_length=233,null=True)
     tag_target_link    = models.URLField(max_length=100,unique=True,default="0")   
 
