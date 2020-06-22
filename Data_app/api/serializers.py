@@ -176,8 +176,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
      contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
 
-     selete_channel_tag   = tag_data_seri(read_only=True)
-     selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag' ,write_only=True)
+    #  selete_channel_tag   = tag_data_seri(read_only=True)
+    #  selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag' ,write_only=True)
 
 
      channel         = UserPublicSrtilizer(read_only=True)
@@ -197,8 +197,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'contentowner',
             'channellist',
             'mobilebarand',
-            'selete_channel_tag',
-            'selete_channel_tags',
+            # 'selete_channel_tag',
+            # 'selete_channel_tags',
             'id',
             'title',
             'tag_creator',
