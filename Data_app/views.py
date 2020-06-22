@@ -416,5 +416,5 @@ class Tag_creatoe_view(generics.ListCreateAPIView):
     queryset               = tag_createors.objects.all().order_by('?')
     serializer_class       = tag_data_crators
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['selete_channel_tag__query_slug']
+    search_fields          = ['selet_channel__channelname']
     pagination_class       = Tag_viewr

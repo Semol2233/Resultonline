@@ -160,11 +160,11 @@ class tag_dddata_seri(serializers.ModelSerializer):
 
 
 class tag_data_crators(serializers.ModelSerializer):
-    main_tag_select   = tag_dddata_seri(read_only=True)
+    selet_channel   = UserPublssicSrtilizer(read_only=True)
     class Meta:
         model = tag_createors
         fields = [
-            'main_tag_select',
+            'selet_channel',
             'tag_target_link',
             'tag_name'
         ]
