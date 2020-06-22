@@ -435,10 +435,9 @@ class tagmanager(serializers.ModelSerializer):
        
 
 class tag_manager_serilizar(serializers.ModelSerializer):
-
+     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
      tag_channel_name       = tagmanager(read_only=True)
-     
-     
+    
      class Meta:
         model = tag_data
         fields = [
@@ -447,6 +446,7 @@ class tag_manager_serilizar(serializers.ModelSerializer):
            'query_slug',
            'tag_content_link',
            'tag_channel_name',
+           'tag_creator'
         ]
         read_only_fields = ['tag_channel_name']
         read_only_fields = ['tag_name']
