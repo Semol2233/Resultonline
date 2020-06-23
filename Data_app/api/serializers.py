@@ -238,7 +238,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag',
+            'tag_creator',
             'contentlock',
             'contentlenth',
             'contentlink',
@@ -247,7 +247,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
 
         ]
         lookup_field = 'slug'
-        read_only_fields = ['details','Persentase','title','slug','tag','photo','contentlenth','contentlock','contentlink']
+        read_only_fields = ['details','Persentase','title','slug','tag_creator','photo','contentlenth','contentlock','contentlink']
         
 
 
@@ -272,7 +272,7 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag_creator'
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
@@ -300,7 +300,7 @@ class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag_creator'
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
@@ -338,7 +338,7 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'contentlenth',
             'contentlink',
             'Persentase',
-            'tag'
+            'tatag_creatorg'
           ]
           read_only_fields = ['contentowners']
           read_only_fields = ['channel']
@@ -376,7 +376,7 @@ class BrandPostInfo(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag_creator'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -398,7 +398,7 @@ class Releted_Datass(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag_creator'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -421,7 +421,7 @@ class recommended_data(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag'
+            'tag_creator'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
