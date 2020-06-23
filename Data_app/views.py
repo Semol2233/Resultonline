@@ -364,7 +364,7 @@ class hisghss_rsatetd(generics.RetrieveUpdateDestroyAPIView):
 
 #high_ratetd_api
 class tag_manager_pagenation(pagination.PageNumberPagination):
-    page_size = 8
+    page_size = 3
     page_size_query_param = 'page_size'
     max_page_size = 4
 
@@ -380,7 +380,7 @@ class tag_mangager(generics.ListAPIView):
 
     
 class StandadrdResultsSetPagination(pagination.PageNumberPagination):
-    page_size = 9
+    page_size = 3
     page_size_query_param = 'page_size'
     max_page_size = 100
 
