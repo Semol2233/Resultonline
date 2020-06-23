@@ -272,7 +272,7 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator'
+         
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
