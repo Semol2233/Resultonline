@@ -238,7 +238,6 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator',
             'contentlock',
             'contentlenth',
             'contentlink',
