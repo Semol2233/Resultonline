@@ -200,7 +200,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             # 'selete_channel_tag',
             # 'selete_channel_tags',
             'id',
-            'title',
+            # 'title',
             # 'tag_creator',
             # 'tag_creators',
             'details',
@@ -299,7 +299,6 @@ class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator'
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
