@@ -65,7 +65,7 @@ class API_objects(generics.ListCreateAPIView):
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname','selete_channel_tag__query_slug']
+    search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
 #rootupdate
 class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
@@ -77,7 +77,7 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     parser_classes = (MultiPartParser,FormParser,JSONParser)
     serializer_class       = DRFPostSdderializer
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','tag','contentowners__authorsname']
+    search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname']
     lookup_field           = ('slug')
     pagination_class       = StandardResultsSetPagination
 
@@ -260,12 +260,12 @@ class DetailsPageReleteData(generics.ListAPIView):
 
 
 #example
-class TagDtata(generics.ListAPIView):
+# class TagDtata(generics.ListAPIView):
 
-    # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
-    queryset               = PostCreate.objects.order_by('-id')
-    serializer_class       = DRFPostSerializer
-    lookup_field = ('tag')
+#     # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
+#     queryset               = PostCreate.objects.order_by('-id')
+#     serializer_class       = DRFPostSerializer
+#     lookup_field = ('tag')
 
 class StandadrdResultsSetPdagination(pagination.PageNumberPagination):
     page_size = 9
