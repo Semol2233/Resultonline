@@ -200,7 +200,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             # 'selete_channel_tag',
             # 'selete_channel_tags',
             'id',
-            # 'title',
+            'title',
             # 'tag_creator',
             # 'tag_creators',
             'details',
