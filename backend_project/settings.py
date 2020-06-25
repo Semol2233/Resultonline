@@ -29,7 +29,7 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 #DEBUG = False production_server
 #DEBUG = False production_server
 
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
@@ -171,7 +171,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DATETIME_FORMAT = '%d-%m-%Y %H:%M:%S' 
+DATETIME_FORMAT =    '%d %B %Y',
 USE_L10N = False
 USE_TZ = False #
 
