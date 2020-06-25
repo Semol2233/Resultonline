@@ -222,6 +222,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
     
 #detilsapiview
 class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
+
+     tag_creator     = tag_data_crators(read_only=True,many=True, required=False)
      contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
      mobilebrand     = BrandProfileInfo(read_only=True)
@@ -230,6 +232,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'channel',
             'contentowners',
+            'tag_creator',
             'id',
             'title',
             'details',
