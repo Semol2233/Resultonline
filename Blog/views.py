@@ -46,10 +46,17 @@ User = get_user_model()
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 
+class StandardResultsSssetPagination(pagination.PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    
+
 #root
 class Blog_api_root(generics.ListAPIView):
     queryset               = cat_model.objects.all().order_by('-id')
     serializer_class       = cat_modelSrtilizer
+    pagination_class       = StandardResultsSssetPagination
 
 
 

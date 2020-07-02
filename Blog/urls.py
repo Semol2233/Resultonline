@@ -8,7 +8,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.Blog_api_root.as_view(), name="home_api"),
-    path('api/v1/filter', views.Blog_api_filter.as_view()),
+    path('filter', views.Blog_api_filter.as_view()),
 
 
 

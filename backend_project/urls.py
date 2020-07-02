@@ -7,7 +7,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('simple',include('account_admin_app.urls')),
     path('',include('Data_app.urls')),
-    path('blog/',include('Blog.urls')),
+    path('blog/api/v1/',include('Blog.urls')),
 
     path('admin/', admin.site.urls),
     path('login',obtain_auth_token,name='token_auth' ),
