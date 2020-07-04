@@ -56,6 +56,7 @@ class StandardResultsSssetPagination(pagination.PageNumberPagination):
 class Blog_api_root(generics.ListAPIView):
     queryset               = cat_model.objects.all()
     serializer_class       = cat_modelSrtilizer
+    filter_backends        = [filters.SearchFilter]
     pagination_class       = StandardResultsSssetPagination
 
 
@@ -85,4 +86,9 @@ class Blog_api_cover(generics.ListAPIView):
     queryset               = postmodel.objects.all().order_by('-id')[1:5]
     serializer_class       = UserPublicSrtilizer_filter
 
-    
+
+class Blog_api_recomnded(generics.ListAPIView):
+    queryset               = postmodel.objects.all().order_by('?')[11:15]
+    serializer_class       = UserPublicSrtilizer_filter
+
+
