@@ -56,10 +56,13 @@ class StandardResultsSssetPagination(pagination.PageNumberPagination):
 class Blog_api_root(generics.ListAPIView):
     queryset               = cat_model.objects.all()
     serializer_class       = cat_modelSrtilizer
-    filter_backends        = [filters.SearchFilter]
     pagination_class       = StandardResultsSssetPagination
 
 
+class Blog_api_details(generics.RetrieveUpdateDestroyAPIView):
+    queryset               = cat_model.objects.all()
+    serializer_class       = cat_modelSrtilizer
+    lookup_field           = ('postmodel__blog_slug')
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 3
