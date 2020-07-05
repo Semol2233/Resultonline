@@ -74,7 +74,7 @@ class Blog_api_filter(generics.ListAPIView):
     queryset               = postmodel.objects.all()
     serializer_class       = UserPublicSrtilizer_filter
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['catagry_select__cat_name']
+    search_fields          = ['catagry_select__cat_slug',]
     pagination_class       = StandardResultsSetPagination
 
 
