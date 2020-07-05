@@ -46,6 +46,31 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
         return UserPublicSrtilizer(qs,many=True).data
 
 
+class cat_model_releson(serializers.ModelSerializer):
+
+    class Meta:
+        model = cat_model
+        fields = [
+            'id',
+            'cat_name',
+    
+        ]
+
+
+class cat_modelSrtilizersss(serializers.ModelSerializer):
+    catagry_select         = cat_model_releson(read_only=True)
+    class Meta:
+        model = postmodel
+        fields = [
+            'id',
+            'title',
+            'blog_slug',
+            'catagry_select',
+            'decribe_post',
+            'post_img'
+    
+        ]
+        lookup_field = 'blog_slug'
 
 #filter_data
 

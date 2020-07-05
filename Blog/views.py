@@ -59,10 +59,10 @@ class Blog_api_root(generics.ListAPIView):
     pagination_class       = StandardResultsSssetPagination
 
 
-class Blog_api_details(generics.RetrieveUpdateDestroyAPIView):
-    queryset               = cat_model.objects.all()
-    serializer_class       = cat_modelSrtilizer
-    lookup_field           = ('postmodel__blog_slug')
+class Blog_api_details(generics.RetrieveAPIView):
+    queryset               = postmodel.objects.all()
+    serializer_class       = cat_modelSrtilizersss
+    lookup_field           = ('blog_slug')
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 3
