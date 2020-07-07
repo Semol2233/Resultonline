@@ -60,7 +60,7 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
 class API_objects(generics.ListCreateAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
-    # permission_classes     = [permissions.IsAuthenticated]
+    permission_classes     = [permissions.IsAuthenticated]
 
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
