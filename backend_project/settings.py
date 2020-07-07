@@ -31,8 +31,8 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 
 DEBUG = True
 
-#ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
+#ALLOWED_HOSTS = []
 #f
 #d
 # Application definition

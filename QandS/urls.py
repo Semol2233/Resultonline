@@ -7,7 +7,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.Blog_api_root.as_view(), name="home_api"),  
+    # path('', views.Blog_api_root.as_view(), name="home_api"),  
 
 
 ]
