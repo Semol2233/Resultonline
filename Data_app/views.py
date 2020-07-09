@@ -434,7 +434,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = Ownercontents.objects.filter(authorsname=category).values('authorsname', 'authorsprofilrimg', 'authorsweblink','about','coverImg')
         if authors:
-            posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo')
+            posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo','view')
             for author in list(authors):
                 response = {
                 'authorsname': author['authorsname'],
