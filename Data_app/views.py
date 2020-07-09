@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
-
+from django.http import HttpResponse
 #end
 import random
 import datetime
@@ -18,12 +18,14 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 
 #serializer 
 from Data_app.api.serializers import (
-    DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,UseracAlldata,ClassItemSerializer,
-    UseracAlldata,CoverImge,BrandPostInfo,BrandProfileInfo,ContensstOwner,DRFPostSesssrializer,
+    DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,CoverImge,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
     latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators
     )
 #end
-
+from django.http import JsonResponse
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.views import APIView
+from .pagination import PaginationHandlerMixin
 #setting option
 from django.conf import settings
 from django.db import models
@@ -60,7 +62,7 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
 class API_objects(generics.ListCreateAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
-    permission_classes     = [permissions.IsAuthenticated]
+    # permission_classes     = [permissions.IsAuthenticated]
 
     queryset = PostCreate.objects.all().order_by('?')
     serializer_class       = DRFPostSerializer
@@ -299,10 +301,10 @@ class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class Content_owners(generics.RetrieveAPIView ,generics.ListCreateAPIView,):
-     queryset               = Ownercontents.objects.order_by('-id')
-     serializer_class       = ContensstOwner
-     lookup_field           = ('authorsname')
+# class Content_owners(generics.RetrieveAPIView ,generics.ListCreateAPIView,):
+#      queryset               = Ownercontents.objects.order_by('-id')
+#      serializer_class       = ContensstOwner
+#      lookup_field           = ('authorsname')
 
 
 
@@ -418,3 +420,30 @@ class Tag_creatoe_view(generics.ListCreateAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['selet_channel__channelname']
     pagination_class       = Tag_viewr
+
+
+    
+class Tag_ddviewr(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
+    pagination_class = Tag_ddviewr
+
+    def get(self, request, category, *args, **kwargs):
+        authors = Ownercontents.objects.filter(authorsname=category).values('authorsname', 'authorsprofilrimg', 'authorsweblink','about','coverImg')
+        if authors:
+            posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo')
+            for author in list(authors):
+                response = {
+                'authorsname': author['authorsname'],
+                'authorsprofilrimg': author['authorsprofilrimg'],
+                'authorsweblink': author['authorsweblink'],
+                'about': author['about'],
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)

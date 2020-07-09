@@ -8,18 +8,18 @@ from datetime import datetime
 
 
 
-class cat_model(models.Model):
+class cat_model_q(models.Model):
     q_name        = models.CharField(max_length=50)
     q_icon        = models.ImageField(upload_to='Blog_cat_icon/')
     q_slug        = models.SlugField(max_length=50)
 
     def __str__(self):
-        return self.cat_name
+        return self.q_name
 
-class postmodel(models.Model):
+class postmodel_q(models.Model):
     qname              = models.CharField(max_length=255)
-    q_slug          = models.SlugField(max_length=255,unique=True)
-    catagry_select     = models.ForeignKey(cat_model,on_delete=models.CASCADE,blank=True)
+    q_slug             = models.SlugField(max_length=255,unique=True)
+    catagry_select     = models.ForeignKey(cat_model_q,on_delete=models.CASCADE,blank=True)
     decribe_post       = models.TextField(blank=True)
     post_img           = models.ImageField(upload_to='media_blog/')
     post_views         = models.IntegerField(blank=True, default= 0)
@@ -28,5 +28,7 @@ class postmodel(models.Model):
 
 
     def __str__(self):
-        return self.title
+        return self.qname
     
+
+

@@ -29,7 +29,7 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 #DEBUG = False production_server
 #DEBUG = False production_server
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
 #ALLOWED_HOSTS = []
@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     'Blog',
     'QandS',
     'rest_framework',
-    'corsheaders',
-    'account_admin_app',
     'rest_framework.authtoken',
     'rest_auth',
+    'corsheaders',
+    'account_admin_app',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -78,11 +78,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST=(
-    'http://localhost:8080',
-    'http://127.0.0.1:8000',
-)
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST=(
+#     'http://localhost:8080',
+#     'http://127.0.0.1:8000',
+# )
+# CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'backend_project.urls'
 
 TEMPLATES = [
@@ -171,7 +171,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DATETIME_FORMAT =    '%d %B %Y',
+# DATETIME_FORMAT =    '%d %B %Y',
 USE_L10N = False
 USE_TZ = False #
 

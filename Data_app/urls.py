@@ -1,6 +1,7 @@
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from Data_app import views
+from .views import *
 from django.conf.urls.static import static
 from django.conf import settings
 from rest_auth.registration.views import (
@@ -27,7 +28,7 @@ urlpatterns = [
     # path('tsssssag/<tag>',views.TagDtata.as_view()),
     path('Brand',views.Brand_InfoDtata.as_view()),
     path('listBrand',views.Brand_ListRendring.as_view()),
-    path('channel/<authorsname>',views.Content_owners.as_view()),
+    # path('channel/<authorsname>',views.Content_owners.as_view()),
     path('extra',views.Constent_owners.as_view()),
     path('latestdata',views.Latest_data.as_view()),
     path('Releted_Data',views.Releted_Data.as_view()),
@@ -39,13 +40,13 @@ urlpatterns = [
     path('hi/<authorsname>/',views.hisghss_rsatetd.as_view()),
 
 
-    path('count/<slug>/',views.API_osbjects.as_view()),
+    path('count/<slug>',views.API_osbjects.as_view()),
     path('tagmanager',views.tag_mangager.as_view()),
 
     path('sub_tag_manager',views.API_objedfcts.as_view()),
     path('Tag_creator',views.Tag_creatoe_view.as_view()),
-
-
+    
+    path('channel/<category>', PaginatedProjectsAPIView.as_view()),
 
  
 ]

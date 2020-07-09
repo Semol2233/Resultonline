@@ -10,40 +10,40 @@ from rest_framework.reverse import reverse as api_img
 from rest_framework.pagination import PageNumberPagination
 
 #UserAc & User reletet all Data api -> Data relestion  UserDettails
-class UseracAlldata(serializers.ModelSerializer):
-     photo = serializers.SerializerMethodField('get_photo_url')
-     class Meta:
-        model = PostCreate
-        fields = [
-            'id',
-            'title',
-            'photo',
-            'details',
-            'slug',
-            'view',
-            'uploaded',  
-        ]
-     def get_photo_url(self, obj):
-         return obj.photo.url
+# class UseracAlldata(serializers.ModelSerializer):
+#      photo = serializers.SerializerMethodField('get_photo_url')
+#      class Meta:
+#         model = PostCreate
+#         fields = [
+#             'id',
+#             'title',
+#             'photo',
+#             'details',
+#             'slug',
+#             'view',
+#             'uploaded',  
+#         ]
+#      def get_photo_url(self, obj):
+#          return obj.photo.url
 
 
-#root_content_owner
-class ContensstOwner(serializers.HyperlinkedModelSerializer):
-    List = serializers.SerializerMethodField(read_only=True)
-    class Meta:
-        model = Ownercontents
-        fields = [
-          'id',
-          'authorsname',
-          'authorsprofilrimg',
-          'authorsweblink',
-          'about',
-          'coverImg',
-          'List'
-        ]
-    def get_List(self,obj):
-        qs = obj.postcreate_set.all()[:25]
-        return UseracAlldata(qs,many=True).data
+# #root_content_owner
+# class ContensstOwner(serializers.HyperlinkedModelSerializer):
+#     List = serializers.SerializerMethodField(read_only=True)
+#     class Meta:
+#         model = Ownercontents
+#         fields = [
+#           'id',
+#           'authorsname',
+#           'authorsprofilrimg',
+#           'authorsweblink',
+#           'about',
+#           'coverImg',
+#           'List'
+#         ]
+#     def get_List(self,obj):
+#         qs = obj.postcreate_set.all()[:25]
+#         return UseracAlldata(qs,many=True).data
 
 
 

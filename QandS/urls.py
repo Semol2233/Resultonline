@@ -1,13 +1,17 @@
 from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from QandS import views
+from .views import *
+
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 
 urlpatterns = [
-    # path('', views.Blog_api_root.as_view(), name="home_api"),  
+     path('q_channel/<category>/', PaginatedProjectsAPIView.as_view()),
+     path('', qanda_root.as_view())
+
 
 
 ]

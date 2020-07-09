@@ -5,10 +5,13 @@ from rest_framework import generics,permissions,mixins,filters
 from rest_framework import pagination
 from rest_framework import authentication
 from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
-
+from rest_framework.response import Response
+from django.http import JsonResponse
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.views import APIView
+from .pagination import PaginationHandlerMixin
 #end
 import random
 import datetime
@@ -97,3 +100,26 @@ class Blog_api_recomnded(generics.ListAPIView):
     serializer_class       = UserPublicSrtilizer_filter
 
 
+
+
+
+
+
+class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
+    pagination_class = PageNumberPagination
+
+    def get(self, request, category, *args, **kwargs):
+        authors = cat_model.objects.filter(cat_name=category).values('cat_name', 'cat_icon', 'cat_description','cat_slug')
+        posts = postmodel.objects.filter(catagry_select__cat_name=category).values('title', 'blog_slug', 'decribe_post', 'post_img','created_at')
+        for author in list(authors):
+            response = {
+                'cat_name': author['cat_name'],
+                'cat_icon': author['cat_icon'],
+                'cat_description': author['cat_description'],
+                'cat_slug': author['cat_slug']
+
+            }
+        page = self.paginate_queryset(list(posts))
+        response['List'] = page
+        paginated_response = self.get_paginated_response(response)
+        return JsonResponse(paginated_response.data, safe=False)

@@ -11,7 +11,6 @@ urlpatterns = [
     path('blog/api/v1/',include('Blog.urls')),
     path('q&a/api/v1/',include('QandS.urls')),
 
-
     path('admin/', admin.site.urls),
     path('login',obtain_auth_token,name='token_auth' ),
     path('reg', include('rest_auth.registration.urls')),
