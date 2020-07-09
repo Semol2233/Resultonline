@@ -104,22 +104,29 @@ class Blog_api_recomnded(generics.ListAPIView):
 
 
 
+    
+class Tag_ddviewr(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
-    pagination_class = PageNumberPagination
+    pagination_class = Tag_ddviewr
 
     def get(self, request, category, *args, **kwargs):
         authors = cat_model.objects.filter(cat_name=category).values('cat_name', 'cat_icon', 'cat_description','cat_slug')
-        posts = postmodel.objects.filter(catagry_select__cat_name=category).values('title', 'blog_slug', 'decribe_post', 'post_img','created_at')
-        for author in list(authors):
-            response = {
+        if authors:
+            posts = postmodel.objects.filter(catagry_select__cat_name=category).values('title', 'blog_slug', 'decribe_post', 'post_img','created_at')
+            for author in list(authors):
+                response = {
                 'cat_name': author['cat_name'],
                 'cat_icon': author['cat_icon'],
                 'cat_description': author['cat_description'],
                 'cat_slug': author['cat_slug']
 
-            }
-        page = self.paginate_queryset(list(posts))
-        response['List'] = page
-        paginated_response = self.get_paginated_response(response)
-        return JsonResponse(paginated_response.data, safe=False)
+                 }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
