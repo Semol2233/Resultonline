@@ -14,7 +14,7 @@ urlpatterns = [
     path('cover', views.Blog_api_cover.as_view()),
     path('recommended', views.Blog_api_recomnded.as_view()),  
     path('details/<blog_slug>/', views.Blog_api_details.as_view()),
-    path('post/<category>/',PaginatedProjectsAPIView.as_view())   
+    path('blog_channel/<category>/',PaginatedProjectsAPIView.as_view())   
 
 
 ]
