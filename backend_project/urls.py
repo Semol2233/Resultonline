@@ -9,7 +9,7 @@ urlpatterns = [
     path('simple',include('account_admin_app.urls')),
     path('',include('Data_app.urls')),
     path('blog/api/v1/',include('Blog.urls')),
-    path('q&a/api/v1/',include('QandS.urls')),
+    path('q&a/api/v1',include('QandS.urls')),
 
     path('admin/', admin.site.urls),
     path('login',obtain_auth_token,name='token_auth' ),
