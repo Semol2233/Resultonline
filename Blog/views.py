@@ -82,11 +82,15 @@ class Blog_api_filter(generics.ListAPIView):
     search_fields          = ['catagry_select__cat_slug',]
     pagination_class       = StandardResultsSetPagination
 
-
+class StandardResssultsSetPagination(pagination.PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class Blog_api_main(generics.ListAPIView):
     queryset               = postmodel.objects.all().order_by('-id')[1:11]
     serializer_class       = UserPublicSrtilizer_filter
+    pagination_class       = StandardResssultsSetPagination
 
     
 
