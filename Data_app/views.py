@@ -330,9 +330,6 @@ class recommended_datapagenation(pagination.PageNumberPagination):
 class recommended(generics.ListAPIView):
     queryset               = PostCreate.objects.order_by('?')[8:24]
     serializer_class       = recommended_data
-    filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
-    lookup_field           = ('slug')
     pagination_class       = recommended_datapagenation
 
 #high_ratetd_api
@@ -452,10 +449,17 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 
 
 class Reltet_data_datlspage(generics.ListAPIView):
-    queryset               = PostCreate.objects.all().order_by('?')[3:7]
+    queryset               = PostCreate.objects.order_by('?')
     serializer_class       = dtl_rlt_data
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__channelname']
 
 
 
+# class recommended(generics.ListAPIView):
+#     queryset               = PostCreate.objects.order_by('?')[8:24]
+#     serializer_class       = recommended_data
+#     filter_backends        = [filters.SearchFilter]
+#     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+#     lookup_field           = ('slug')
+#     pagination_class       = recommended_datapagenation
