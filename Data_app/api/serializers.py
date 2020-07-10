@@ -223,10 +223,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
 
 class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
      contentowners       = ContentOwner(read_only=True)
-
      channel               = UserPublicSrtilizer(read_only=True)
-
-
 
      class Meta:
         model = PostCreate
@@ -237,10 +234,7 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
             'title',
             'photo',
             'slug',
-            'view',
             'release_date',
-            'contentlock',
-
 
         ]
 
