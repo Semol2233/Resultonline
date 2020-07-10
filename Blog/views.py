@@ -93,10 +93,15 @@ class Blog_api_main(generics.ListAPIView):
     pagination_class       = StandardResssultsSetPagination
 
     
+class StandardRessssssultsSetPagination(pagination.PageNumberPagination):
+    page_size = 4
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class Blog_api_cover(generics.ListAPIView):
     queryset               = postmodel.objects.all().order_by('-id')[1:5]
     serializer_class       = UserPublicSrtilizer_filter
+    pagination_class       = StandardRessssssultsSetPagination
 
 #[11:15]
 class Blog_api_recomnded(generics.ListAPIView):
