@@ -19,7 +19,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,CoverImge,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data
     )
 #end
 from django.http import JsonResponse
@@ -452,9 +452,16 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 
 
 class Reltet_data_datlspage(generics.ListAPIView):
-    queryset               = PostCreate.objects.order_by('?')[2:4]
-    serializer_class       = DRFPostSerializer
+    queryset               = PostCreate.objects.order_by('?')[2:6]
+    serializer_class       = dtl_rlt_data
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__channelname']
 
 
+
+    queryset               = PostCreate.objects.order_by('?')[8:24]
+    serializer_class       = recommended_data
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
+    lookup_field           = ('slug')
+    pagination_class       = recommended_datapagenation
