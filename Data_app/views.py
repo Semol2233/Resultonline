@@ -452,7 +452,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 
 
 class Reltet_data_datlspage(generics.ListAPIView):
-    queryset = PostCreate.objects.order_by('?')[:4]
+    queryset               = PostCreate.objects.order_by('?')[2:4]
     serializer_class       = DRFPostSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__channelname']
