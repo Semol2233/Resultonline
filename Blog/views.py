@@ -61,9 +61,7 @@ class StandardResultsSssetPagination(pagination.PageNumberPagination):
 class Blog_api_root(generics.ListAPIView):
     queryset               = cat_model.objects.all()
     serializer_class       = cat_modelSrtilizer
-    paginate_by = 2
-    paginate_by_param = 'page_size'
-    max_paginate_by = 100
+    pagination_class       = StandardResultsSssetPagination
 
 
 class Blog_api_details(generics.RetrieveAPIView):
