@@ -10,6 +10,8 @@ from rest_framework import status
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 from django.http import HttpResponse
 #end
+
+from .filters import  DynamicSearchFilter
 import random
 import datetime
 #user model
@@ -69,6 +71,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 class qanda_root(generics.ListAPIView):
     queryset               = cat_model_q.objects.all()
     serializer_class       = cat_modelSrtilizer
-    paginate_by = 2
-    paginate_by_param = 'page_size'
-    max_paginate_by = 100
+    # filter_backends        =   (DynamicSearchFilter,)
+    paginate_by            = 2
+    paginate_by_param      = 'page_size'
+    max_paginate_by        = 100

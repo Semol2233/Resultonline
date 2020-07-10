@@ -434,7 +434,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = Ownercontents.objects.filter(authorsname=category).values('authorsname', 'authorsprofilrimg', 'authorsweblink','about','coverImg')
         if authors:
-            posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo','view')
+            posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo','view').order_by('-id')
             for author in list(authors):
                 response = {
                 'authorsname': author['authorsname'],
@@ -447,3 +447,12 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
             paginated_response = self.get_paginated_response(response)
             return JsonResponse(paginated_response.data, safe=False)
         return HttpResponse('No matching data found', status=404)
+
+
+
+
+class Reltet_data_datlspage(generics.ListCreateAPIView):
+    queryset = PostCreate.objects.all().order_by('?')[:4]
+    serializer_class       = DRFPostSerializer
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['channel__channelname']
