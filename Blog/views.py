@@ -89,9 +89,9 @@ class Blog_api_filter(generics.ListAPIView):
 
 
 
-class Blog_api_main(generics.ListAPIView):
-    queryset               = postmodel.objects.all().order_by('-id')[1:11]
-    serializer_class       = UserPublicSrtilizer_filter
+# class Blog_api_main(generics.ListAPIView):
+#     queryset               = postmodel.objects.all().order_by('-id')[1:11]
+#     serializer_class       = UserPublicSrtilizer_filter
 
     
 
