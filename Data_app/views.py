@@ -459,9 +459,3 @@ class Reltet_data_datlspage(generics.ListAPIView):
 
 
 
-    queryset               = PostCreate.objects.order_by('?')[8:24]
-    serializer_class       = recommended_data
-    filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__id','channel__channelname','title','photo','slug']
-    lookup_field           = ('slug')
-    pagination_class       = recommended_datapagenation
