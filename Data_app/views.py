@@ -447,12 +447,19 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 
 
 
+    
+class Tag_sdcsviewr(pagination.PageNumberPagination):
+    page_size = 4
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 
 class Reltet_data_datlspage(generics.ListAPIView):
     queryset               = PostCreate.objects.order_by('?')
     serializer_class       = dtl_rlt_data
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__channelname']
+    pagination_class       = Tag_sdcsviewr
 
 
 
