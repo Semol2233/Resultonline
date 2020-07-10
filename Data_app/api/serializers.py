@@ -223,32 +223,24 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
 
 class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
      contentowners       = ContentOwner(read_only=True)
-     selete_channel_tag   = tag_data_seri(read_only=True)
+
      channel               = UserPublicSrtilizer(read_only=True)
-     tag_creator           = tag_data_crators(read_only=True,many=True, required=False)
-     mobilebrand          = BrandProfileInfo(read_only=True)
+
+
 
      class Meta:
         model = PostCreate
         fields = [
             'contentowners',
             'channel',
-            'mobilebarand',
-            'selete_channel_tag',
             'id',
             'title',
-            'tag_creator',
-            'details',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'release_date',
             'contentlock',
-            'contentlenth',
-            'contentlink',
-            'Persentase',
-            'reviewcount'
+
 
         ]
 
