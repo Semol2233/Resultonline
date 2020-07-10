@@ -68,10 +68,13 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
 
 
 
+class qa_pagenasssstion(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
 class qanda_root(generics.ListAPIView):
     queryset               = cat_model_q.objects.all()
     serializer_class       = cat_modelSrtilizer
-    # filter_backends        =   (DynamicSearchFilter,)
-    paginate_by            = 2
-    paginate_by_param      = 'page_size'
-    max_paginate_by        = 100
+    pagination_class       = qa_pagenasssstion
+
