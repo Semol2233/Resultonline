@@ -7,3 +7,7 @@ class PostModelAdmin(admin.ModelAdmin):
 
 admin.site.register(cat_model_q)
 admin.site.register(postmodel_q, PostModelAdmin)
+admin.site.register(q_shotlist)
+
+
+
