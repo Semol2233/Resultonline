@@ -11,7 +11,6 @@ from rest_auth.registration.views import (
 
 urlpatterns = [
     path('', views.API_objects.as_view(), name="home_api"),
-    path('img/<int:pk>/', views.Quteapiview.as_view()),
     path('users',views.Alluserprofile.as_view(),name='user'),
     path('facebook/', views.FacebookLogin.as_view(), name='fb_login'),
     path('socialaccounts/',SocialAccountListView.as_view(),name='social_account_list'),

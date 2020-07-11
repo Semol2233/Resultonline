@@ -13,6 +13,7 @@ from django.http import HttpResponse
 import random
 import datetime
 #user model
+import jwt
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data,tag_createors
 #end
 
@@ -37,7 +38,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,get_user_model,login,logout
 # end
-
+from rest_framework.settings import api_settings
 #social Auth 
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
@@ -48,9 +49,19 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 #end
 
+
+
+
 #list view -> APi
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
+
+def generate_jwt():
+    encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
+    token = 'Bearer ' + encoded_jwt
+    return token
+
+jwt_token = generate_jwt()
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 3
@@ -59,7 +70,7 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
 
 
 #Root_Api
-class API_objects(generics.ListCreateAPIView):
+class API_objects(generics.ListAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
@@ -69,6 +80,9 @@ class API_objects(generics.ListCreateAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
+
+
+
 #rootupdate
 class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     # pagination_class       = pagnation
@@ -152,15 +166,7 @@ class update_objects(
         return self.destroy(request,*args, **kwargs)
 
 
-#extra generic update -> APi
-class Quteapiview(
-    generics.RetrieveUpdateDestroyAPIView
-    ):
 
-    permission_classes     = []
-    authentication_classes = []
-    queryset               = PostCreate.objects.all()
-    serializer_class       = DRFPostSerializer
 
 
 
@@ -470,3 +476,7 @@ class Reltet_data_datlspage(generics.ListAPIView):
 #     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
 #     lookup_field           = ('slug')
 #     pagination_class       = recommended_datapagenation
+
+
+
+

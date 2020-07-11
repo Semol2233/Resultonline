@@ -40,3 +40,15 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
     def get_List(self,obj):
         qs = obj.postmodel_q_set.all()[:3]
         return UserPublicSrtilizer(qs,many=True).data
+
+
+
+
+class q_shot_list_data(serializers.ModelSerializer):
+    class Meta:
+        model = q_shotlist
+        fields = [
+            'id',
+            'shot_list_name',
+            'shot_list_data'
+        ]
