@@ -52,3 +52,37 @@ class q_shot_list_data(serializers.ModelSerializer):
             'shot_list_name',
             'shot_list_data'
         ]
+
+
+class qna_dlts_api(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = cat_model_q
+        fields = [
+            'id',
+            'q_name',
+            'q_icon',
+            'q_slug',
+        
+        ]
+
+
+
+
+class dtls_api_qna(serializers.ModelSerializer):
+    catagry_select = qna_dlts_api(read_only=True)
+    class Meta:
+        model = postmodel_q
+        fields = [
+            'id',
+            'qname',
+            'q_slug',
+            'catagry_select',
+            'awnsr_qna',
+            'decribe_post',
+            'post_img',
+            'post_views'
+
+        ]
+
+        lookup_field = 'q_slug'
+        read_only_fields = ['qname','q_slug','catagry_select','awnsr_qna','decribe_post','post_img']

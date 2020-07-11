@@ -148,3 +148,21 @@ class channel_Dataapi(generics.ListAPIView):
 
 
 
+
+
+# class dtls_api_qna_view(generics.RetrieveUpdateDestroyAPIView):
+
+#     queryset = postmodel_q.objects.all()
+#     serializer_class       = dtls_api_qna
+#     lookup_field           = ('q_slug')
+
+
+class dtls_api_qna_view(generics.RetrieveAPIView,mixins.UpdateModelMixin):
+
+    queryset = postmodel_q.objects.all()
+    serializer_class       = dtls_api_qna
+    lookup_field           = ('q_slug')
+
+    def put(self,request,*args, **kwargs):
+        return self.update(request,*args, **kwargs)
+
