@@ -13,7 +13,7 @@ from django.http import HttpResponse
 import random
 import datetime
 #user model
-import jwt
+# import jwt
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data,tag_createors
 #end
 
@@ -56,12 +56,12 @@ User = get_user_model()
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 
-def generate_jwt():
-    encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
-    token = 'Bearer ' + encoded_jwt
-    return token
+# def generate_jwt():
+#     encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
+#     token = 'Bearer ' + encoded_jwt
+#     return token
 
-jwt_token = generate_jwt()
+# jwt_token = generate_jwt()
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 3
