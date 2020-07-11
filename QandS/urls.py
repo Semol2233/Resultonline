@@ -9,8 +9,10 @@ from django.conf import settings
 
 
 urlpatterns = [
+     path('', qanda_root.as_view()),
      path('q_channel/<category>/', PaginatedProjectsAPIView.as_view()),
-     path('', qanda_root.as_view())
+     path('short_list', channel_Dataapi.as_view())
+
 
 
 
