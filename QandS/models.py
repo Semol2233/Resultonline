@@ -19,7 +19,7 @@ class cat_model_q(models.Model):
 class postmodel_q(models.Model):
     qname              = models.CharField(max_length=255)
     q_slug             = models.SlugField(max_length=255,unique=True)
-    catagry_select     = models.ForeignKey(cat_model_q,on_delete=models.CASCADE,blank=True)
+    catagry            = models.ForeignKey(cat_model_q,on_delete=models.CASCADE,blank=True)
     awnsr_qna          = models.TextField(blank=True)
     decribe_post       = models.TextField(blank=True)
     post_img           = models.ImageField(upload_to='media_blog/')
