@@ -16,7 +16,7 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'id',
             'qname',
             'q_slug',
-            'catagry_select',
+            'catagry',
             'decribe_post',
             'post_img',
             'post_views',
@@ -69,14 +69,14 @@ class qna_dlts_api(serializers.HyperlinkedModelSerializer):
 
 
 class dtls_api_qna(serializers.ModelSerializer):
-    catagry_select = qna_dlts_api(read_only=True)
+    catagry = qna_dlts_api(read_only=True)
     class Meta:
         model = postmodel_q
         fields = [
             'id',
             'qname',
             'q_slug',
-            'catagry_select',
+            'catagry',
             'awnsr_qna',
             'decribe_post',
             'post_img',
@@ -85,4 +85,4 @@ class dtls_api_qna(serializers.ModelSerializer):
         ]
 
         lookup_field = 'q_slug'
-        read_only_fields = ['qname','q_slug','catagry_select','awnsr_qna','decribe_post','post_img']
+        read_only_fields = ['qname','q_slug','catagry','awnsr_qna','decribe_post','post_img']
