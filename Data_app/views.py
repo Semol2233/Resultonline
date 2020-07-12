@@ -13,7 +13,7 @@ from django.http import HttpResponse
 import random
 import datetime
 #user model
-# import jwt
+import jwt
 from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data,tag_createors
 #end
 
@@ -56,12 +56,12 @@ User = get_user_model()
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 
-# def generate_jwt():
-#     encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
-#     token = 'Bearer ' + encoded_jwt
-#     return token
+def generate_jwt():
+    encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
+    token = 'Bearer ' + encoded_jwt
+    return token
 
-# jwt_token = generate_jwt()
+jwt_token = generate_jwt()
 
 class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 3
@@ -80,8 +80,16 @@ class API_objects(generics.ListAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
-
-
+    print('Token', jwt_token)
+    def get(self, request, *args, **kwargs):
+        if 'Authorization' in request.headers:
+            request_header = request.headers['Authorization']
+        else:
+            request_header = None
+        if request_header is not None:
+            if jwt_token == request_header:
+                return self.list(request, *args, **kwargs)
+        return HttpResponse('Authorization header not found', status=400)
 
 #rootupdate
 class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
@@ -96,6 +104,7 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname']
     lookup_field           = ('slug')
     pagination_class       = StandardResultsSetPagination
+
 
 
 class channel_Data(pagination.PageNumberPagination):
@@ -301,6 +310,15 @@ class Brand_ListRendring(generics.ListCreateAPIView,):
     queryset               = Cetagroy_list.objects.order_by('?')
     serializer_class       = BrandProfileInfo
     pagination_class       = StandadrdResultssSetPdagination
+
+    def get(self, request, *args, **kwargs):
+         request_header = request.headers['Authorization']
+         if jwt_token == request_header:
+             return self.list(request, *args, **kwargs)
+         return HttpResponse('Authorization header not found', status=400)
+
+
+
 
 class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
     page_size = 1
