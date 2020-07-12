@@ -9,12 +9,12 @@ from datetime import datetime
 
 
 class cat_model_q(models.Model):
-    q_name        = models.CharField(max_length=50)
+    publisher        = models.CharField(max_length=50)
     q_icon        = models.ImageField(upload_to='Blog_cat_icon/')
     q_slug        = models.SlugField(max_length=50)
 
     def __str__(self):
-        return self.q_name
+        return self.publisher
 
 class postmodel_q(models.Model):
     qname              = models.CharField(max_length=255)

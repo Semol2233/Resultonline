@@ -30,7 +30,7 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
         model = cat_model_q
         fields = [
             'id',
-            'q_name',
+            'publisher',
             'q_icon',
             'q_slug',
             'List'
@@ -59,7 +59,7 @@ class qna_dlts_api(serializers.HyperlinkedModelSerializer):
         model = cat_model_q
         fields = [
             'id',
-            'q_name',
+            'publisher',
             'q_icon',
             'q_slug',
         
