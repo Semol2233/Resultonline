@@ -27,9 +27,9 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 #end
+from django.db.models import Count
 
-
-
+from django.db.models import Avg
 
 #user filter
 from django.contrib.auth import get_user_model
@@ -87,12 +87,12 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     pagination_class = qa_pagenation
 
     def get(self, request, category, *args, **kwargs):
-        authors = cat_model_q.objects.filter(q_slug=category).values('q_name', 'q_icon', 'q_slug')
+        authors = cat_model_q.objects.filter(q_slug=category).values('publisher', 'q_icon', 'q_slug')
         if authors:
-            posts = postmodel_q.objects.filter(catagry_select__q_slug=category).values('qname', 'q_slug', 'decribe_post', 'post_img','post_views')
+            posts = postmodel_q.objects.filter(catagry__q_slug=category).values('qname', 'q_slug', 'decribe_post', 'post_img','post_views')
             for author in list(authors):
                 response = {
-                    'q_name': author['q_name'],
+                    'publisher': author['publisher'],
                     'q_icon': author['q_icon'],
                     'q_slug': author['q_slug']
                 }
@@ -166,3 +166,17 @@ class dtls_api_qna_view(generics.RetrieveAPIView,mixins.UpdateModelMixin):
     def put(self,request,*args, **kwargs):
         return self.update(request,*args, **kwargs)
 
+
+
+# class dtls_apwi_qna_view(generics.ListAPIView):
+
+#     queryset = postmodel_q.objects.filter(qname__startswith="t").annotate(num_authors=Count('post_views'))
+#     serializer_class       = dtls_api_qna
+
+
+  
+
+class dtls_apwi_qna_view(generics.ListAPIView):
+    queryset               = postmodel_q.objects.all().distinct()
+    serializer_class       = dtls_api_qna
+    lookup_field           = ('catagry__publisher')
