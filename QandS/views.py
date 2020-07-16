@@ -177,6 +177,26 @@ class dtls_api_qna_view(generics.RetrieveAPIView,mixins.UpdateModelMixin):
   
 
 class dtls_apwi_qna_view(generics.ListAPIView):
-    queryset               = postmodel_q.objects.all().distinct()
+    queryset               = postmodel_q.objects.all()
     serializer_class       = dtls_api_qna
     lookup_field           = ('catagry__publisher')
+
+
+
+class qanda_home_card(generics.ListAPIView):
+    queryset               = postmodel_q.objects.all()[:2]
+    serializer_class       = dtls_api_qna
+
+
+class q_shotlist_filter(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+class qanda_shotlist_data_filter(generics.ListAPIView):
+
+    queryset               = postmodel_q.objects.order_by('-id')
+    serializer_class       = dtls_api_qna
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['catagry__publisher']
+    pagination_class       = q_shotlist_filter

@@ -139,3 +139,12 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
             paginated_response = self.get_paginated_response(response)
             return JsonResponse(paginated_response.data, safe=False)
         return HttpResponse('No matching data found', status=404)
+
+
+
+
+
+class Blog_home_card(generics.ListAPIView):
+    queryset               = postmodel.objects.all()[1:3]
+    serializer_class       = UserPublicSrtilizer_filter
+

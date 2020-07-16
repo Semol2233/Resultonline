@@ -14,7 +14,8 @@ urlpatterns = [
      path('short_list', channel_Dataapi.as_view()),
      path('dtls/<q_slug>', dtls_api_qna_view.as_view()),
      path('q_related_data/<catagry__publisher>', dtls_apwi_qna_view.as_view()),
-
+     path('qanda_home', qanda_home_card.as_view()),
+     path('data_filter_shot_list', qanda_shotlist_data_filter.as_view()),
 
 ]
 

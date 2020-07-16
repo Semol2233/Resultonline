@@ -38,3 +38,6 @@ class q_shotlist(models.Model):
     shot_list_data   = models.URLField(max_length=200, blank= True , default='emty')
 
 
+    def __str__(self):
+        return self.shot_list_name
+
