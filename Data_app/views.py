@@ -58,7 +58,7 @@ from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 def generate_jwt():
     encoded_jwt = jwt.encode({'key': 'custom_value'}, 'secret', algorithm='HS256').decode('utf-8')
-    token = 'my_token ' + encoded_jwt
+    token = 'Bearer ' + encoded_jwt
     return token
 
 jwt_token = generate_jwt()
