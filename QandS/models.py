@@ -6,7 +6,7 @@ from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from datetime import datetime
 
-
+from PIL import Image
 
 class cat_model_q(models.Model):
     publisher        = models.CharField(max_length=50)
@@ -25,6 +25,8 @@ class postmodel_q(models.Model):
     post_img           = models.ImageField(upload_to='media_blog/')
     post_views         = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
+
+
 
     def __str__(self):
         return self.qname
