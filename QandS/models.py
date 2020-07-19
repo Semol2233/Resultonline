@@ -5,14 +5,14 @@ from django.db.models import Sum
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from datetime import datetime
-
+from django.utils import timezone
 from PIL import Image
 
 class cat_model_q(models.Model):
     publisher        = models.CharField(max_length=50)
     q_icon        = models.ImageField(upload_to='Blog_cat_icon/')
     q_slug        = models.SlugField(max_length=50)
-
+    created_date   = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.publisher
 
