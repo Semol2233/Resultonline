@@ -105,35 +105,35 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     lookup_field           = ('slug')
     pagination_class       = StandardResultsSetPagination
 
-    def put(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.update(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # def put(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.update(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
-    def patch(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.partial_update(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # def patch(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.partial_update(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
-    def delete(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.destroy(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # def delete(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.destroy(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
 
 class channel_Data(pagination.PageNumberPagination):
