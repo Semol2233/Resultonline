@@ -234,6 +234,7 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
             'title',
             'photo',
             'slug',
+            'view',
             'release_date',
 
         ]
