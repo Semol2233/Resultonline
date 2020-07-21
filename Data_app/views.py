@@ -19,10 +19,11 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 
 #serializer 
 from Data_app.api.serializers import (
-    DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,CoverImge,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
+    DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
     latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data
     )
 #end
+from Data_app.api.coverimg_api.coverimg import CoverImssge
 from django.http import JsonResponse
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
@@ -292,7 +293,7 @@ class TrendingPost(generics.ListAPIView):
 #Cover_Img
 class CoverImgs(generics.ListAPIView):
     queryset               = CoverImg.objects.all()[:3]
-    serializer_class       = CoverImge
+    serializer_class       = CoverImssge
 
 
 

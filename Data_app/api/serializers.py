@@ -373,15 +373,6 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
           read_only_fields = ['contentowners']
           read_only_fields = ['channel']
 
-class CoverImge(serializers.ModelSerializer):
-      class Meta:
-          model = CoverImg
-          fields = [
-            'id',
-            'Cover_img',
-          ]
-    
-
 
 
        

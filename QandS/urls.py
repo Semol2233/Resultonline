@@ -2,7 +2,6 @@ from django.urls import path,include
 from rest_framework.urlpatterns import format_suffix_patterns
 from QandS import views
 from .views import *
-
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -16,6 +15,9 @@ urlpatterns = [
      path('q_related_data/<catagry__publisher>', dtls_apwi_qna_view.as_view()),
      path('qanda_home', qanda_home_card.as_view()),
      path('data_filter_shot_list', qanda_shotlist_data_filter.as_view()),
+
+
+
 
 ]
 

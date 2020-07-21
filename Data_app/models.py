@@ -101,8 +101,15 @@ class UserProfile(models.Model):
 class CoverImg(models.Model):
     Cover_img             = models.ImageField(upload_to="Cover_Img", blank=True)
     url                   = models.CharField(null=True, max_length=233)
+    title                 = models.CharField(max_length = 255)
+
+    
+    def __str__(self):
+        return self.title
 
 
+class target_link(models.Model):
+    target_links = models.CharField(max_length=100)
 
 
 

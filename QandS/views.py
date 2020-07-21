@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 #rest_framwork
 from rest_framework import viewsets
 from rest_framework import generics,permissions,mixins,filters
@@ -8,13 +8,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
-from django.http import HttpResponse
+from django.http import HttpResponse ,HttpResponseNotFound
 #end
+
+from django.http import HttpResponse
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 import jwt
 from .filters import  DynamicSearchFilter
 import random
 import datetime
 #user model
+
+from datetime import datetime, timedelta
 from .models import *
 #serializer 
 from QandS.api.serializers import *
@@ -35,6 +41,9 @@ from django.db.models import Avg
 from django.contrib.auth import get_user_model
 User = get_user_model()
 #end
+
+from Data_app.models import *
+
 
 #list view -> APi
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
@@ -129,7 +138,7 @@ class qa_pagenasssstion(pagination.PageNumberPagination):
     max_page_size = 100
 
 class qanda_root(generics.ListAPIView):
-    queryset               = cat_model_q.objects.all().order_by('-created_date')
+    queryset               = cat_model_q.objects.filter(created_date__gte=datetime.now() - timedelta(days=1)).order_by('-id')
     serializer_class       = cat_modelSrtilizer
     pagination_class       = qa_pagenasssstion
 
@@ -200,3 +209,65 @@ class qanda_shotlist_data_filter(generics.ListAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['catagry__publisher']
     pagination_class       = q_shotlist_filter
+
+
+
+
+
+# @api_view()
+# def searcsssh_filter(request ,self,query):
+#     pagination_class = qa_pagenation
+#     result = []
+#     filter_post = postmodel_q.objects.filter(qname__icontains=query).values()
+#     if filter_post:
+#         for p in filter_post:
+#             result.append(p)
+#     page = self.paginate_queryset(list(result))
+#     response['List'] = page
+#     paginated_response = self.get_paginated_response(response)
+#     return JsonResponse(paginated_response.data, safe=False)
+
+# @api_view()
+# def searcsssh_filter(request):
+#     result =[]
+#     data = postmodel_q.objects.aggregate(Sum('post_views'))['post_views__sum'] or 0
+#     result.append(data)
+
+#     dffata = postmodel_q.objects.aggregate(Sum('post_views'))['post_views__sum'] or 0
+#     result.append(dffata)
+
+
+#     data_2 = PostCreate.objects.aggregate(Sum('view'))['view__sum'] or 0
+#     result.append(data_2)
+#     data = sum(result)
+#     return JsonResponse(data, safe=False)
+
+
+# class searcsssh_filter(APIView, PaginationHandlerMixin):
+#     pagination_class = qa_pagenation
+
+#     def get(self,request,query,*args, **kwargs):
+#         result = []
+#         filter_post = postmodel_q.objects.filter(qname__icontains=query).values()
+#         if filter_post:
+#             for p in filter_post:
+#                result.append(p)
+#             page = self.paginate_queryset(result)
+#             result = page
+#             paginated_response = self.get_paginated_response(result)
+#             return JsonResponse(paginated_response.data, safe=False)
+#         return HttpResponse('No matching data found', status=404)
+
+
+
+
+# @api_view()
+# def polls_detail(request, slug  ):
+#     poll = get_object_or_404(postmodel_q, q_slug=slug)
+#     data = {"data": {
+#         "question": poll.qname,
+#         "url":"root/"
+#     }}
+
+#     return JsonResponse(data)
+
