@@ -100,4 +100,4 @@ class dtls_api_qna(serializers.ModelSerializer):
         ]
 
         lookup_field = 'slug'
-        read_only_fields = ['title','slug','catagry','awnsr_qna','details','post_img']
+        read_only_fields = ['title','slug','catagry','awnsr_qna','details','photo']
