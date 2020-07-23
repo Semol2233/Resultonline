@@ -218,7 +218,8 @@ class qanda_shotlist_data_filter(generics.ListAPIView):
 # def searcsssh_filter(request ,self,query):
 #     pagination_class = qa_pagenation
 #     result = []
-#     filter_post = postmodel_q.objects.filter(qname__icontains=query).values()
+#     filter_post = postmodel_q.objects.fi
+# lter(qname__icontains=query).values()
 #     if filter_post:
 #         for p in filter_post:
 #             result.append(p)
