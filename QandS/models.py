@@ -29,7 +29,7 @@ class postmodel_q(models.Model):
 
 
     def __str__(self):
-        return self.qname
+        return self.title
 
 
 
