@@ -170,7 +170,7 @@ class dtls_api_qna_view(generics.RetrieveAPIView,mixins.UpdateModelMixin):
 
     queryset = postmodel_q.objects.all()
     serializer_class       = dtls_api_qna
-    lookup_field           = ('q_slug')
+    lookup_field           = ('slug')
 
     def put(self,request,*args, **kwargs):
         return self.update(request,*args, **kwargs)
