@@ -46,7 +46,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_post:
             for p in filter_post:
              data = {"target_url": {
-                    "url":"filter/",
+                    "url":"dtls/",
                     "page_name":"q&a"
                 }}
              result.append(( p,data))
@@ -54,7 +54,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_post:
             for p in filter_post:
                 data = {"target_url": {     
-                    "url":"sample/",
+                    "url":"count/",
                     "page_name":"home_page"
                 }}
                 result.append(( p,data))
@@ -63,7 +63,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
             for p in filter_post:
                 data = {"target_url": {
 
-                    "url":"root/",
+                    "url":"details/",
                     "page_name":"Blog_page"
                 }}
                 result.append(( p,data))
