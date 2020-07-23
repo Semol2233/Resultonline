@@ -22,9 +22,9 @@ from django.http import JsonResponse
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from QandS.pagination import PaginationHandlerMixin
-from QandS.models import *
-from Data_app.models import *
-from Blog.models import *
+from QandS.models import postmodel_q
+from Data_app.models import PostCreate
+from Blog.models import postmodel
 
 
 

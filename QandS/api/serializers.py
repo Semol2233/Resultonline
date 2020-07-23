@@ -19,7 +19,6 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
     #     return host + obj.post_img.url
     class Meta:
         model = postmodel_q
-
         fields = [
             'id',
             'title',
@@ -92,5 +91,5 @@ class dtls_api_qna(serializers.ModelSerializer):
 
         ]
 
-        lookup_field = 'q_slug'
+        lookup_field = 'slug'
         read_only_fields = ['title','slug','catagry','awnsr_qna','details','post_img']
