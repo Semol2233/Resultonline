@@ -20,8 +20,8 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'title',
             'slug',
             'details',
-            'post_img',
-            'post_views',
+            'photo',
+            'view',
             'created_at'
         ]
 
@@ -67,10 +67,11 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'slug',
             'catagry_select',
             'details',
-            'post_img'
+            'photo',
+            'view'
     
         ]
-        lookup_field = 'blog_slug'
+        lookup_field = 'slug'
 
 #filter_data
 
@@ -96,9 +97,9 @@ class UserPublicSrtilizer_filter(serializers.ModelSerializer):
             'title',
             'slug',
             'details',
-            'post_img',
+            'photo',
             'catagry_select',
-            'post_views',
+            'view',
             'created_at'
         ]
 

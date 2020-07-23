@@ -45,7 +45,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
         filter_post = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_post:
             for p in filter_post:
-             data = {"target_url": {
+             data = {"targetUrl": {
                     "url":"/q&a/api/v1/dtls/",
                     "page_name":"q&a"
                 }}
@@ -53,7 +53,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
         filter_post = PostCreate.objects.filter(title__icontains=query).values()
         if filter_post:
             for p in filter_post:
-                data = {"target_url": {     
+                data = {"targetUrl": {     
                     "url":"/count/",
                     "page_name":"home_page"
                 }}
@@ -61,7 +61,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
         filter_post = postmodel.objects.filter(title__icontains=query).values()
         if filter_post:
             for p in filter_post:
-                data = {"target_url": {
+                data = {"targetUrl": {
 
                     "url":"/blog/api/v1/details/",
                     "page_name":"Blog_page"

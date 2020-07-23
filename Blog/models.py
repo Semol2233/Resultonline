@@ -23,8 +23,8 @@ class postmodel(models.Model):
     slug               = models.SlugField(max_length=255,unique=True)
     catagry_select     = models.ForeignKey(cat_model,on_delete=models.CASCADE,blank=True)
     details            = models.TextField(blank=True)
-    post_img           = models.ImageField(upload_to='media_blog/')
-    post_views         = models.IntegerField(blank=True, default= 0)
+    photo              = models.ImageField(upload_to='media_blog/')
+    view         = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
 
 

@@ -17,6 +17,7 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
     #     else:
     #         host = 'https://example.com'
     #     return host + obj.post_img.url
+    # target_link = serializers.SerializerMethodField()
     class Meta:
         model = postmodel_q
         fields = [
@@ -25,12 +26,20 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'slug',
             'catagry',
             'details',
-            'post_img',
-            'post_views',
-            'created_at'
+            'photo',
+            'view',
+            'created_at',
+            # 'target_link'
         ]
 
+    # def get_target_link(self, object):
+    #     data = {"target_url": {
+    #             "url":"/q&a/api/v1/dtls/",
+    #             "page_name":"Qandq_page_root"
+    #             }}
+    #     return data 
 
+        
 class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
     List = serializers.SerializerMethodField(read_only=True)
     class Meta:
@@ -40,9 +49,8 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'publisher',
             'q_icon',
             'q_slug',
-            'List'
+            'List',
         ]
-
 
     def get_List(self,obj):
         qs = obj.postmodel_q_set.all()[:3]
@@ -86,8 +94,8 @@ class dtls_api_qna(serializers.ModelSerializer):
             'catagry',
             'awnsr_qna',
             'details',
-            'post_img',
-            'post_views'
+            'photo',
+            'view'
 
         ]
 
