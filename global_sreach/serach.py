@@ -72,3 +72,22 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
             paginated_response = self.get_paginated_response(result)
             return JsonResponse(paginated_response.data, safe=False)
         return HttpResponse('No matching data found', status=404)
+
+
+
+@api_view()
+def search_filter(request, query):
+    result = []
+    filter_post = postmodel_q.objects.filter(title__icontains=query,awnsr_qna__icontains=query,details__icontains=query).values()
+    if filter_post:
+        for p in filter_post:
+            result.append(p)
+    filter_post = PostCreate.objects.filter(title__icontains=query,details__icontains=query).values()
+    if filter_book:
+        for b in filter_book:
+            result.append(b)
+    filter_post = postmodel.objects.filter(title__icontains=query,details__icontains=query).values()
+    if filter_author:
+        for a in filter_author:
+            result.append(a)
+    return JsonResponse(result, safe=False)
