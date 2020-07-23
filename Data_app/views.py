@@ -82,16 +82,16 @@ class API_objects(generics.ListAPIView):
     search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
     
-    print('Token', jwt_token)
-    def get(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.list(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # print('Token', jwt_token)
+    # def get(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.list(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
 #rootupdate
 class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
