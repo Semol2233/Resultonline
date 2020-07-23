@@ -10,14 +10,22 @@ User = get_user_model()
 
 
 class UserPublicSrtilizer(serializers.ModelSerializer):
+    # post_img = serializers.SerializerMethodField()
+    # def get_post_img(self, obj):
+    #     if settings.DEBUG:
+    #         host = 'http://localhost:8000'
+    #     else:
+    #         host = 'https://example.com'
+    #     return host + obj.post_img.url
     class Meta:
         model = postmodel_q
+
         fields = [
             'id',
-            'qname',
-            'q_slug',
+            'title',
+            'slug',
             'catagry',
-            'decribe_post',
+            'details',
             'post_img',
             'post_views',
             'created_at'
@@ -74,15 +82,15 @@ class dtls_api_qna(serializers.ModelSerializer):
         model = postmodel_q
         fields = [
             'id',
-            'qname',
-            'q_slug',
+            'title',
+            'slug',
             'catagry',
             'awnsr_qna',
-            'decribe_post',
+            'details',
             'post_img',
             'post_views'
 
         ]
 
         lookup_field = 'q_slug'
-        read_only_fields = ['qname','q_slug','catagry','awnsr_qna','decribe_post','post_img']
+        read_only_fields = ['title','slug','catagry','awnsr_qna','details','post_img']

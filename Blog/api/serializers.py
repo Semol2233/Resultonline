@@ -18,8 +18,8 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'blog_slug',
-            'decribe_post',
+            'slug',
+            'details',
             'post_img',
             'post_views',
             'created_at'
@@ -64,9 +64,9 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'blog_slug',
+            'slug',
             'catagry_select',
-            'decribe_post',
+            'details',
             'post_img'
     
         ]
@@ -94,8 +94,8 @@ class UserPublicSrtilizer_filter(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'blog_slug',
-            'decribe_post',
+            'slug',
+            'details',
             'post_img',
             'catagry_select',
             'post_views',

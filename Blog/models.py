@@ -20,9 +20,9 @@ class cat_model(models.Model):
 
 class postmodel(models.Model):
     title              = models.CharField(max_length=255)
-    blog_slug          = models.SlugField(max_length=255,unique=True)
+    slug               = models.SlugField(max_length=255,unique=True)
     catagry_select     = models.ForeignKey(cat_model,on_delete=models.CASCADE,blank=True)
-    decribe_post       = models.TextField(blank=True)
+    details            = models.TextField(blank=True)
     post_img           = models.ImageField(upload_to='media_blog/')
     post_views         = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)

@@ -81,6 +81,7 @@ class API_objects(generics.ListAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','contentowners__authorsname','selete_channel_tag__query_slug']
     pagination_class       = StandardResultsSetPagination
+    
     print('Token', jwt_token)
     def get(self, request, *args, **kwargs):
         if 'Authorization' in request.headers:

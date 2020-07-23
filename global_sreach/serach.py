@@ -42,7 +42,7 @@ class searcsssh_filter(APIView, PaginationHandlerMixin):
 
     def get(self,request,query,*args, **kwargs):
         result = []
-        filter_post = postmodel_q.objects.filter(qname__icontains=query).values()
+        filter_post = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_post:
             for p in filter_post:
              data = {"target_url": {
