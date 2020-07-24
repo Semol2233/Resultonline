@@ -498,11 +498,11 @@ class tag_manager_serilizar(serializers.ModelSerializer):
 
 
 class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
-     tag_data_crators       = ContentOwner(read_only=True)
+     tag_creator       =  tag_data_crators(read_only=True)
      class Meta:
         model = PostCreate
         fields = [
-            'tag_data_crators',
+            'tag_creator',
             'title',
             'photo',
             'slug',
