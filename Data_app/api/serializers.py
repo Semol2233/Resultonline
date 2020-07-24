@@ -170,15 +170,15 @@ class tag_data_crators(serializers.ModelSerializer):
             'Color'
         ]
     def get_Color(self, object):
-        data = {"Color": {
+        data = {
                 "variant":"primary",
-                "variant":"success",
-                "variant":"danger",
-                "variant":"warning",
-                "variant":"info",
-                "variant":"dark",
-                "variant":"light"
-                }}
+                "variant1":"success",
+                "variant2":"danger",
+                "variant3":"warning",
+                "variant4":"info",
+                "variant5":"dark",
+                "variant6":"light"
+                }
         return data 
 
         
