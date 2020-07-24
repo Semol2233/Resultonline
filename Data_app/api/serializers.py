@@ -167,6 +167,7 @@ class tag_data_crators(serializers.ModelSerializer):
             'tag_name',
             'tagSlug',
             'tag_target_link',
+            'tagNameBG'
             
         ]
     # def get_Color(self, object):
