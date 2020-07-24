@@ -551,10 +551,10 @@ class tag_page(APIView, PaginationHandlerMixin):
     pagination_class = Tag_page_pagenation
 
     def get(self, request, category, *args, **kwargs):
-        tag_createors = tag_createors.objects.filter(tagSlug=category).values('tag_name', 'tagSlug', 'tagNameBG')
-        if tag_createors:
+        authors = tag_createors.objects.filter(tagSlug=category).values('tag_name', 'tagSlug', 'tagNameBG')
+        if authors:
             posts = PostCreate.objects.filter(contentowners__tag_creator=category).values('title', 'slug', 'details', 'photo','view').order_by('-id')
-            for author in list(tag_createors):
+            for author in list(authors):
                 response = {
                 'tag_name': author['tag_name'],
                 'tagSlug': author['tagSlug'],
