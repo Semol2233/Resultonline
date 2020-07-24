@@ -20,7 +20,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer )
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer,Home_tag_serach_page )
 #end
 from Data_app.api.coverimg_api.coverimg import CoverImssge
 from django.http import JsonResponse
@@ -459,7 +459,7 @@ class API_objedfcts(generics.ListCreateAPIView):
     # permission_classes     = [permissions.IsAuthenticated]
 
     queryset = PostCreate.objects.all().order_by('-id')
-    serializer_class       = DRFPostSerializeyyr
+    serializer_class       = Home_tag_serach_page
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['tag_creator__tag_name']
     pagination_class       = StandadrdResultsSetPagination
