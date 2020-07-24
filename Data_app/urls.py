@@ -49,8 +49,7 @@ urlpatterns = [
 
     path('dtl_rlt', Reltet_data_datlspage.as_view()),
     path('tagPage/<category>/', tag_page.as_view()),
-
- 
+    path('page/<tag_creator__tag_name>/', homeTag_page.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

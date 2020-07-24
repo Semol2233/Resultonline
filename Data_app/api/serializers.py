@@ -256,6 +256,7 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
 
 
 
+        
 
 
 
@@ -491,3 +492,19 @@ class tag_manager_serilizar(serializers.ModelSerializer):
         read_only_fields = ['tag_name']
 
 
+
+
+
+
+
+class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
+     tag_data_crators       = ContentOwner(read_only=True)
+     class Meta:
+        model = PostCreate
+        fields = [
+            'tag_data_crators',
+            'title',
+            'photo',
+            'slug',
+            'release_date',
+        ]

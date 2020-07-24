@@ -20,8 +20,7 @@ from Data_app.models import PostCreate,UserProfile,UserProfile,Channel,CoverImg,
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data
-    )
+    latestdata,Releted_Datass,recommended_data,ContentOwner,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer )
 #end
 from Data_app.api.coverimg_api.coverimg import CoverImssge
 from django.http import JsonResponse
@@ -567,3 +566,17 @@ class tag_page(APIView, PaginationHandlerMixin):
         return HttpResponse('No matching data found', status=404)
 
 
+
+
+class channel_sub_data(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+
+class homeTag_page(generics.ListAPIView):
+    queryset               = PostCreate.objects.order_by('-id')
+    serializer_class       = homeTag_page_serializer
+    lookup_field           = ('tag_creator__tag_name')
+    pagination_class       = channel_sub_data

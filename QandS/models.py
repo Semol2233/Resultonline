@@ -18,15 +18,18 @@ class cat_model_q(models.Model):
 
 class postmodel_q(models.Model):
     title              = models.CharField(max_length=255)
-    slug             = models.SlugField(max_length=255,unique=True)
+    slug               = models.SlugField(max_length=255,unique=True)
     catagry            = models.ForeignKey(cat_model_q,on_delete=models.CASCADE,blank=True)
     awnsr_qna          = models.TextField(blank=True)
-    details       = models.TextField(blank=True)
-    photo           = models.ImageField(upload_to='media_blog/')
-    view         = models.IntegerField(blank=True, default= 0)
+    details            = models.TextField(blank=True)
+    photo              = models.ImageField(upload_to='media_blog/')
+    view               = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
 
-
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         self.title = slugify(self.title)
+    #     super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
