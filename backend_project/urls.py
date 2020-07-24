@@ -12,11 +12,11 @@ urlpatterns = [
     path('blog/api/v1/',include('Blog.urls')),
     path('q&a/api/v1/',include('QandS.urls')),
     path('admin/', admin.site.urls),
-    path('login',obtain_auth_token,name='token_auth' ),
-    path('reg', include('rest_auth.registration.urls')),
+    path('login/',obtain_auth_token,name='token_auth' ),
+    path('reg/', include('rest_auth.registration.urls')),
     #path('api/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     #path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('serach/<query>', searcsssh_filter),
+    path('serach/<query>/', searcsssh_filter),
     path('filter_image/<img>/<int:height>/<int:width>/', image_filter)
 
 ]
