@@ -160,26 +160,26 @@ class tag_dddata_seri(serializers.ModelSerializer):
 
 
 class tag_data_crators(serializers.ModelSerializer):
-    Color = serializers.SerializerMethodField()
+    # Color = serializers.SerializerMethodField()
     class Meta:
         model = tag_createors
         fields = [
             'tag_name',
             'tagSlug',
             'tag_target_link',
-            'Color'
+            
         ]
-    def get_Color(self, object):
-        data = {
-                "variant":"primary",
-                "variant1":"success",
-                "variant2":"danger",
-                "variant3":"warning",
-                "variant4":"info",
-                "variant5":"dark",
-                "variant6":"light"
-                }
-        return data 
+    # def get_Color(self, object):
+    #     data = {
+    #             "variant":"primary",
+    #             "variant1":"success",
+    #             "variant2":"danger",
+    #             "variant3":"warning",
+    #             "variant4":"info",
+    #             "variant5":"dark",
+    #             "variant6":"light"
+    #             }
+    #     return data
 
         
 #root_api
