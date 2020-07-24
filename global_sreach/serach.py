@@ -32,76 +32,46 @@ from Blog.models import postmodel
 #setting option
 
 
-# class qa_pagenation(pagination.PageNumberPagination):
-#     page_size = 10
-#     page_size_query_param = 'page_size'
-#     max_page_size = 100
+class qa_pagenation(pagination.PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
-# class searcsssh_filter(APIView, PaginationHandlerMixin):
-#     pagination_class = qa_pagenation
+class searcsssh_filter(APIView, PaginationHandlerMixin):
+    pagination_class = qa_pagenation
 
-#     def get(self,request,query):
-#         result = []
-#         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query,awnsr_qna__icontains=query,details__icontains=query).values()
-#         if filter_postmodel_q:
-#             for p in filter_postmodel_q:
-#              data = {"targetUrl": {
-#                     "url":"/q&a/api/v1/dtls/",
-#                     "page_name":"q&a"
-#                 }}
-#              result.append(( p,data))
-#         filter_PostCreate = PostCreate.objects.filter(title__icontains=query,details__icontains=query).values()
-#         if filter_PostCreate:
-#             for b in filter_PostCreate:
-#                 data = {"targetUrl": {     
-#                     "url":"/count/",
-#                     "page_name":"home_page"
-#                 }}
-#                 result.append(( b,data))
-#         filter_postmodel = postmodel.objects.filter(title__icontains=query,details__icontains=query).values()
-#         if filter_postmodel:
-#             for f in filter_postmodel:
-#                 data = {"targetUrl": {
-
-#                     "url":"/blog/api/v1/details/",
-#                     "page_name":"Blog_page"
-#                 }}
-#                 result.append(( f,data))
-#             page = self.paginate_queryset(result)
-#             result = page
-#             paginated_response = self.get_paginated_response(result)
-#             return JsonResponse(paginated_response.data, safe=False)
-#         return HttpResponse('No matching data found', status=404)
-
-
-@api_view()
-def searcsssh_filter(request, query):
+    def get(self,request,query,*args, **kwargs):
         result = []
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
             for p in filter_postmodel_q:
-
-             result.append(p)
+             data = {"targetUrl": {
+                    "url":"/q&a/api/v1/dtls/",
+                    "page_name":"q&a"
+                }}
+             result.append(( p,data))
         filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             for b in filter_PostCreate:
-                result.append( b)
+                data = {"targetUrl": {     
+                    "url":"/count/",
+                    "page_name":"home_page"
+                }}
+                result.append(( b,data))
         filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
         if filter_postmodel:
             for f in filter_postmodel:
-                result.append(f)
-        return JsonResponse(result, safe=False)
+                data = {"targetUrl": {
 
-
-
-
-
-
-
-
-
-
-
+                    "url":"/blog/api/v1/details/",
+                    "page_name":"Blog_page"
+                }}
+                result.append(( f,data))
+            page = self.paginate_queryset(result)
+            result = page
+            paginated_response = self.get_paginated_response(result)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
 
 
 
