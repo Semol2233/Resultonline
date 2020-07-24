@@ -40,7 +40,7 @@ class qa_pagenation(pagination.PageNumberPagination):
 class searcsssh_filter(APIView, PaginationHandlerMixin):
     pagination_class = qa_pagenation
 
-    def get(self,request,query):
+    def get(self,request,query,*args, **kwargs):
         result = []
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
