@@ -77,16 +77,16 @@ from Blog.models import postmodel
 @api_view()
 def searcsssh_filter(request, query):
         result = []
-        filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query,awnsr_qna__icontains=query,details__icontains=query).values()
+        filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
             for p in filter_postmodel_q:
 
              result.append(p)
-        filter_PostCreate = PostCreate.objects.filter(title__icontains=query,details__icontains=query).values()
+        filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             for b in filter_PostCreate:
                 result.append( b)
-        filter_postmodel = postmodel.objects.filter(title__icontains=query,details__icontains=query).values()
+        filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
         if filter_postmodel:
             for f in filter_postmodel:
                 result.append(f)
