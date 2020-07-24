@@ -48,7 +48,7 @@ urlpatterns = [
     path('channel/<category>', PaginatedProjectsAPIView.as_view()),
 
     path('dtl_rlt', Reltet_data_datlspage.as_view()),
-
+    path('tagPage/<category>/', tag_page.as_view()),
 
  
 ]

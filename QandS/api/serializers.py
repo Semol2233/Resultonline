@@ -9,7 +9,7 @@ User = get_user_model()
 
 
 
-class UserPublicSrtilizer(serializers.ModelSerializer):
+# return img full reuest url-------------------->
     # post_img = serializers.SerializerMethodField()
     # def get_post_img(self, obj):
     #     if settings.DEBUG:
@@ -17,7 +17,24 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
     #     else:
     #         host = 'https://example.com'
     #     return host + obj.post_img.url
+
+#add some extra data------------->
     # target_link = serializers.SerializerMethodField()
+    # def get_target_link(self, object):
+    #     data = {"target_url": {
+    #             "url":"/q&a/api/v1/dtls/",
+    #             "page_name":"Qandq_page_root"
+    #             }}
+    #     return data 
+
+    #rename model feild name serilaizar --------------->
+    #    location = serializers.CharField(source='viewd')+
+    #            'location'
+
+    # def viewd(self):
+    #     return self.view
+
+class UserPublicSrtilizer(serializers.ModelSerializer):
     class Meta:
         model = postmodel_q
         fields = [
@@ -29,15 +46,9 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'photo',
             'view',
             'created_at',
-            # 'target_link'
         ]
 
-    # def get_target_link(self, object):
-    #     data = {"target_url": {
-    #             "url":"/q&a/api/v1/dtls/",
-    #             "page_name":"Qandq_page_root"
-    #             }}
-    #     return data 
+
 
         
 class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):

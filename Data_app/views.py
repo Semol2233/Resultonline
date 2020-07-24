@@ -542,4 +542,28 @@ class Reltet_data_datlspage(generics.ListAPIView):
 
 
 
+class Tag_page_pagenation(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+class tag_page(APIView, PaginationHandlerMixin):
+    pagination_class = Tag_page_pagenation
+
+    def get(self, request, category, *args, **kwargs):
+        tag_createors = tag_createors.objects.filter(tagSlug=category).values('tag_name', 'tagSlug', 'tagNameBG')
+        if tag_createors:
+            posts = PostCreate.objects.filter(contentowners__tag_creator=category).values('title', 'slug', 'details', 'photo','view').order_by('-id')
+            for author in list(tag_createors):
+                response = {
+                'tag_name': author['tag_name'],
+                'tagSlug': author['tagSlug'],
+                'tagNameBG': author['tagNameBG'],
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
+
 
