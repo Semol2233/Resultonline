@@ -459,9 +459,9 @@ class API_objedfcts(generics.ListCreateAPIView):
     # permission_classes     = [permissions.IsAuthenticated]
 
     queryset = PostCreate.objects.all().order_by('-id')
-    serializer_class       = DRFPostSerializer
+    serializer_class       = DRFPostSerializeyyr
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['selete_channel_tag__query_slug','tag_creator__tag_name']
+    search_fields          = ['tag_creator__tag_name']
     pagination_class       = StandadrdResultsSetPagination
 
 

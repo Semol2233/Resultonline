@@ -508,3 +508,19 @@ class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'release_date',
         ]
+
+
+class DRFPostSerializeyyr(serializers.HyperlinkedModelSerializer):
+     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
+     class Meta:
+        model = PostCreate
+        fields = [
+            'title',
+            'tag_creator',
+            'photo',
+            'release_date',
+        ]
+
+        
+
+    
