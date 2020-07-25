@@ -11,7 +11,7 @@ urlpatterns = [
      path('', qanda_root.as_view()),
      path('channel/<category>', PaginatedProjectsAPIView.as_view()),
      path('short_list', channel_Dataapi.as_view()),
-     path('dtls/<slug>[a-z0-9-_]+?', dtls_api_qna_view.as_view()),
+     path('dtls/<slug>/', dtls_api_qna_view.as_view()),
      path('q_related_data/<catagry__publisher>', dtls_apwi_qna_view.as_view()),
      path('qanda_home', qanda_home_card.as_view()),
      path('data_filter_shot_list', qanda_shotlist_data_filter.as_view()),
