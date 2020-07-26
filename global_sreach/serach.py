@@ -78,7 +78,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 @api_view()
 def searcsssh_filter(request, query):
         result = []
-        filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query,details__icontains=query).values('title','details')
+        filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values('title','details')
         if filter_postmodel_q:
             for p in filter_postmodel_q:
              data = {"targetUrl": {
@@ -86,7 +86,7 @@ def searcsssh_filter(request, query):
                     "page_name":"q&a"
                 }}
              result.append(( p,data))
-        filter_PostCreate = PostCreate.objects.filter(title__icontains=query,details__icontains=query).values('title','details')
+        filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values('title','details')
         if filter_PostCreate:
             for b in filter_PostCreate:
                 data = {"targetUrl": {     
@@ -94,7 +94,7 @@ def searcsssh_filter(request, query):
                     "page_name":"home_page"
                 }}
                 result.append(( b,data))
-        filter_postmodel = postmodel.objects.filter(title__icontains=query,details__icontains=query).values('title','details')
+        filter_postmodel = postmodel.objects.filter(title__icontains=query).values('title','details')
         if filter_postmodel:
             for f in filter_postmodel:
                 data = {"targetUrl": {
