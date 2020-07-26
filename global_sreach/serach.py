@@ -45,28 +45,17 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
             for p in filter_postmodel_q:
-             data = {"targetUrl": {
-                    "url":"/q&a/api/v1/dtls/",
-                    "page_name":"q&a"
-                }}
-             result.append(( p,data))
+             result.append(p)
         filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             for b in filter_PostCreate:
-                data = {"targetUrl": {     
-                    "url":"/count/",
-                    "page_name":"home_page"
-                }}
-                result.append(( b,data))
+
+                result.append(b)
         filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
         if filter_postmodel:
             for f in filter_postmodel:
-                data = {"targetUrl": {
 
-                    "url":"/blog/api/v1/details/",
-                    "page_name":"Blog_page"
-                }}
-                result.append(( f,data))
+                result.append(f)
         page = self.paginate_queryset(result)
         paginated_response = self.get_paginated_response(page)
         if len(result) == 0:
