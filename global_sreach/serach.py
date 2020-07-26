@@ -67,11 +67,11 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name":"Blog_page"
                 }}
                 result.append(( f,data))
-            page = self.paginate_queryset(result)
-            result = page
-            paginated_response = self.get_paginated_response(result)
-            return JsonResponse(paginated_response.data, safe=False)
-        return HttpResponse('No matching data found', status=404)
+        page = self.paginate_queryset(result)
+        paginated_response = self.get_paginated_response(page)
+        if len(result) == 0:
+            return HttpResponse('No matching data found', status=404)
+        return JsonResponse(paginated_response.data, safe=False)
 
 
 
