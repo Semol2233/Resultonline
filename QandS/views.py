@@ -183,17 +183,12 @@ class dtls_api_qna_view(generics.RetrieveAPIView,mixins.UpdateModelMixin):
 #     serializer_class       = dtls_api_qna
 
 
-class rltd_data_qna(pagination.PageNumberPagination):
-    page_size = 10
-    page_size_query_param = 'page_size'
-    max_page_size = 100
-
+  
 
 class dtls_apwi_qna_view(generics.ListAPIView):
-    queryset               = postmodel_q.objects.order_by('-id')
+    queryset               = postmodel_q.objects.all()
     serializer_class       = dtls_api_qna
     lookup_field           = ('catagry__publisher')
-    pagination_class       = rltd_data_qna
 
 
 
