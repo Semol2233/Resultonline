@@ -193,7 +193,7 @@ class dtls_apwi_qna_view(generics.ListAPIView):
     queryset               = postmodel_q.objects.order_by('?')
     serializer_class       = dtls_api_qna
     lookup_field           = ('catagry__publisher')
-    pagination_class       = q_shotlist_data
+    pagination_class       = rltd_data_qna
 
 
 
