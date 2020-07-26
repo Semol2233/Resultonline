@@ -45,7 +45,8 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         data = {"targetUrl":"/blog/api/v1/details/"}
         if filter_postmodel_q:
-             result.append(( p,data))
+            for p in filter_PostCreate:
+            result.append(( p,data))
         filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             data = {"targetUrl":"/blog/api/v1/details/"}
