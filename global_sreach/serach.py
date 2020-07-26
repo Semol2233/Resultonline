@@ -45,7 +45,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmgodel_q = postmodel_q.objects.filter(Q(title=query) | Q(contains=query)
         if filter_postmgodel_q:
             for p in filter_postmgodel_q:
-             data = {"targetUrl": {
+            data = {"targetUrl": {
                     "url":"/q&a/api/v1/dtls/",
                     "page_name":"q&a"
                 }}
