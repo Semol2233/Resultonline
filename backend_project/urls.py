@@ -18,7 +18,7 @@ urlpatterns = [
     #path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('serach/<query>/', searcsssh_filter),
     path('filter_image/<img>/<int:height>/<int:width>/', image_filter),
-    path('s/<query>/', seeearcsssh_filter)
+    path('s/<query>/', seeearcsssh_filter.as_view())
 
 
 ]
