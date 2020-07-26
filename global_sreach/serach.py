@@ -42,7 +42,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 
     def get(self,request,query):
         result = []
-        filter_postmgodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)
+        filter_postmgodel_q = postmodel_q.objects.filter(Q(title=query) | Q(contains=query)
         if filter_postmgodel_q:
             for p in filter_postmgodel_q:
              data = {"targetUrl": {
@@ -50,7 +50,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name":"q&a"
                 }}
              result.append(( p,data))
-        filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)
+        filter_PostCreate = PostCreate.objects.filter(Q(title=query) | Q(contains=query)
         if filter_PostCreate:
             for b in filter_PostCreate:
                 data = {"targetUrl": {     
@@ -58,7 +58,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name":"home_page"
                 }}
                 result.append(( b,data))
-        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)
+        filter_postmodel = postmodel.objects.filter(Q(title=query) | Q(details=query)
         if filter_postmodel:
             for f in filter_postmodel:
                 data = {"targetUrl": {
