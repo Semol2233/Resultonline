@@ -2,7 +2,7 @@ from PIL import Image
 from rest_framework.decorators import api_view
 from Blog.models import postmodel
 from django.http import HttpResponse
-from resizeimage import resizeimage 
+# from resizeimage import resizeimage 
 def image_filter(request, img, height, width):
     try:
         image = postmodel.objects.get(post_img='media_blog/' + img)
@@ -15,3 +15,8 @@ def image_filter(request, img, height, width):
             return HttpResponse(resized_image, content_type="image/png")
     except Exception:
         return HttpResponse('Image not found', status=404)
+
+
+
+
+print("hello")
