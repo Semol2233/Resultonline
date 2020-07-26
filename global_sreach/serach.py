@@ -45,29 +45,38 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
             for p in filter_postmodel_q:
-                result['target'] =  {
-                    "url":"/blog/api/v1/details/"
-                }
-                result.append(p)
-                result.append(result['target'])
-
+             data = {"targetUrl": {
+                    "url":"/q&a/api/v1/dtls/",
+                    "page_name":"q&a"
+                }}
+             result.append(p)
+             data = {"targetUrl": {
+                "url":"/blog/api/v1/details/",
+                "page_name":"Blog_page"
+                }}
+            result.append(data)
         filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             for b in filter_PostCreate:
-                result['target'] =  {
-                    "url":"/blog/api/v1/details/"
-                }
+                data ={"targetUrl": {     
+                    "url":"/count/",
+                    "page_name":"home_page"
+                }}
                 result.append(b)
-                result.append(result['target'])
-
+                data = {"targetUrl": {
+                "url":"/blog/api/v1/details/",
+                "page_name":"Blog_page"
+                }}
+                result.append(data)
         filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
         if filter_postmodel:
             for f in filter_postmodel:
-                result['target'] =  {
-                    "url":"/blog/api/v1/details/"
-                }
                 result.append(f)
-                result.append(result['target'])
+                data = {"targetUrl": {
+                "url":"/blog/api/v1/details/",
+                "page_name":"Blog_page"
+                }}
+                result.append(data)
 
         page = self.paginate_queryset(result)
         paginated_response = self.get_paginated_response(page)
@@ -78,7 +87,9 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 
 
 
-
+# result['target'] = {'url' : '/blog...'}
+# result.append(f)
+# result.append(result['target'])
  
 @api_view()
 def searcsssh_filter(request, query):
