@@ -45,7 +45,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
         if filter_postmodel_q:
             for p in filter_postmodel_q:
-                result['target'] =data = {"targetUrl": {
+                result['target'] = {"targetUrl": {
                     "url":"/blog/api/v1/details/",
                     "page_name":"Blog_page"
                 }}
@@ -54,7 +54,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
         if filter_PostCreate:
             for b in filter_PostCreate:
-                result['target'] =data = {"targetUrl": {
+                result['target'] = {"targetUrl": {
                     "url":"/blog/api/v1/details/",
                     "page_name":"Blog_page"
                 }}
@@ -63,7 +63,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
         if filter_postmodel:
             for f in filter_postmodel:
-                result['target'] =data = {"targetUrl": {
+                result['target'] = {"targetUrl": {
                     "url":"/blog/api/v1/details/",
                     "page_name":"Blog_page"
                 }}
