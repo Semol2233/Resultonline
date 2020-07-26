@@ -27,7 +27,7 @@ from Data_app.models import PostCreate
 from Blog.models import postmodel
 
 
-from django.models import Q
+from django.db.models import Q
 
 #setting option
 
@@ -42,15 +42,15 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 
     def get(self,request,query):
         result = []
-        filter_postmodel_q = postmodel_q.objects.filter(title__icontains=query).values()
-        if filter_postmodel_q:
-            for p in filter_postmodel_q:
+        filter_postmgodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)
+        if filter_postmgodel_q:
+            for p in filter_postmgodel_q:
              data = {"targetUrl": {
                     "url":"/q&a/api/v1/dtls/",
                     "page_name":"q&a"
                 }}
              result.append(( p,data))
-        filter_PostCreate = PostCreate.objects.filter(title__icontains=query).values()
+        filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)
         if filter_PostCreate:
             for b in filter_PostCreate:
                 data = {"targetUrl": {     
@@ -58,7 +58,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name":"home_page"
                 }}
                 result.append(( b,data))
-        filter_postmodel = postmodel.objects.filter(title__icontains=query).values()
+        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)
         if filter_postmodel:
             for f in filter_postmodel:
                 data = {"targetUrl": {
