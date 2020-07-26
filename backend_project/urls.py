@@ -16,9 +16,9 @@ urlpatterns = [
     path('reg/', include('rest_auth.registration.urls')),
     #path('api/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     #path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('serach/<query>/', searcsssh_filter),
+    path('s/<query>/', searcsssh_filter),
     path('filter_image/<img>/<int:height>/<int:width>/', image_filter),
-    path('s/<query>/', seeearcsssh_filter.as_view())
+    path('serach/<query>/', seeearcsssh_filter.as_view())
 
 
 ]
