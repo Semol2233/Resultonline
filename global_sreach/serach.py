@@ -46,7 +46,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_postmodel_q:
             for p in filter_postmodel_q:
                 p['targetUrl'] = {
-                    "url": "/q&a/api/v1/dtls/",
+                    "url": "q&a/api/v1/dtls/",
                     "page_name": "Blog_page"
                 }
                 result.append(p)
@@ -54,7 +54,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_PostCreate:
             for b in filter_PostCreate:
                 b['targetUrl'] = {
-                    "url": "/q&a/api/v1/dtls/",
+                    "url": "count/efef/",
                     "page_name": "Blog_page"
                 }
                 result.append(b)
@@ -62,7 +62,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_postmodel:
             for f in filter_postmodel:
                 f['targetUrl'] = {
-                    "url": "/q&a/api/v1/dtls/",
+                    "url": "blog/api/v1/details/",
                     "page_name": "Blog_page"
                 }
                 result.append(f)
