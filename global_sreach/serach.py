@@ -54,7 +54,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
         if filter_PostCreate:
             for b in filter_PostCreate:
                 b['targetUrl'] = {
-                    "url": "count/efef/",
+                    "url": "count/",
                     "page_name": "Blog_page"
                 }
                 result.append(b)
