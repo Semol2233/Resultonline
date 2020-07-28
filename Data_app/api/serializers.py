@@ -289,7 +289,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'contentlenth',
             'contentlink',
             'Persentase',
-            'reviewcount'
+            'reviewcount',
             'SeoTitle',
             'SeoimgTitle'
 
