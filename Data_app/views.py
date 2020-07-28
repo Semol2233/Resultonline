@@ -568,6 +568,33 @@ class tag_page(APIView, PaginationHandlerMixin):
 
 
 
+
+class Tag_page_pagenation_home(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+class tag_page_home(APIView, PaginationHandlerMixin):
+    pagination_class = Tag_page_pagenation_home
+
+    def get(self, request, category, *args, **kwargs):
+        authors = tag_createors.objects.filter(tagSlug=category).values('tag_name', 'tagSlug', 'tagNameBG')
+        if authors:
+            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view').order_by('-id')
+            for author in list(authors):
+                response = {
+                'tag_name': author['tag_name'],
+                'tagSlug': author['tagSlug'],
+                'tagNameBG': author['tagNameBG'],
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
+
+
+
 class channel_sub_data(pagination.PageNumberPagination):
     page_size = 2
     page_size_query_param = 'page_size'
@@ -575,8 +602,8 @@ class channel_sub_data(pagination.PageNumberPagination):
 
 
 
-class homeTag_page(generics.ListAPIView):
-    queryset               = PostCreate.objects.order_by('-id')
-    serializer_class       = homeTag_page_serializer
-    lookup_field           = ('tag_creator__tag_name')
-    pagination_class       = channel_sub_data
+# class homeTag_page(generics.ListAPIView):
+#     queryset               = PostCreate.objects.order_by('-id')
+#     serializer_class       = homeTag_page_serializer
+#     lookup_field           = ('tag_creator__tag_name')
+#     pagination_class       = channel_sub_data
