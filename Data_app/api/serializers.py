@@ -494,11 +494,18 @@ class tag_manager_serilizar(serializers.ModelSerializer):
 
 
 
-
+class tageee_data_crators(serializers.ModelSerializer):
+    # Color = serializers.SerializerMethodField()
+    class Meta:
+        model = tag_createors
+        fields = [
+            'tag_name',
+            'tagSlug',      
+        ]
 
 
 class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
-     tag_creator       =  tag_data_crators(read_only=True)
+     tag_creator       =  tageee_data_crators(read_only=True)
      class Meta:
         model = PostCreate
         fields = [
