@@ -79,6 +79,8 @@ class PostCreate(models.Model):
     contentlink        = models.URLField(max_length=200, blank= True , default='http://www.jagobd.com/makkahlive')
     Persentase         = models.IntegerField(blank=True, default= 5)
     reviewcount        = models.IntegerField(blank=True, default= 0)
+    SeoTitle           = models.CharField(max_length = 155,blank=True)
+    SeoimgTitle        = models.CharField(max_length = 155,blank=True)            
 
 
 
