@@ -131,6 +131,7 @@ class qanda_fast_check(serializers.ModelSerializer):
         fields = [
             'title',
             'slug',
+            'view',
             'catagry'
 
         ]

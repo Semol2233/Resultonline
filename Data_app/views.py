@@ -472,7 +472,7 @@ class API_objedfcts(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = tag_createors.objects.filter(tagSlug=category).values('tagSlug','tag_name')
         if authors:
-            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','release_date').order_by('-id')
+            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','release_date','view').order_by('-id')
             for author in list(authors):
                 response = {
                 'tagSlug': author['tagSlug'],
