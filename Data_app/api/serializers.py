@@ -217,7 +217,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'tag_creators',
             'details',
             'SeoTitle',
-            'SeoimgTitle',
+            'Seoimgalt',
+            'SeoMetaDes',
             'photo',
             'mobilebrand',
             'slug',
@@ -291,7 +292,8 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'Persentase',
             'reviewcount',
             'SeoTitle',
-            'SeoimgTitle'
+            'Seoimgalt',
+            'SeoMetaDes'
 
         ]
         lookup_field = 'slug'
