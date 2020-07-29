@@ -510,6 +510,13 @@ class tageee_data_crators(serializers.ModelSerializer):
 
 class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
      tag_creator       =  tageee_data_crators(read_only=True)
+    #  photo = serializers.SerializerMethodField()
+    #  def get_photo(self, obj):
+    #     if settings.DEBUG:
+    #         host = 'http://localhost:8000'
+    #     else:
+    #         host = 'http://cdn.resultonlinebd.com/'
+    #     return host + obj.photo.url
      class Meta:
         model = PostCreate
         fields = [

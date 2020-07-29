@@ -216,6 +216,10 @@ class qanda_shotlist_data_filter(generics.ListAPIView):
     pagination_class       = q_shotlist_filter
 
 
+class qandaage_fasst_check(generics.ListAPIView):
+    queryset               = postmodel_q.objects.all()[:15]
+    serializer_class       = qanda_fast_check
+
 
 
 

@@ -15,6 +15,8 @@ urlpatterns = [
      path('q_related_data/<catagry__publisher>/', dtls_apwi_qna_view.as_view()),
      path('qanda_home', qanda_home_card.as_view()),
      path('data_filter_shot_list', qanda_shotlist_data_filter.as_view()),
+     path('qna_fast_check', qandaage_fasst_check.as_view())
+
 
 
 

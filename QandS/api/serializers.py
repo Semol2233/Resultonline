@@ -112,3 +112,28 @@ class dtls_api_qna(serializers.ModelSerializer):
 
         lookup_field = 'slug'
         read_only_fields = ['title','slug','catagry','awnsr_qna','details','photo']
+
+
+
+class qna_fast_check(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = cat_model_q
+        fields = [
+            'id',
+            'publisher'
+        ]
+
+
+class qanda_fast_check(serializers.ModelSerializer):
+    catagry = qna_fast_check(read_only=True)
+    class Meta:
+        model = postmodel_q
+        fields = [
+            'title',
+            'slug',
+            'catagry'
+
+        ]
+
+        lookup_field = 'slug'
+        read_only_fields = ['title','slug','catagry']
