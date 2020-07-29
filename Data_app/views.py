@@ -453,17 +453,37 @@ class StandadrdResultsSetPagination(pagination.PageNumberPagination):
 
 
 #sub_tag_page_Api
-class API_objedfcts(generics.ListCreateAPIView):
+# class API_objedfcts(generics.ListCreateAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
 
-    queryset = PostCreate.objects.all().order_by('-id')
-    serializer_class       = Home_tag_serach_page
-    filter_backends        = [filters.SearchFilter]
-    search_fields          = ['tag_creator__tag_name']
-    pagination_class       = StandadrdResultsSetPagination
+    # queryset = PostCreate.objects.all().order_by('-id')
+    # serializer_class       = Home_tag_serach_page
+    # filter_backends        = [filters.SearchFilter]
+    # search_fields          = ['tag_creator__tag_name']
+    # pagination_class       = StandadrdResultsSetPagination
 
+
+
+class API_objedfcts(APIView, PaginationHandlerMixin):
+    pagination_class = StandadrdResultsSetPagination
+
+    def get(self, request, category, *args, **kwargs):
+        authors = tag_createors.objects.filter(tagSlug=category).values('tagSlug','tag_name')
+        if authors:
+            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','release_date').order_by('-id')
+            for author in list(authors):
+                response = {
+                'tagSlug': author['tagSlug'],
+                'tag_name': author['tag_name']
+
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
 
 
 

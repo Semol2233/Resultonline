@@ -42,7 +42,7 @@ urlpatterns = [
     path('count/<slug>',views.API_osbjects.as_view()),
     path('tagmanager',views.tag_mangager.as_view()),
 
-    path('sub_tag_manager',views.API_objedfcts.as_view()),#delete_some_issue
+    path('sub_tag_manager/<category>/',views.API_objedfcts.as_view()),#delete_some_issue
     path('Tag_creator',views.Tag_creatoe_view.as_view()),
     
     path('channel/<category>', PaginatedProjectsAPIView.as_view()),
