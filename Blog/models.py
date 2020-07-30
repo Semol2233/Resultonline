@@ -24,8 +24,10 @@ class postmodel(models.Model):
     catagry_select     = models.ForeignKey(cat_model,on_delete=models.CASCADE,blank=True)
     details            = models.TextField(blank=True)
     photo              = models.ImageField(upload_to='media_blog/')
-    view         = models.IntegerField(blank=True, default= 0)
+    view               = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
+    is_active          = models.BooleanField(default=True)         
+
 
 
 

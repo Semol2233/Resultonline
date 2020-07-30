@@ -82,7 +82,8 @@ class PostCreate(models.Model):
 
     SeoTitle          = models.CharField(max_length = 155,blank=True)
     SeoMetaDes        = models.CharField(max_length = 155,blank=True)
-    Seoimgalt         = models.CharField(max_length = 255,blank=True)         
+    Seoimgalt         = models.CharField(max_length = 255,blank=True)
+    is_active         = models.BooleanField(default=True)         
 
 
 

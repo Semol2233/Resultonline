@@ -25,6 +25,8 @@ class postmodel_q(models.Model):
     photo              = models.ImageField(upload_to='media_blog/')
     view               = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
+    is_active          = models.BooleanField(default=True)         
+
 
     # def save(self, *args, **kwargs):
     #     if not self.slug:
