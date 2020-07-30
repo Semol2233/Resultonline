@@ -138,8 +138,7 @@ class qa_pagenasssstion(pagination.PageNumberPagination):
     max_page_size = 100
 
 class qanda_root(generics.ListAPIView):
-    # queryset               = cat_model_q.objects.filter(created_date__gte=datetime.now() - timedelta(days=55)).order_by('-id')
-    queryset               = cat_model_q.objects.all()
+    queryset               = cat_model_q.objects.filter(created_date__gte=datetime.now() - timedelta(days=55))
     serializer_class       = cat_modelSrtilizer
     pagination_class       = qa_pagenasssstion
 
