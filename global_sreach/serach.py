@@ -42,7 +42,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 
     def get(self,request,query):
         result = []
-        filter_postmodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details')
+        filter_postmodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
         if filter_postmodel_q:
             for p in filter_postmodel_q:
                 p['targetUrl'] = {
@@ -50,7 +50,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name": "Blog_page"
                 }
                 result.append(p)
-        filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details')
+        filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
         if filter_PostCreate:
             for b in filter_PostCreate:
                 b['targetUrl'] = {
@@ -58,7 +58,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name": "Blog_page"
                 }
                 result.append(b)
-        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details')
+        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
         if filter_postmodel:
             for f in filter_postmodel:
                 f['targetUrl'] = {
@@ -79,32 +79,32 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
 # result.append(f)
 # result.append(result['target'])
  
-@api_view()
-def searcsssh_filter(request, query):
-        result = []
-        filter_postmodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
-        if filter_postmodel_q:
-            for p in filter_postmodel_q:
-             data = {"targetUrl": {
-                    "url":"/q&a/api/v1/dtls/",
-                    "page_name":"q&a"
-                }}
-             result.append(( p,data))
-        filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
-        if filter_PostCreate:
-            for b in filter_PostCreate:
-                data = {"targetUrl": {     
-                    "url":"/count/",
-                    "page_name":"home_page"
-                }}
-                result.append(( b,data))
-        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
-        if filter_postmodel:
-            for f in filter_postmodel:
-                data = {"targetUrl": {
+# @api_view()
+# def searcsssh_filter(request, query):
+#         result = []
+#         filter_postmodel_q = postmodel_q.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
+#         if filter_postmodel_q:
+#             for p in filter_postmodel_q:
+#              data = {"targetUrl": {
+#                     "url":"/q&a/api/v1/dtls/",
+#                     "page_name":"q&a"
+#                 }}
+#              result.append(( p,data))
+#         filter_PostCreate = PostCreate.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
+#         if filter_PostCreate:
+#             for b in filter_PostCreate:
+#                 data = {"targetUrl": {     
+#                     "url":"/count/",
+#                     "page_name":"home_page"
+#                 }}
+#                 result.append(( b,data))
+#         filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo')
+#         if filter_postmodel:
+#             for f in filter_postmodel:
+#                 data = {"targetUrl": {
 
-                    "url":"/blog/api/v1/details/",
-                    "page_name":"Blog_page"
-                }}
-                result.append(( f,data))
-        return JsonResponse(result, safe=False)
+#                     "url":"/blog/api/v1/details/",
+#                     "page_name":"Blog_page"
+#                 }}
+#                 result.append(( f,data))
+#         return JsonResponse(result, safe=False)

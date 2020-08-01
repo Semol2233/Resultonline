@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework.authtoken.views import obtain_auth_token
 #from rest_framework_simplejwt import views as jwt_views
-from global_sreach.serach import searcsssh_filter,seeearcsssh_filter
+from global_sreach.serach import seeearcsssh_filter
 from resize_image.resizeimage import image_filter
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
     path('reg/', include('rest_auth.registration.urls')),
     #path('api/login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     #path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('s/<query>/', searcsssh_filter),
+    # path('s/<query>/', searcsssh_filter),
     path('filter_image/<img>/<int:height>/<int:width>/', image_filter),
     path('serach/<query>/', seeearcsssh_filter.as_view())
 
