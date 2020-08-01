@@ -22,7 +22,8 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'details',
             'photo',
             'view',
-            'created_at'
+            'created_at',
+            'is_active'
         ]
 
 
@@ -68,7 +69,8 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'catagry_select',
             'details',
             'photo',
-            'view'
+            'view',
+            'is_active'
     
         ]
         lookup_field = 'slug'
@@ -100,7 +102,8 @@ class UserPublicSrtilizer_filter(serializers.ModelSerializer):
             'photo',
             'catagry_select',
             'view',
-            'created_at'
+            'created_at',
+            'is_active'
         ]
 
 

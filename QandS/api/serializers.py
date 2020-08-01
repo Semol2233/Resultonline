@@ -46,6 +46,7 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'photo',
             'view',
             'created_at',
+            'is_active'
         ]
 
 
@@ -106,7 +107,8 @@ class dtls_api_qna(serializers.ModelSerializer):
             'awnsr_qna',
             'details',
             'photo',
-            'view'
+            'view',
+            'is_active'
 
         ]
 
@@ -132,7 +134,8 @@ class qanda_fast_check(serializers.ModelSerializer):
             'title',
             'slug',
             'view',
-            'catagry'
+            'catagry',
+            'is_active'
 
         ]
 

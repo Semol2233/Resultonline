@@ -228,7 +228,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'contentlenth',
             'contentlink',
             'Persentase',
-            'reviewcount'
+            'reviewcount',
+            'is_active'
 
         ]
 
@@ -251,6 +252,7 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
+            'is_active'
 
         ]
 
@@ -293,7 +295,8 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'reviewcount',
             'SeoTitle',
             'Seoimgalt',
-            'SeoMetaDes'
+            'SeoMetaDes',
+            'is_active'
 
         ]
         lookup_field = 'slug'
@@ -322,6 +325,7 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
+            'is_active'
          
         ]
         read_only_fields = ['contentowners']
@@ -350,6 +354,7 @@ class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
+            'is_active'
         ]
         read_only_fields = ['contentowners']
         read_only_fields = ['channel']
@@ -387,7 +392,8 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'contentlenth',
             'contentlink',
             'Persentase',
-            'tatag_creatorg'
+            'tatag_creatorg',
+            'is_active'
           ]
           read_only_fields = ['contentowners']
           read_only_fields = ['channel']
@@ -416,7 +422,8 @@ class BrandPostInfo(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator'
+            'tag_creator',
+            'is_active'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -438,7 +445,8 @@ class Releted_Datass(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator'
+            'tag_creator',
+            'is_active'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -461,7 +469,8 @@ class recommended_data(serializers.ModelSerializer):
             'slug',
             'view',
             'release_date',
-            'tag_creator'
+            'tag_creator',
+            'is_active'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -527,6 +536,7 @@ class homeTag_page_serializer(serializers.HyperlinkedModelSerializer):
             'photo',
             'slug',
             'release_date',
+            'is_active'
         ]
 
 
@@ -539,6 +549,7 @@ class Home_tag_serach_page(serializers.HyperlinkedModelSerializer):
             'tag_creator',
             'photo',
             'release_date',
+            'is_active'
         ]
 
         
