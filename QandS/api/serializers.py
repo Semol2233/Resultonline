@@ -43,7 +43,6 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'slug',
             'catagry',
             'details',
-            'photo',
             'view',
             'created_at',
             'is_active'
@@ -59,7 +58,6 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'publisher',
-            'q_icon',
             'q_slug',
             'List',
         ]
@@ -87,7 +85,6 @@ class qna_dlts_api(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'publisher',
-            'q_icon',
             'q_slug',
         
         ]
@@ -106,14 +103,13 @@ class dtls_api_qna(serializers.ModelSerializer):
             'catagry',
             'awnsr_qna',
             'details',
-            'photo',
             'view',
             'is_active'
 
         ]
 
         lookup_field = 'slug'
-        read_only_fields = ['title','slug','catagry','awnsr_qna','details','photo']
+        read_only_fields = ['title','slug','catagry','awnsr_qna','details']
 
 
 

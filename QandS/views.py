@@ -96,13 +96,12 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     pagination_class = qa_pagenation
 
     def get(self, request, category, *args, **kwargs):
-        authors = cat_model_q.objects.filter(q_slug=category).values('publisher', 'q_icon', 'q_slug')
+        authors = cat_model_q.objects.filter(q_slug=category).values('publisher','q_slug')
         if authors:
-            posts = postmodel_q.objects.filter(catagry__q_slug=category).values('title', 'slug', 'details', 'photo','view','created_at')
+            posts = postmodel_q.objects.filter(catagry__q_slug=category).values('title', 'slug', 'details','view','created_at')
             for author in list(authors):
                 response = {
                     'publisher': author['publisher'],
-                    'q_icon': author['q_icon'],
                     'q_slug': author['q_slug']
                 }
             page = self.paginate_queryset(list(posts))
