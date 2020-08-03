@@ -238,7 +238,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'contentlink',
             'Persentase',
             'reviewcount',
-            'is_active'
+            'is_active',
+            'content_typeModel'
 
         ]
      def get_target_link(self, object):
