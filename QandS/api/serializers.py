@@ -64,9 +64,9 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
         fields = [
             'id',
             'publisher',
+            'is_active',
             'q_slug',
-            'List',
-            'is_active'
+            'List'
         ]
 
     def get_List(self,obj):
