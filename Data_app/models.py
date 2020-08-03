@@ -63,13 +63,12 @@ class tag_createors(models.Model):
 
 class PostCreate(models.Model):
     CHOICES = [
-    ('Content_type', (
-            ('MA', 'Morocco'),
-            ('DZ', 'Algeria'),
+    ('Mobile_Content_type', (
+            ('Specfictionrevo', 'r/'),
+            ('Review', 's/')
         )
     ),
     ]
-    content_typeModel = models.CharField(max_length=300, choices = CHOICES,default='Content_tye',)
     contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE ,blank=True, null=True)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE ,blank=True, null=True)
     title              = models.CharField(max_length = 255)
@@ -81,6 +80,7 @@ class PostCreate(models.Model):
     tag_creator        = models.ManyToManyField('tag_createors',default="0") 
     view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
+    content_typeModel  = models.CharField(max_length=300, choices = CHOICES,default='/r',blank=True)
     release_date       = models.DateField(auto_now_add = True)
     contentlock        = models.BooleanField(default=False)
     contentlenth       = models.IntegerField(default=0, blank=True)
