@@ -62,6 +62,14 @@ class tag_createors(models.Model):
         return self.tag_name 
 
 class PostCreate(models.Model):
+    CHOICES = [
+    ('Content_type', (
+            ('MA', 'Morocco'),
+            ('DZ', 'Algeria'),
+        )
+    ),
+    ]
+    content_typeModel = models.CharField(max_length=300, choices = CHOICES,default='Content_tye',)
     contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE ,blank=True, null=True)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE ,blank=True, null=True)
     title              = models.CharField(max_length = 255)
