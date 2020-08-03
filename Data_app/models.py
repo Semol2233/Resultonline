@@ -81,7 +81,7 @@ class PostCreate(models.Model):
     tag_creator        = models.ManyToManyField('tag_createors',default="0") 
     view               = models.IntegerField(blank=True, default=0)
     uploaded           = models.DateTimeField(auto_now_add = True)
-    content_typeModel  = models.CharField(max_length=180, choices = CHOICES,default=PUBLIC,blank=True)
+    content_typeModel  = models.CharField(max_length=1, choices = CHOICES,default=PUBLIC,blank=True)
     release_date       = models.DateField(auto_now_add = True)
     contentlock        = models.BooleanField(default=False)
     contentlenth       = models.IntegerField(default=0, blank=True)
