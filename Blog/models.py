@@ -14,7 +14,7 @@ class cat_model(models.Model):
     cat_icon        = models.ImageField(upload_to='Blog_cat_icon/')
     cat_description = models.CharField(max_length=50, default="No data")
     cat_slug        = models.SlugField(max_length=50)
-
+    is_active          = models.BooleanField(default=True)    
     def __str__(self):
         return self.cat_name
 

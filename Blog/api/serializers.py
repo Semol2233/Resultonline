@@ -38,7 +38,8 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'cat_full_data',
             'cat_icon',
             'cat_slug',
-            'List'
+            'List',
+            'is_active'
         ]
 
 
@@ -54,6 +55,7 @@ class cat_model_releson(serializers.ModelSerializer):
         fields = [
             'id',
             'cat_name',
+            'is_active'
     
         ]
 
@@ -86,6 +88,7 @@ class cat_modelSrtilizer_filter(serializers.HyperlinkedModelSerializer):
             'cat_name',
             'cat_icon',
             'cat_slug',
+            'is_active'
         ]
 
 

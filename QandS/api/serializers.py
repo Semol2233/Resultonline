@@ -35,6 +35,7 @@ User = get_user_model()
     #     return self.view
 
 class UserPublicSrtilizer(serializers.ModelSerializer):
+    target_link = serializers.SerializerMethodField()
     class Meta:
         model = postmodel_q
         fields = [
@@ -45,11 +46,16 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'details',
             'view',
             'created_at',
-            'is_active'
+            'is_active',
+            'target_link'
         ]
 
-
-
+    def get_target_link(self, object):
+        data = {
+                "url":"/q&a/api/v1/dtls/",
+                "page_name":"Qandq_page_root"
+                }
+        return data 
         
 class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
     List = serializers.SerializerMethodField(read_only=True)
@@ -60,11 +66,14 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'publisher',
             'q_slug',
             'List',
+            'is_active'
         ]
 
     def get_List(self,obj):
         qs = obj.postmodel_q_set.all()[:3]
         return UserPublicSrtilizer(qs,many=True).data
+
+
 
 
 
@@ -75,7 +84,8 @@ class q_shot_list_data(serializers.ModelSerializer):
         fields = [
             'id',
             'shot_list_name',
-            'shot_list_data'
+            'shot_list_data',
+            'is_active'
         ]
 
 
@@ -86,6 +96,7 @@ class qna_dlts_api(serializers.HyperlinkedModelSerializer):
             'id',
             'publisher',
             'q_slug',
+            'is_active'
         
         ]
 
@@ -118,7 +129,8 @@ class qna_fast_check(serializers.HyperlinkedModelSerializer):
         model = cat_model_q
         fields = [
             'id',
-            'publisher'
+            'publisher',
+            'is_active'
         ]
 
 
@@ -136,4 +148,4 @@ class qanda_fast_check(serializers.ModelSerializer):
         ]
 
         lookup_field = 'slug'
-        read_only_fields = ['title','slug','catagry']
+        read_only_fields = ['title','slug','catagry','is_active']

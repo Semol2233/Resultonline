@@ -11,8 +11,7 @@ class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
     Brand_profile        = models.ImageField(upload_to="Brand_Logo",blank=True)
     ChannelDataUrl       = models.CharField(max_length=300, unique=True,blank=True)
-
-
+    is_active         = models.BooleanField(default=True)  
     def __str__(self):
         return self.Channel    
 
@@ -21,7 +20,7 @@ class Channel(models.Model):
     channelname       = models.CharField(max_length=20,blank=True)
     channel_profile   = models.ImageField(upload_to="channel_profile",blank=True)
     slug_channel      = models.CharField(max_length=33,blank=False)
-   
+    is_active         = models.BooleanField(default=True)  
     
     def __str__(self):
         return self.channelname
@@ -35,7 +34,7 @@ class tag_data(models.Model):
     query_slug        = models.CharField(max_length=50,default="0")
     tag_icon          = models.ImageField(upload_to="tag_icon",blank=False)
     tag_content_link  = models.URLField(max_length=200, blank= True,unique=True)
-
+    is_active         = models.BooleanField(default=True)  
     def __str__(self):
         return str('%s %s' % (self.tag_name,self.tag_channel_name))
 
@@ -48,6 +47,7 @@ class Ownercontents(models.Model):
     authorsweblink    = models.URLField(max_length = 200)
     about             = models.CharField(max_length = 5000, blank=True,default="hello" )
     coverImg          = models.ImageField(upload_to="author_img",blank=True ,default="author_profile/dasfdad.png")
+    is_active         = models.BooleanField(default=True)  
     def __str__(self):
         return self.authorsname 
 
@@ -57,7 +57,7 @@ class tag_createors(models.Model):
     tagSlug            = models.SlugField(max_length=233,default="emty")
     tag_target_link    = models.URLField(max_length=100,unique=True,default="0")
     tagNameBG          = models.CharField(max_length=100,default="success")  
-
+    is_active         = models.BooleanField(default=True)  
     def __str__(self):
         return self.tag_name 
 

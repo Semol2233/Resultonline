@@ -12,6 +12,7 @@ class cat_model_q(models.Model):
     publisher        = models.CharField(max_length=50)
     q_slug        = models.SlugField(max_length=50)
     created_date   = models.DateTimeField(default=timezone.now)
+    is_active          = models.BooleanField(default=True) 
     def __str__(self):
         return self.publisher
 
@@ -38,7 +39,7 @@ class postmodel_q(models.Model):
 class q_shotlist(models.Model):
     shot_list_name   = models.CharField(max_length=255)
     shot_list_data   = models.URLField(max_length=200, blank= True , default='emty')
-
+    is_active          = models.BooleanField(default=True) 
 
     def __str__(self):
         return self.shot_list_name

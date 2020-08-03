@@ -98,7 +98,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = cat_model_q.objects.filter(q_slug=category).values('publisher','q_slug')
         if authors:
-            posts = postmodel_q.objects.filter(catagry__q_slug=category).values('title', 'slug', 'details','view','created_at')
+            posts = postmodel_q.objects.filter(catagry__q_slug=category).values('title', 'slug', 'details','view','created_at','is_active')
             for author in list(authors):
                 response = {
                     'publisher': author['publisher'],

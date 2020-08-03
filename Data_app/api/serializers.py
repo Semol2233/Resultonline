@@ -57,6 +57,7 @@ class UserDettails(serializers.ModelSerializer):
             'id',
             'channelname',
             'channel_profile',
+            'is_active'
             # 'Status_list'
         ]
     # def get_Status_list(self,obj):
@@ -73,7 +74,8 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'id',
             'channelname',
             'channel_profile',
-            'slug_channel'
+            'slug_channel',
+            'is_active'
 
         ]
 
@@ -83,6 +85,7 @@ class UserPublssicSrtilizer(serializers.ModelSerializer):
         model = Channel
         fields = [
             'channelname',
+            'is_active'
 
         ]
 
@@ -95,7 +98,8 @@ class ContentOwner(serializers.ModelSerializer):
             'authorsprofilrimg',
             'authorsweblink',
             'about',
-            'coverImg'
+            'coverImg',
+            'is_active'
 
         ]
 
@@ -108,7 +112,8 @@ class ContddentOwner(serializers.ModelSerializer):
             'authorsprofilrimg',
             'authorsweblink',
             'about',
-            'coverImg'
+            'coverImg',
+            'is_active'
 
         ]
         lookup_field = 'authorsname'
@@ -124,7 +129,8 @@ class BrandProfileInfo(serializers.ModelSerializer):
             'id',
             'Channel',
             'Brand_profile',
-            'ChannelDataUrl'
+            'ChannelDataUrl',
+            'is_active'
             
         ]
 
@@ -141,6 +147,7 @@ class tag_data_seri(serializers.ModelSerializer):
             'query_slug',
             'tag_content_link',
             'tag_channel_name',
+            'is_active'
 
         ]
 class tag_dddata_seri(serializers.ModelSerializer):
@@ -154,6 +161,7 @@ class tag_dddata_seri(serializers.ModelSerializer):
             'query_slug',
             'tag_content_link',
             'tag_channel_name',
+            'is_active'
 
         ]
 
@@ -167,7 +175,8 @@ class tag_data_crators(serializers.ModelSerializer):
             'tag_name',
             'tagSlug',
             'tag_target_link',
-            'tagNameBG'
+            'tagNameBG',
+            'is_active'
             
         ]
     # def get_Color(self, object):
@@ -232,9 +241,12 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'is_active'
 
         ]
-
-        
-
+     def get_target_link(self, object):
+        data = {
+                "url":"/q&a/api/v1/dtls/",
+                "page_name":"Qandq_page_root"
+                }
+        return data 
     
 
 class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
@@ -483,7 +495,8 @@ class tagmanager(serializers.ModelSerializer):
         model = Channel
         fields = [
             'id',
-            'channelname',    
+            'channelname',
+            'is_active' 
 
         ]
 
@@ -502,6 +515,7 @@ class tag_manager_serilizar(serializers.ModelSerializer):
            'query_slug',
            'tag_content_link',
            'tag_channel_name',
+           'is_active'
         ]
         read_only_fields = ['tag_channel_name']
         read_only_fields = ['tag_name']
@@ -515,7 +529,8 @@ class tageee_data_crators(serializers.ModelSerializer):
         model = tag_createors
         fields = [
             'tag_name',
-            'tagSlug',      
+            'tagSlug',    
+            'is_active'  
         ]
 
 
