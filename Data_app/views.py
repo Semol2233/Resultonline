@@ -396,7 +396,7 @@ class recommended_datapagenation(pagination.PageNumberPagination):
 
 #recommended_api
 class recommended(generics.ListAPIView):
-    queryset               = PostCreate.objects.order_by('?')[8:24]
+    queryset               = PostCreate.objects.order_by('?')
     serializer_class       = recommended_data
     pagination_class       = recommended_datapagenation
     filter_backends        = [filters.SearchFilter]
