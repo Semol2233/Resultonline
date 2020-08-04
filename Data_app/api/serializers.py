@@ -582,7 +582,7 @@ class Home_tag_serach_page(serializers.HyperlinkedModelSerializer):
 
 
 class hot_MonthList(serializers.ModelSerializer):
-     contentowners        = ContentOwner(read_only=True)
+     contentowner        = ContentOwner(read_only=True)
      selete_channel_tag   = tag_data_seri(read_only=True)
      
      class Meta:
