@@ -577,6 +577,11 @@ class Home_tag_serach_page(serializers.HyperlinkedModelSerializer):
             'is_active'
         ]
 
-        
+class hotThisMonth_serilaizar(serializers.ModelSerializer):
+     class Meta:
+        model = Hot_ThsMonth
+        fields = [
+         'ListMonth'
+        ]      
 
     

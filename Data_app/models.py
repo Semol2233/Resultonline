@@ -96,6 +96,12 @@ class PostCreate(models.Model):
     def __str__(self):
         return self.title
 
+
+
+class Hot_ThsMonth(models.Model):
+    ListMonth = models.ManyToManyField('PostCreate',default="0")
+
+
 class UserProfile(models.Model):
     user              = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     portfolio_link    = models.URLField(blank=True)
