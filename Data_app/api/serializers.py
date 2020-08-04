@@ -469,6 +469,7 @@ class Releted_Datass(serializers.ModelSerializer):
 class recommended_data(serializers.ModelSerializer):
      mobilebrand   = BrandProfileInfo(read_only=True)
      channel       = UserPublicSrtilizer(read_only=True)
+     tag_creator   =  tageee_data_crators(read_only=True)
 
      class Meta:
         model = PostCreate
