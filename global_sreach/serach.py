@@ -58,7 +58,7 @@ class seeearcsssh_filter(APIView, PaginationHandlerMixin):
                     "page_name": "Blog_page"
                 }
                 result.append(b)
-        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo','slug','is_active')
+        filter_postmodel = postmodel.objects.filter(Q(title__contains=query) | Q(details__contains=query)).values('title','details','photo','slug','is_active','tag_creator')
         if filter_postmodel:
             for f in filter_postmodel:
                 f['targetUrl'] = {

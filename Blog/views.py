@@ -105,7 +105,7 @@ class Blog_api_cover(generics.ListAPIView):
 
 #[11:15]
 class Blog_api_recomnded(generics.ListAPIView):
-    queryset               = postmodel.objects.all().order_by('?')[1:5]
+    queryset               = postmodel.objects.all().order_by('?')[:5]
     serializer_class       = UserPublicSrtilizer_filter
 
 
