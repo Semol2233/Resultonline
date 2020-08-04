@@ -400,13 +400,11 @@ class recommended(generics.ListAPIView):
     serializer_class       = recommended_data
     pagination_class       = recommended_datapagenation
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['contentowners__authorsname']
+    search_fields          = ['tag_creator__tag_name']
 
 
 
 
-
-    
 #high_ratetd_api
 class high_ratetdpagnation(pagination.PageNumberPagination):
     page_size = 4
