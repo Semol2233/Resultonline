@@ -399,7 +399,14 @@ class recommended(generics.ListAPIView):
     queryset               = PostCreate.objects.order_by('?')[8:24]
     serializer_class       = recommended_data
     pagination_class       = recommended_datapagenation
+    filter_backends        = [filters.SearchFilter]
+    search_fields          = ['contentowners__authorsname']
 
+
+
+
+
+    
 #high_ratetd_api
 class high_ratetdpagnation(pagination.PageNumberPagination):
     page_size = 4
