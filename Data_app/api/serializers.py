@@ -586,7 +586,7 @@ class hot_MonthList(serializers.ModelSerializer):
      class Meta:
         model = PostCreate
         fields = [
-            'title'
+            'title',
             'slug',
             'photo',
             'is_active',
