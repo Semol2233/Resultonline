@@ -577,7 +577,50 @@ class Home_tag_serach_page(serializers.HyperlinkedModelSerializer):
             'is_active'
         ]
 
+
+
+
+
+class hot_MonthList(serializers.HyperlinkedModelSerializer):
+     contentowners   = ContentOwner(read_only=True)
+     selete_channel_tag   = tag_data_seri(read_only=True)
+     channel         = UserPublicSrtilizer(read_only=True)
+     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
+     mobilebrand     = BrandProfileInfo(read_only=True)
+     
+     class Meta:
+        model = PostCreate
+        fields = [
+            'contentowner',
+            'channellist',
+            'mobilebarand',
+            'selete_channel_tag',
+            'selete_channel_tags',
+            'id',
+            'title',
+            'tag_creator',
+            'tag_creators',
+            'details',
+            'SeoTitle',
+            'Seoimgalt',
+            'SeoMetaDes',
+            'photo',
+            'mobilebrand',
+            'slug',
+            'view',
+            'release_date',
+            'contentlock',
+            'contentlenth',
+            'contentlink',
+            'Persentase',
+            'reviewcount',
+            'is_active',
+            'content_typeModel'
+
+        ]
+
 class hotThisMonth_serilaizar(serializers.ModelSerializer):
+     ListMonth    = hot_MonthList(read_only=True,many=True, required=False)
      class Meta:
         model = Hot_ThsMonth
         fields = [
