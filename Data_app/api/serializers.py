@@ -465,11 +465,19 @@ class Releted_Datass(serializers.ModelSerializer):
         read_only_fields = ['mobilebrand']
 
 
-
+class tag_dtlsage_rlt(serializers.ModelSerializer):
+    # Color = serializers.SerializerMethodField()
+    class Meta:
+        model = tag_createors
+        fields = [
+            'tag_name',
+            'is_active'
+            
+        ]
 class recommended_data(serializers.ModelSerializer):
      mobilebrand   = BrandProfileInfo(read_only=True)
      channel       = UserPublicSrtilizer(read_only=True)
-     tag_creator   =  tageee_data_crators(read_only=True)
+     tag_creator   =  tag_dtlsage_rlt(read_only=True)
 
      class Meta:
         model = PostCreate
