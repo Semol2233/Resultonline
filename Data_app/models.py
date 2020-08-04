@@ -62,13 +62,11 @@ class tag_createors(models.Model):
         return self.tag_name 
 
 class PostCreate(models.Model):
-    ONLYME = 'O'
-    FRIENDS = 'F'
-    PUBLIC = 'P'
+    Specfiction = 's'
+    Review = 'r'
     CHOICES = (
-        (ONLYME, "Me"),
-        (FRIENDS, "Friends"),
-        (PUBLIC, "Public"),
+        (Specfiction, "Specfiction"),
+        (Review, "Review"),
     )
     contentowners      = models.ForeignKey(Ownercontents, on_delete=models.CASCADE ,blank=True, null=True)
     channel            = models.ForeignKey(Channel, on_delete=models.CASCADE ,blank=True, null=True)
@@ -95,16 +93,8 @@ class PostCreate(models.Model):
     is_active         = models.BooleanField(default=True)         
 
 
-
-
     def __str__(self):
         return self.title
-    
-
-
-
-
-
 
 class UserProfile(models.Model):
     user              = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -118,7 +108,6 @@ class CoverImg(models.Model):
     Cover_img             = models.ImageField(upload_to="Cover_Img", blank=True)
     url                   = models.CharField(null=True, max_length=233)
     title                 = models.CharField(max_length = 255)
-
     
     def __str__(self):
         return self.title
@@ -126,8 +115,6 @@ class CoverImg(models.Model):
 
 class target_link(models.Model):
     target_links = models.CharField(max_length=100)
-
-
 
 
 def userprofile_receiver(sender, instance, created, *args, **kwargs):
