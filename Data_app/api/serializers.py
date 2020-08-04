@@ -308,7 +308,8 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'SeoTitle',
             'Seoimgalt',
             'SeoMetaDes',
-            'is_active'
+            'is_active',
+            'content_typeModel'
 
         ]
         lookup_field = 'slug'
