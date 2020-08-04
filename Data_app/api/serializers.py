@@ -582,13 +582,11 @@ class Home_tag_serach_page(serializers.HyperlinkedModelSerializer):
 
 
 class hot_MonthList(serializers.ModelSerializer):
-     contentowner         = ContentOwner(read_only=True)
-     tag_creator          = tag_data_crators(read_only=True,many=True, required=False)
-     
+     tag_creator          = tag_data_crators(read_only=True,many=True, required=False)     
      class Meta:
         model = PostCreate
         fields = [
-            'contentowner',
+            'title'
             'slug',
             'photo',
             'is_active',

@@ -16,7 +16,7 @@ import datetime
 import jwt
 from Data_app.models import Hot_ThsMonth,PostCreate,UserProfile,UserProfile,Channel,CoverImg,Cetagroy_list,Ownercontents,tag_data,tag_createors
 #end
-
+from datetime import datetime, timedelta
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
@@ -635,6 +635,6 @@ class channel_sub_data(pagination.PageNumberPagination):
 
 
 class hotThisMonth(generics.ListAPIView):
-    queryset               = Hot_ThsMonth.objects.order_by('-id')
+    queryset               = Hot_ThsMonth.objects.filter(created_date__gte=datetime.now() - timedelta(days=55))[:4]
     serializer_class       = hotThisMonth_serilaizar
 

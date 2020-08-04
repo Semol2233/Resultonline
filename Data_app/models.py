@@ -5,7 +5,7 @@ from django.db.models import Sum
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from datetime import datetime
-
+from django.utils import timezone
 
 class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
@@ -100,7 +100,7 @@ class PostCreate(models.Model):
 
 class Hot_ThsMonth(models.Model):
     ListMonth = models.ManyToManyField('PostCreate',default="0")
-
+    created_date   = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return str(self.ListMonth)
 class UserProfile(models.Model):
