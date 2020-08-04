@@ -50,7 +50,8 @@ urlpatterns = [
     path('dtl_rlt', Reltet_data_datlspage.as_view()),
     path('tagPage/<category>/', tag_page.as_view()),
     path('tagPage_home/<category>/', tag_page_home.as_view()),
-    path('mobile_hot_Month', hotThisMonth.as_view())
+    path('mobile_hot_Month', hotThisMonth.as_view()),
+    path('mxmobile', mix_post.as_view())
 
 ]
 

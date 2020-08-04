@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 #serializer 
 from Data_app.api.serializers import (
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
-    latestdata,Releted_Datass,recommended_data,ContentOwner,hotThisMonth_serilaizar,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer,Home_tag_serach_page )
+    latestdata,Releted_Datass,recommended_data,mixPost_serilaizar,ContentOwner,hotThisMonth_serilaizar,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer,Home_tag_serach_page )
 #end
 from Data_app.api.coverimg_api.coverimg import CoverImssge
 from django.http import JsonResponse
@@ -637,4 +637,11 @@ class channel_sub_data(pagination.PageNumberPagination):
 class hotThisMonth(generics.ListAPIView):
     queryset               = Hot_ThsMonth.objects.filter(created_date__gte=datetime.now() - timedelta(days=55))[:4]
     serializer_class       = hotThisMonth_serilaizar
+
+
+
+
+class mix_post(generics.ListAPIView):
+    queryset               = PostCreate.objects.filter(channel__slug_channel__contains='Mobile')
+    serializer_class       = mixPost_serilaizar
 

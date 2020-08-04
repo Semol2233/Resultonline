@@ -603,4 +603,18 @@ class hotThisMonth_serilaizar(serializers.HyperlinkedModelSerializer):
          'ListMonth'
         ]      
 
+
+class mixPost_serilaizar(serializers.HyperlinkedModelSerializer):
+     tag_creator          = tag_data_crators(read_only=True,many=True, required=False)  
+     class Meta:
+        model = PostCreate
+        fields = [
+            'title',
+            'slug',
+            'photo',
+            'is_active',
+            'release_date',
+            'tag_creator'
+        ]      
+
     
