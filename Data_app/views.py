@@ -400,7 +400,7 @@ class recommended(generics.ListAPIView):
     serializer_class       = recommended_data
     # pagination_class       = recommended_datapagenation
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__channelname']
+    search_fields          = ['channel__slug_channel']
 
 
 
