@@ -418,7 +418,7 @@ class high_ratetd(generics.ListAPIView):
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__id','channel__channelname','title','photo','slug']
     lookup_field           = ('slug')
-    # pagination_class       = recommended_datapagenation
+    pagination_class       = high_ratetdpagnation
 
 
 class highss_rsatetd(generics.ListAPIView ,generics.ListCreateAPIView,):
