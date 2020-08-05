@@ -389,18 +389,18 @@ class Releted_Data(generics.ListAPIView):
     serializer_class       = Releted_Datass
     
 #recommended_api
-class recommended_datapagenation(pagination.PageNumberPagination):
-    page_size = 4
-    page_size_query_param = 'page_size'
-    max_page_size = 4
+# class recommended_datapagenation(pagination.PageNumberPagination):
+#     page_size = 4
+#     page_size_query_param = 'page_size'
+#     max_page_size = 4
 
 #recommended_api
 class recommended(generics.ListAPIView):
-    queryset               = PostCreate.objects.order_by('?')
+    queryset               = PostCreate.objects.order_by('-id')[7:11]
     serializer_class       = recommended_data
-    pagination_class       = recommended_datapagenation
+    # pagination_class       = recommended_datapagenation
     filter_backends        = [filters.SearchFilter]
-    search_fields          = ['tag_creator__tag_name']
+    search_fields          = ['channel__channelname']
 
 
 
