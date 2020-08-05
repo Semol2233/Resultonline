@@ -10,14 +10,13 @@ class UseracAlldata(serializers.ModelSerializer):
 
 
 class CoverImssge(serializers.ModelSerializer):
-      target_link = serializers.SerializerMethodField("get_display")
+      # target_link = serializers.SerializerMethodField("get_display")
       class Meta:
           model = CoverImg
           fields = [
-            'target_link',
             'title',
             'Cover_img',
             'url'
           ]
-      def get_display(self, obj):
-        return "/count/"
+      # def get_display(self, obj):
+      #   return "/count/"
