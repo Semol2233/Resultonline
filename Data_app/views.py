@@ -399,8 +399,9 @@ class recommended(generics.ListAPIView):
     queryset               = PostCreate.objects.all()[:5]
     serializer_class       = recommended_data
     # pagination_class       = recommended_datapagenation
-    filter_backends        = [filters.SearchFilter]
-    search_fields          = ['channel__slug_channel']
+    # filter_backends        = [filters.SearchFilter]
+    lookup_field           = ('channel__slug_channel')
+    # search_fields          = ['channel__slug_channel']
 
 
 
