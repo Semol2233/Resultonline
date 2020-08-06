@@ -396,7 +396,7 @@ class Releted_Data(generics.ListAPIView):
 
 #recommended_api
 class recommended(generics.ListAPIView):
-    queryset               = PostCreate.objects.all()[:5]
+    queryset               = PostCreate.objects.all().order_by('?')[8:12]
     serializer_class       = recommended_data
     # pagination_class       = recommended_datapagenation
     # filter_backends        = [filters.SearchFilter]
