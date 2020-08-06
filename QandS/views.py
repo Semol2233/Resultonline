@@ -102,7 +102,9 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
             for author in list(authors):
                 response = {
                     'publisher': author['publisher'],
-                    'q_slug': author['q_slug']
+                    'q_slug': author['q_slug'],
+                    'is_active': author['is_active']
+
                 }
             page = self.paginate_queryset(list(posts))
             response['List'] = page
