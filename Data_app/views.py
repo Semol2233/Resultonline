@@ -531,6 +531,8 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
                 'authorsprofilrimg': author['authorsprofilrimg'],
                 'authorsweblink': author['authorsweblink'],
                 'about': author['about'],
+                'coverImg': author['coverImg']
+
                 }
             page = self.paginate_queryset(list(posts))
             response['List'] = page
