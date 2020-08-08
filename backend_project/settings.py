@@ -10,7 +10,7 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 #SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 
 
-DEBUG = False
+DEBUG =     False
 
 ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
 #ALLOWED_HOSTS = []
@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'Data_app',
     'Blog',
     'QandS',
+    'seo',
+    'GooleAd',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
