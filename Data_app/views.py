@@ -648,11 +648,17 @@ class mix_post(generics.ListAPIView):
     serializer_class       = mixPost_serilaizar
 
 
+class channelPagepagenation(pagination.PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
 
 class channel_page_Tagdata(generics.ListAPIView):
     queryset                 = PostCreate.objects.all().order_by('-id')
     serializer_class         = channel_PageTag
     lookup_field             = ('selete_channel_tag__tag_name')
-    pagination_class         = tag_manager_pagenation
+    pagination_class         = channelPagepagenation
 
 
