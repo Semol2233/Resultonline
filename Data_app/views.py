@@ -655,10 +655,17 @@ class channelPagepagenation(pagination.PageNumberPagination):
 
 
 
-class channel_page_Tagdata(generics.ListAPIView):
+class channel_page_Tagdata(generics.RetrieveAPIView):
     queryset                 = PostCreate.objects.all().order_by('-id')
     serializer_class         = channel_PageTag
     lookup_field             = ('selete_channel_tag__tag_name')
     pagination_class         = channelPagepagenation
 
+
+
+# class daynamic_channelPage_Subtag(generics.ListAPIView):
+#     queryset                 = PostCreate.objects.all().order_by('-id')
+#     serializer_class         = channel_PageTag
+#     lookup_field             = ('selete_channel_tag__tag_name')
+#     pagination_class         = channelPagepagenation
 

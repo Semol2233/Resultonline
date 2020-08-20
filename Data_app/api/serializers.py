@@ -641,8 +641,6 @@ class channel_pagetagseri(serializers.ModelSerializer):
         fields = [
             'tag_name',
             'query_slug'
- 
-
         ]
 
 
@@ -661,3 +659,4 @@ class channel_PageTag(serializers.ModelSerializer):
             'SeoMetaDes',
             'Seoimgalt'
         ]
+        lookup_field = 'selete_channel_tag__tag_name'
