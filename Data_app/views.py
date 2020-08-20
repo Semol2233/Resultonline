@@ -647,3 +647,12 @@ class mix_post(generics.ListAPIView):
     queryset               = PostCreate.objects.filter(channel__slug_channel__contains='Mobile')
     serializer_class       = mixPost_serilaizar
 
+
+
+class channel_page_Tagdata(generics.ListAPIView):
+    queryset                 = PostCreate.objects.all().order_by('-id')
+    serializer_class         = tag_manager_serilizar
+    lookup_field             = ('selete_channel_tag__tag_name')
+    pagination_class         = tag_manager_pagenation
+
+

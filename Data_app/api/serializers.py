@@ -264,7 +264,10 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
 
         ]
 
@@ -338,7 +341,10 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'slug',
             'view',
             'release_date',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
          
         ]
         read_only_fields = ['contentowners']
@@ -492,7 +498,10 @@ class recommended_data(serializers.ModelSerializer):
             'view',
             'release_date',
             'tag_creator',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
         read_only_fields = ['channel']
         read_only_fields = ['mobilebrand']
@@ -591,7 +600,10 @@ class hot_MonthList(serializers.ModelSerializer):
             'photo',
             'is_active',
             'release_date',
-            'tag_creator'
+            'tag_creator',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
 
         ]
 
@@ -614,7 +626,38 @@ class mixPost_serilaizar(serializers.HyperlinkedModelSerializer):
             'photo',
             'is_active',
             'release_date',
-            'tag_creator'
+            'tag_creator',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]      
 
     
+
+
+class channel_pagetagseri(serializers.ModelSerializer):
+    class Meta:
+        model = tag_data
+        fields = [
+            'tag_name',
+            'query_slug'
+ 
+
+        ]
+
+
+class channel_PageTag(serializers.ModelSerializer):
+     selete_channel_tag       =  channel_pagetagseri(read_only=True)
+     class Meta:
+        model = PostCreate
+        fields = [
+            'selete_channel_tag',
+            'title',
+            'photo',
+            'slug',
+            'release_date',
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
+        ]
