@@ -644,7 +644,7 @@ class channel_pagetagseri(serializers.ModelSerializer):
         ]
 
 
-class channel_PageTag(serializers.ModelSerializer):
+class channel_PageTag(serializers.HyperlinkedModelSerializer):
      selete_channel_tag       =  channel_pagetagseri(read_only=True)
      class Meta:
         model = PostCreate
@@ -659,4 +659,4 @@ class channel_PageTag(serializers.ModelSerializer):
             'SeoMetaDes',
             'Seoimgalt'
         ]
-        lookup_field = 'selete_channel_tag__tag_name'
+
