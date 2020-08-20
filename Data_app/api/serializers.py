@@ -659,4 +659,4 @@ class channel_PageTag(serializers.HyperlinkedModelSerializer):
             'SeoMetaDes',
             'Seoimgalt'
         ]
-
+        lookup_field = 'selete_channel_tag__tag_name'
