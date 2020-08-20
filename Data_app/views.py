@@ -656,7 +656,7 @@ class channelPagepagenation(pagination.PageNumberPagination):
 
 
 class channel_page_Tagdata(generics.RetrieveAPIView):
-    queryset                 = PostCreate.objects.all().order_by('-id')
+    queryset                 = PostCreate.objects.all()
     serializer_class         = channel_PageTag
     lookup_field             = ('selete_channel_tag__tag_name')
     pagination_class         = channelPagepagenation
