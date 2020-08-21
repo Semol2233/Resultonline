@@ -658,6 +658,6 @@ class channel_PageTag(serializers.HyperlinkedModelSerializer):
             'SeoTitle',
             'SeoMetaDes',
             'Seoimgalt',
-            'selete_channel_tag',
+            'selete_channel_tag'
         ]
 

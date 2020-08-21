@@ -655,11 +655,11 @@ class channelPagepagenation(pagination.PageNumberPagination):
 
 
 
-class channel_page_Tagdata(generics.RetrieveAPIView):
-    queryset                 = PostCreate.objects.all()
-    serializer_class         = channel_PageTag
-    lookup_field             = ('selete_channel_tag__tag_name')
-    pagination_class         = channelPagepagenation
+# class channel_page_Tagdata(generics.RetrieveAPIView):
+#     queryset                 = PostCreate.objects.all()
+#     serializer_class         = channel_PageTag
+#     lookup_field             = ('selete_channel_tag__tag_name')
+#     pagination_class         = channelPagepagenation
 
 
 
@@ -668,4 +668,22 @@ class channel_page_Tagdata(generics.RetrieveAPIView):
 #     serializer_class         = channel_PageTag
 #     lookup_field             = ('selete_channel_tag__tag_name')
 #     pagination_class         = channelPagepagenation
+
+class channel_page_Tagdata(APIView, PaginationHandlerMixin):
+    pagination_class = channelPagepagenation
+
+    def get(self, request, category, *args, **kwargs):
+        authors = tag_data.objects.filter(query_slug=category).values('tag_name', 'query_slug')
+        if authors:
+            posts = PostCreate.objects.filter(tag_data__query_slug=category).values('title', 'slug','release_date' 'photo','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            for author in list(authors):
+                response = {
+                'tag_name': author['tag_name'],
+                'query_slug': author['query_slug']
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
 
