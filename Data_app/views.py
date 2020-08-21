@@ -613,6 +613,8 @@ class tag_page_home(APIView, PaginationHandlerMixin):
                 'tag_name': author['tag_name'],
                 'tagSlug': author['tagSlug'],
                 'tagNameBG': author['tagNameBG'],
+                'Main_Tag': author['selet_channel__query_slug']
+
                 }
             page = self.paginate_queryset(list(posts))
             response['List'] = page
