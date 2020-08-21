@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'onlinedatastore',
-        'USER': 'onlinedatastoreuser',
+        'NAME': 'reolib',
+        'USER': 'reolibuser',
         'PASSWORD': 'semol@12345',
         'HOST': 'localhost',
         'PORT': '',
