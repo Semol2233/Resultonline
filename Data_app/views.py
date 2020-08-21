@@ -675,7 +675,7 @@ class channel_page_Tagdata(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = tag_data.objects.filter(query_slug=category).values('tag_name', 'query_slug')
         if authors:
-            posts = PostCreate.objects.filter(tag_data__query_slug=category).values('title', 'slug','release_date' 'photo','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug','release_date' 'photo','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tag_name': author['tag_name'],
