@@ -605,9 +605,9 @@ class tag_page_home(APIView, PaginationHandlerMixin):
     pagination_class = Tag_page_pagenation_home
 
     def get(self, request, category, *args, **kwargs):
-        authors = tag_createors.objects.filter(tagSlug=category).values('tag_name', 'tagSlug', 'tagNameBG','selet_channel__query_slug')
+        authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tag_name', 'tagSlug', 'tagNameBG','selet_channel__query_slug')
         if authors:
-            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tag_name': author['tag_name'],
