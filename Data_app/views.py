@@ -526,6 +526,10 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
         if authors:
             posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo','view','is_active','channel__slug_channel','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
+                author['targetUrl'] = {
+                    "url": "count/",
+                    "page_name": "Blog_page"
+                     }
                 response = {
                 'authorsname': author['authorsname'],
                 'authorsprofilrimg': author['authorsprofilrimg'],
@@ -533,7 +537,10 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
                 'about': author['about'],
                 'coverImg': author['coverImg']
 
+
                 }
+
+                
             page = self.paginate_queryset(list(posts))
             response['List'] = page
             paginated_response = self.get_paginated_response(response)
