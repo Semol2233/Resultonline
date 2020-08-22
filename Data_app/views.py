@@ -607,7 +607,7 @@ class tag_page_home(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
         if authors:
-            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('tag_creator__tag_name','title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tagSlug': author['tagSlug'],
@@ -681,6 +681,32 @@ class channel_page_Tagdata(APIView, PaginationHandlerMixin):
                 response = {
                 'tag_name': author['tag_name'],
                 'query_slug': author['query_slug']
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
+
+
+
+
+
+
+
+class tag_page_datafimder(APIView, PaginationHandlerMixin):
+    pagination_class = Tag_page_pagenation_home
+
+    def get(self, request, category, *args, **kwargs):
+        authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
+        if authors:
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('tag_creator__tag_name').order_by('-id')
+            for author in list(authors):
+                response = {
+                'tagSlug': author['tagSlug'],
+                'tagNameBG': author['tagNameBG'],
+                'Main_Tag': author['selet_channel__query_slug']
+
                 }
             page = self.paginate_queryset(list(posts))
             response['List'] = page

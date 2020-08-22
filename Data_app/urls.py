@@ -52,7 +52,9 @@ urlpatterns = [
     path('tagPage_home/<category>/', tag_page_home.as_view()),
     path('mobile_hot_Month', hotThisMonth.as_view()),
     path('mxmobile', mix_post.as_view()),
-    path('channelpagetag/<category>/', channel_page_Tagdata.as_view())
+    path('channelpagetag/<category>/', channel_page_Tagdata.as_view()),
+    path('Fulldata/<category>/', tag_page_datafimder.as_view())
+
 
 
 ]
