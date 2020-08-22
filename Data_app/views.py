@@ -530,8 +530,10 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
                 'authorsname': author['authorsname'],
                 'authorsprofilrimg': author['authorsprofilrimg'],
                 'authorsweblink': author['authorsweblink'],
-                'about': author['about'],
-                'coverImg': author['coverImg']
+                'page_title': author['page_title'],
+                'meta_keyword': author['meta_keyword'],
+                'description': author['description'],
+
 
 
                 }
