@@ -610,7 +610,6 @@ class tag_page_home(APIView, PaginationHandlerMixin):
             posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('tag_creator__tag_name','title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
-                'tag_name': author['tag_name'],
                 'tagSlug': author['tagSlug'],
                 'tagNameBG': author['tagNameBG'],
                 'Main_Tag': author['selet_channel__query_slug']
