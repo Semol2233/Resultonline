@@ -213,7 +213,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
         model = PostCreate
         fields = [
             # 'contentowners',
-            'channel',
+            # 'channel',
             # 'contentowner',
             # 'channellist',
             # 'mobilebarand',
