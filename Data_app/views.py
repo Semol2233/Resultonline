@@ -692,10 +692,13 @@ class channel_page_Tagdata(APIView, PaginationHandlerMixin):
 
 
 
-
+class tag_page_datafimder_pagenation(pagination.PageNumberPagination):
+    page_size = 6
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class tag_page_datafimder(APIView, PaginationHandlerMixin):
-    pagination_class = Tag_page_pagenation_home
+    pagination_class = tag_page_datafimder_pagenation
 
     def get(self, request, category, *args, **kwargs):
         authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagNameBG','selet_channel__query_slug')
