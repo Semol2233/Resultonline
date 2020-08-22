@@ -605,14 +605,14 @@ class tag_page_home(APIView, PaginationHandlerMixin):
     pagination_class = Tag_page_pagenation_home
 
     def get(self, request, category, *args, **kwargs):
-        authors = tag_createors.objects.filter(tagSlug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
+        authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
         if authors:
-            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tagSlug': author['tagSlug'],
                 'tagNameBG': author['tagNameBG'],
-                'query_slug': author['selet_channel__query_slug']
+                'Main_Tag': author['selet_channel__query_slug']
 
                 }
             page = self.paginate_queryset(list(posts))
@@ -692,12 +692,38 @@ class channel_page_Tagdata(APIView, PaginationHandlerMixin):
 
 
 
+
+
+class targetData_Value(APIView, PaginationHandlerMixin):
+    pagination_class = Tag_page_pagenation_home
+
+    def get(self, request, category, *args, **kwargs):
+        authors = tag_createors.objects.filter(tagSlug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
+        if authors:
+            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            for author in list(authors):
+                response = {
+                'tagSlug': author['tagSlug'],
+                'tagNameBG': author['tagNameBG'],
+                'query_slug': author['selet_channel__query_slug']
+
+                }
+            page = self.paginate_queryset(list(posts))
+            response['List'] = page
+            paginated_response = self.get_paginated_response(response)
+            return JsonResponse(paginated_response.data, safe=False)
+        return HttpResponse('No matching data found', status=404)
+
+
+
+
+
 class tag_page_datafimder_pagenation(pagination.PageNumberPagination):
     page_size = 6
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class tag_page_datafimder(APIView, PaginationHandlerMixin):
+class listOfdata(APIView, PaginationHandlerMixin):
     pagination_class = tag_page_datafimder_pagenation
 
     def get(self, request, category, *args, **kwargs):
