@@ -221,12 +221,10 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             # 'selete_channel_tags',
             'id',
             'title',
-            'SeoTitle',
-            'Seoimgalt',
-            'SeoMetaDes',
             'photo',
             'slug',
             'release_date',
+            'Seoimgalt',
             'is_active',
 
 
