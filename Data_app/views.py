@@ -18,7 +18,7 @@ from Data_app.models import Hot_ThsMonth,PostCreate,UserProfile,UserProfile,Chan
 #end
 from datetime import datetime, timedelta
 #serializer 
-from Data_app.api.serializers import (channel_PageTag,
+from Data_app.api.serializers import (channel_PageTag,ChannelSerializer,
     DRFPostSerializer,Alluser,UserDettails,UserPublicSrtilizer,ClassItemSerializer,BrandPostInfo,BrandProfileInfo,DRFPostSesssrializer,
     latestdata,Releted_Datass,recommended_data,mixPost_serilaizar,ContentOwner,hotThisMonth_serilaizar,ContddentOwner,DRFPostSdderializer,tag_manager_serilizar,tag_data_crators,dtl_rlt_data,homeTag_page_serializer,Home_tag_serach_page )
 #end

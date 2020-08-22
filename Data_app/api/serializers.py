@@ -204,8 +204,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      channel         = UserPublicSrtilizer(read_only=True)
      channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
 
-     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
-     tag_creators = serializers.PrimaryKeyRelatedField(queryset=tag_createors.objects.all(), source='tag_creator' ,write_only=True,many=True) 
+ 
      mobilebrand     = BrandProfileInfo(read_only=True)
      mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True,required=False)
 
@@ -247,7 +246,66 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
                 "page_name":"Qandq_page_root"
                 }
         return data 
-    
+
+
+
+
+#root_api
+class ChannelSerializer(serializers.HyperlinkedModelSerializer):
+    #  contentowners   = ContentOwner(read_only=True)
+    #  contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
+
+    #  selete_channel_tag   = tag_data_seri(read_only=True)
+    #  selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag' ,write_only=True)
+
+
+     channel         = UserPublicSrtilizer(read_only=True)
+    #  channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
+
+ 
+    #  mobilebrand     = BrandProfileInfo(read_only=True)
+    #  mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True,required=False)
+
+     class Meta:
+        model = PostCreate
+        fields = [
+            'channel',
+            'id',
+            'title',
+            'Seoimgalt',
+            'photo',
+            'slug',
+            'release_date',
+            'is_active',
+          
+
+        ]
+    #  def get_target_link(self, object):
+    #     data = {
+    #             "url":"/q&a/api/v1/dtls/",
+    #             "page_name":"Qandq_page_root"
+    #             }
+    #     return data 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
      contentowners       = ContentOwner(read_only=True)
