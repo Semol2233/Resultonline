@@ -138,7 +138,7 @@ class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
 
 
 class channel_Data(pagination.PageNumberPagination):
-    page_size = 2
+    page_size = 9
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -149,7 +149,7 @@ class channel_Dataapi(generics.ListAPIView):
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
     queryset               = PostCreate.objects.all().order_by('-id')
-    serializer_class       = DRFPostSerializer
+    serializer_class       = ChannelSerializer
     filter_backends        = [filters.SearchFilter]
     search_fields          = ['channel__slug_channel']
     pagination_class       = channel_Data

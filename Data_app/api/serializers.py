@@ -204,7 +204,8 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      channel         = UserPublicSrtilizer(read_only=True)
      channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
 
- 
+     tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
+     tag_creators = serializers.PrimaryKeyRelatedField(queryset=tag_createors.objects.all(), source='tag_creator' ,write_only=True,many=True) 
      mobilebrand     = BrandProfileInfo(read_only=True)
      mobilebarand = serializers.PrimaryKeyRelatedField(queryset=Cetagroy_list.objects.all(), source='mobilebrand' ,write_only=True,required=False)
 
@@ -246,6 +247,9 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
                 "page_name":"Qandq_page_root"
                 }
         return data 
+    
+
+
 
 
 
@@ -286,11 +290,6 @@ class ChannelSerializer(serializers.HyperlinkedModelSerializer):
     #             "page_name":"Qandq_page_root"
     #             }
     #     return data 
-
-
-
-
-
 
 
 
