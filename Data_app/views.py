@@ -607,7 +607,7 @@ class tag_page_home(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
         if authors:
-            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('title', 'slug', 'photo','view','is_active','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tagSlug': author['tagSlug'],
@@ -700,7 +700,7 @@ class targetData_Value(APIView, PaginationHandlerMixin):
     def get(self, request, category, *args, **kwargs):
         authors = tag_createors.objects.filter(tagSlug=category).values('tagSlug', 'tagNameBG','selet_channel__query_slug')
         if authors:
-            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view','is_active','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
+            posts = PostCreate.objects.filter(tag_creator__tagSlug=category).values('title', 'slug', 'photo','view','is_active','Seoimgalt').order_by('-id')
             for author in list(authors):
                 response = {
                 'tagSlug': author['tagSlug'],
