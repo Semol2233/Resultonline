@@ -14,7 +14,10 @@ class cat_model(models.Model):
     cat_icon        = models.ImageField(upload_to='Blog_cat_icon/')
     cat_description = models.CharField(max_length=50, default="No data")
     cat_slug        = models.SlugField(max_length=50)
-    is_active          = models.BooleanField(default=True)    
+    is_active          = models.BooleanField(default=True)
+    SeoTitle          = models.CharField(max_length = 155,blank=True)
+    SeoMetaDes        = models.CharField(max_length = 155,blank=True)
+    Seoimgalt         = models.CharField(max_length = 255,blank=True)    
     def __str__(self):
         return self.cat_name
 
@@ -26,8 +29,11 @@ class postmodel(models.Model):
     photo              = models.ImageField(upload_to='media_blog/')
     view               = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
-    is_active          = models.BooleanField(default=True)         
+    is_active          = models.BooleanField(default=True)  
 
+    SeoTitle          = models.CharField(max_length = 155,blank=True)
+    SeoMetaDes        = models.CharField(max_length = 155,blank=True)
+    Seoimgalt         = models.CharField(max_length = 255,blank=True)
 
 
 

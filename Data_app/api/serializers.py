@@ -549,7 +549,7 @@ class tageee_data_crators(serializers.ModelSerializer):
         fields = [
             'tag_name',
             'tagSlug',    
-            'is_active'  
+            'is_active'
         ]
 
 

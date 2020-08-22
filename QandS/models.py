@@ -24,7 +24,12 @@ class postmodel_q(models.Model):
     details            = models.TextField(blank=True)
     view               = models.IntegerField(blank=True, default= 0)
     created_at         = models.DateTimeField(auto_now_add=True)
-    is_active          = models.BooleanField(default=True)         
+    is_active          = models.BooleanField(default=True)     
+    SeoTitle          = models.CharField(max_length = 155,blank=True)
+    SeoMetaDes        = models.CharField(max_length = 155,blank=True)
+
+
+    
 
 
     # def save(self, *args, **kwargs):

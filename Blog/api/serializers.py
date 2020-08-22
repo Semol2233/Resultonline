@@ -23,7 +23,10 @@ class UserPublicSrtilizer(serializers.ModelSerializer):
             'photo',
             'view',
             'created_at',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
@@ -39,7 +42,10 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'cat_icon',
             'cat_slug',
             'List',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
@@ -72,7 +78,10 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'details',
             'photo',
             'view',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'         
     
         ]
         lookup_field = 'slug'
@@ -89,6 +98,9 @@ class cat_modelSrtilizer_filter(serializers.HyperlinkedModelSerializer):
             'cat_icon',
             'cat_slug',
             'is_active'
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
@@ -106,7 +118,10 @@ class UserPublicSrtilizer_filter(serializers.ModelSerializer):
             'catagry_select',
             'view',
             'created_at',
-            'is_active'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
