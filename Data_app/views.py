@@ -701,12 +701,11 @@ class tag_page_datafimder(APIView, PaginationHandlerMixin):
     pagination_class = tag_page_datafimder_pagenation
 
     def get(self, request, category, *args, **kwargs):
-        authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('tagNameBG','selet_channel__query_slug')
+        authors = tag_createors.objects.filter(selet_channel__query_slug=category).values('selet_channel__query_slug')
         if authors:
             posts = PostCreate.objects.filter(selete_channel_tag__query_slug=category).values('tag_creator__tag_name',).order_by('-id')
             for author in list(authors):
                 response = {
-                'tagNameBG': author['tagNameBG'],
                 'Main_Tag': author['selet_channel__query_slug']
 
                 }
