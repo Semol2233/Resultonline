@@ -11,7 +11,8 @@ class Cetagroy_list(models.Model):
     Channel              = models.CharField(max_length=15)
     Brand_profile        = models.ImageField(upload_to="Brand_Logo",blank=True)
     ChannelDataUrl       = models.CharField(max_length=300, unique=True,blank=True)
-    is_active         = models.BooleanField(default=True)  
+    is_active           = models.BooleanField(default=True)  
+    Seoimgalt           = models.CharField(max_length = 255,blank=True)
     def __str__(self):
         return self.Channel    
 

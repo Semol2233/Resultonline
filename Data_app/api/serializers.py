@@ -130,6 +130,7 @@ class BrandProfileInfo(serializers.ModelSerializer):
             'Channel',
             'Brand_profile',
             'ChannelDataUrl',
+            'Seoimgalt',
             'is_active'
             
         ]
