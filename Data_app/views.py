@@ -341,26 +341,26 @@ class Brand_ListRendring(generics.ListCreateAPIView,):
     serializer_class       = BrandProfileInfo
     pagination_class       = StandadrdResultssSetPdagination
 
-    def get(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.list(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # def get(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.list(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
 
-    def post(self, request, *args, **kwargs):
-        if 'Authorization' in request.headers:
-            request_header = request.headers['Authorization']
-        else:
-            request_header = None
-        if request_header is not None:
-            if jwt_token == request_header:
-                return self.create(request, *args, **kwargs)
-        return HttpResponse('Authorization header not found', status=400)
+    # def post(self, request, *args, **kwargs):
+    #     if 'Authorization' in request.headers:
+    #         request_header = request.headers['Authorization']
+    #     else:
+    #         request_header = None
+    #     if request_header is not None:
+    #         if jwt_token == request_header:
+    #             return self.create(request, *args, **kwargs)
+    #     return HttpResponse('Authorization header not found', status=400)
 
 
 
