@@ -751,9 +751,11 @@ class listOfdata(APIView, PaginationHandlerMixin):
 
 @api_view()
 def polls_detail(request):
-    data = {"results": {
-        "question": "uhsdsdc",
-        "created_by": "iss",
-        "pub_date": "poll.pub_date"
+    data = {"data": {
+        "Terms": "test",
+        "Privacy": "iss",
+        "GetinTouch": "test",
+        "AboutUs": "test"
+
     }}
     return JsonResponse(data)
