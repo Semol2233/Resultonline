@@ -54,7 +54,11 @@ urlpatterns = [
     path('mxmobile', mix_post.as_view()),
     path('channelpagetag/<category>/', channel_page_Tagdata.as_view()),
     path('Listsub_Tag/<category>/', listOfdata.as_view()),
-    path('targetData/<category>/', targetData_Value.as_view())
+    path('targetData/<category>/', targetData_Value.as_view()),
+    path('t/', polls_detail)
+
+
+
 
 
 

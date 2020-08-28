@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework.parsers import JSONParser,FormParser,MultiPartParser
 from django.http import HttpResponse
 #end
+from rest_framework.decorators import api_view
 import random
 import datetime
 #user model
@@ -746,3 +747,13 @@ class listOfdata(APIView, PaginationHandlerMixin):
             return JsonResponse(paginated_response.data, safe=False)
         return HttpResponse('No matching data found', status=404)
 
+
+
+@api_view()
+def polls_detail(request):
+    data = {"results": {
+        "question": "uhsdsdc",
+        "created_by": "iss",
+        "pub_date": "poll.pub_date"
+    }}
+    return JsonResponse(data)
