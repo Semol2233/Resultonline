@@ -360,7 +360,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
 
         ]
         lookup_field = 'slug'
-        read_only_fields = ['details','Persentase','title','slug','tag_creator','photo','contentlenth','contentlock','contentlink']
+        read_only_fields = ['content_typeModel','is_active','SeoMetaDes','Seoimgalt','SeoTitle','details','Persentase','title','slug','tag_creator','photo','contentlenth','contentlock','contentlink']
         
 
 
