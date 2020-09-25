@@ -206,7 +206,6 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'contentowners',
             'channel',
-            'mobilebarand',
             'selete_channel_tag',
             'id',
             'title',
