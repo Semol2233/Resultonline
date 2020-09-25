@@ -94,7 +94,7 @@ class API_objects(generics.ListAPIView):
     #     return HttpResponse('Authorization header not found', status=400)
 
 #rootupdate
-class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
+class API_osbjects(generics.RetrieveDestroyAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
@@ -235,7 +235,7 @@ class ChannelDataList(generics.ListAPIView):
 #     serializer_class   = UserDettails
 #     lookup_field       = 'username'
 
-class UserListView(generics.RetrieveAPIView,generics.ListCreateAPIView):
+class UserListView(generics.ListAPIView):
     queryset           = Channel.objects.all()
     serializer_class   = UserDettails
     lookup_field       = ('channelname')
@@ -336,7 +336,7 @@ class StandadrdResultssSetPdagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 #Brand_ListRendring
-class Brand_ListRendring(generics.ListCreateAPIView,):
+class Brand_ListRendring(generics.ListAPIView):
 
     queryset               = Cetagroy_list.objects.order_by('?')
     serializer_class       = BrandProfileInfo
@@ -377,7 +377,7 @@ class StandadsrdResultsSetPdagination(pagination.PageNumberPagination):
 
 
 
-class Constent_owners(generics.ListAPIView ,generics.ListCreateAPIView,):
+class Constent_owners(generics.ListAPIView):
      queryset               = PostCreate.objects.order_by('-id')
      serializer_class       = DRFPostSesssrializer
      filter_backends        = [filters.SearchFilter]
@@ -422,13 +422,13 @@ class high_ratetd(generics.ListAPIView):
     pagination_class       = high_ratetdpagnation
 
 
-class highss_rsatetd(generics.ListAPIView ,generics.ListCreateAPIView,):
+class highss_rsatetd(generics.ListAPIView):
     queryset               = Ownercontents.objects.all()
     serializer_class       = ContentOwner
     parser_classes = (MultiPartParser,FormParser)
 
 
-class hisghss_rsatetd(generics.RetrieveUpdateDestroyAPIView):
+class hisghss_rsatetd(generics.RetrieveAPIView):
     queryset               = Ownercontents.objects.all()
     serializer_class       = ContddentOwner
     lookup_field           = ('authorsname')
@@ -501,7 +501,7 @@ class Tag_viewr(pagination.PageNumberPagination):
 
 
 #sub_tag_page_Api
-class Tag_creatoe_view(generics.ListCreateAPIView):
+class Tag_creatoe_view(generics.ListAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]

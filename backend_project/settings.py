@@ -12,8 +12,8 @@ SECRET_KEY = '$9qjq3$sr73rn&*l5-lal@2#l9-g-5d$75gwv+yox1*z)1u_4x'
 
 DEBUG =     True
 
-ALLOWED_HOSTS = ['cdn.resultonlinebd.com']
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['cdn.resultonlinebd.com','127.0.0.1:8000']
+ALLOWED_HOSTS = []
 #f
 #d
 # Application definition
@@ -91,23 +91,23 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'reolib',
-        'USER': 'reolibuser',
-        'PASSWORD': 'semol@12345',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'reolib',
+#         'USER': 'reolibuser',
+#         'PASSWORD': 'semol@12345',
+#         'HOST': 'localhost',
+#         'PORT': '',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
