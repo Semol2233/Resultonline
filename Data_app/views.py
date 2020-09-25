@@ -94,7 +94,7 @@ class API_objects(generics.ListAPIView):
     #     return HttpResponse('Authorization header not found', status=400)
 
 #rootupdate
-class API_osbjects(generics.RetrieveDestroyAPIView,mixins.UpdateModelMixin):
+class API_osbjects(generics.RetrieveUpdateDestroyAPIView):
     # pagination_class       = pagnation
     #permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
     # permission_classes     = [permissions.IsAuthenticated]
