@@ -45,7 +45,7 @@ class tag_data(models.Model):
 class Ownercontents(models.Model):
     authorsname       = models.CharField(max_length=20,blank=True)
     authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
-    authorsweblink    = models.URLField(max_length = 200)
+    authorsweblink    = models.URLField(max_length = 200,blank=True)
     about             = models.CharField(max_length = 5000, blank=True,default="hello" )
     coverImg          = models.ImageField(upload_to="author_img",blank=True ,default="author_profile/dasfdad.png")
     is_active         = models.BooleanField(default=True)  
@@ -81,7 +81,6 @@ class PostCreate(models.Model):
     slug               = models.CharField(max_length=100,unique=True)
     details            = models.TextField(blank=True)
     selete_channel_tag = models.ForeignKey(tag_data, on_delete=models.CASCADE ,blank=True, null=True)
-    mobilebrand        = models.ForeignKey(Cetagroy_list,on_delete=models.CASCADE ,blank=True, null=True )
     photo              = models.FileField(upload_to='documents/' ,default='media/channel_profile/1_93A43jqOXZYUr0yFMkcnNw.png')
     tag_creator        = models.ManyToManyField('tag_createors',default="0") 
     view               = models.IntegerField(blank=True, default=0)
