@@ -25,7 +25,7 @@ urlpatterns = [
     path('detailspageR',views.DetailsPageReleteData.as_view()),
     path('trending',views.TrendingPost.as_view()),
     # path('tsssssag/<tag>',views.TagDtata.as_view()),
-    path('Brand',views.Brand_InfoDtata.as_view()),
+    # path('Brand',views.Brand_InfoDtata.as_view()),
     path('listBrand',views.Brand_ListRendring.as_view()),
     # path('channel/<authorsname>',views.Content_owners.as_view()),
     path('extra',views.Constent_owners.as_view()),

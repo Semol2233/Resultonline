@@ -320,14 +320,14 @@ class StandadrdResultsSetPdagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
 
-class Brand_InfoDtata(generics.ListAPIView):
+# class Brand_InfoDtata(generics.ListAPIView):
 
-    # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
-    queryset               = PostCreate.objects.order_by('-id').filter(channel__slug_channel='Mobile-Phone')
-    serializer_class       = BrandPostInfo
-    pagination_class       = StandadrdResultsSetPdagination
-    filter_backends        = [filters.SearchFilter]
-    search_fields          = ['mobilebrand__Channel']
+#     # queryset = PostCreate.objects.filter(view__startswith=20).filter(release_date__gte=datetime.date(2020,4,2))
+#     queryset               = PostCreate.objects.order_by('-id').filter(channel__slug_channel='Mobile-Phone')
+#     serializer_class       = BrandPostInfo
+#     pagination_class       = StandadrdResultsSetPdagination
+#     filter_backends        = [filters.SearchFilter]
+#     search_fields          = ['mobilebrand__Channel']
 
 
 
