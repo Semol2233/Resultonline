@@ -199,7 +199,6 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
      selete_channel_tag   = tag_data_seri(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
      tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
-     mobilebrand     = BrandProfileInfo(read_only=True)
     
      class Meta:
         model = PostCreate
@@ -215,7 +214,6 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'Seoimgalt',
             'SeoMetaDes',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'release_date',
@@ -332,7 +330,6 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
      tag_creator     = tag_data_crators(read_only=True,many=True, required=False)
      contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
-     mobilebrand     = BrandProfileInfo(read_only=True)
      class Meta:
         model = PostCreate
         fields = [
@@ -343,7 +340,6 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'release_date',
@@ -370,7 +366,6 @@ class latestdata(serializers.HyperlinkedModelSerializer):
       
      contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
-     mobilebrand     = serializers.CharField()
 
      class Meta:
         model = PostCreate
@@ -381,7 +376,6 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'release_date',
@@ -402,7 +396,6 @@ class latestdata(serializers.HyperlinkedModelSerializer):
 class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
      channel         = UserPublicSrtilizer(read_only=True)
-     mobilebrand     = serializers.CharField()
 
      class Meta:
         model = PostCreate
@@ -413,7 +406,6 @@ class DRFPostSesssrializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'release_date',
@@ -435,7 +427,6 @@ class Alluser(serializers.ModelSerializer):
 class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
       contentowners   = ContentOwner(read_only=True)
       channel   = UserPublicSrtilizer(read_only=True)
-      mobilebrand  = serializers.CharField()
 
       class Meta:
           model = PostCreate
@@ -446,7 +437,6 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
             'title',
             'details',
             'photo',
-            'mobilebrand',
             'slug',
             'view',
             'uploaded',
@@ -470,14 +460,12 @@ class ClassItemSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class BrandPostInfo(serializers.ModelSerializer):
-     mobilebrand   = BrandProfileInfo(read_only=True)
      channel       = UserPublicSrtilizer(read_only=True)
 
      class Meta:
         model = PostCreate
         fields = [
             'channel',
-            'mobilebrand',
             'id',
             'title',
             'details',
@@ -489,18 +477,15 @@ class BrandPostInfo(serializers.ModelSerializer):
             'is_active'
         ]
         read_only_fields = ['channel']
-        read_only_fields = ['mobilebrand']
 
 
 class Releted_Datass(serializers.ModelSerializer):
-     mobilebrand   = BrandProfileInfo(read_only=True)
      channel       = UserPublicSrtilizer(read_only=True)
 
      class Meta:
         model = PostCreate
         fields = [
             'channel',
-            'mobilebrand',
             'id',
             'title',
             'details',
@@ -512,7 +497,6 @@ class Releted_Datass(serializers.ModelSerializer):
             'is_active'
         ]
         read_only_fields = ['channel']
-        read_only_fields = ['mobilebrand']
 
 
 class tag_dtlsage_rlt(serializers.ModelSerializer):
@@ -525,7 +509,6 @@ class tag_dtlsage_rlt(serializers.ModelSerializer):
             
         ]
 class recommended_data(serializers.ModelSerializer):
-     mobilebrand   = BrandProfileInfo(read_only=True)
      channel       = UserPublicSrtilizer(read_only=True)
      tag_creator   =  tag_dtlsage_rlt(read_only=True,many=True, required=False)
 
@@ -533,7 +516,6 @@ class recommended_data(serializers.ModelSerializer):
         model = PostCreate
         fields = [
             'channel',
-            'mobilebrand',
             'id',
             'title',
             'details',
@@ -548,7 +530,6 @@ class recommended_data(serializers.ModelSerializer):
             'Seoimgalt'
         ]
         read_only_fields = ['channel']
-        read_only_fields = ['mobilebrand']
 
 
 
