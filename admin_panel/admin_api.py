@@ -104,14 +104,14 @@ class BrandProfileInfo(serializers.ModelSerializer):
 #root_api
 class admin_viewseri(serializers.HyperlinkedModelSerializer):
      contentowners   = ContentOwner(read_only=True)
-     contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners' ,write_only=True)
+     contentowner = serializers.PrimaryKeyRelatedField(queryset=Ownercontents.objects.all(), source='contentowners')
 
      selete_channel_tag   = tag_data_seri(read_only=True)
-     selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag' ,write_only=True)
+     selete_channel_tags = serializers.PrimaryKeyRelatedField(queryset=tag_data.objects.all(), source='selete_channel_tag')
 
 
      channel         = UserPublicSrtilizer(read_only=True)
-     channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel' ,write_only=True)   
+     channellist = serializers.PrimaryKeyRelatedField(queryset=Channel.objects.all(), source='channel')   
 
      tag_creator         = tag_data_crators(read_only=True,many=True, required=False)
      tag_creators = serializers.PrimaryKeyRelatedField(queryset=tag_createors.objects.all(), source='tag_creator' ,write_only=True,many=True) 
@@ -147,15 +147,15 @@ class admin_viewseri(serializers.HyperlinkedModelSerializer):
             'Persentase',
             'reviewcount',
             'is_active',
-            'content_typeModel'
+    
 
         ]
-     def get_target_link(self, object):
-        data = {
-                "url":"/q&a/api/v1/dtls/",
-                "page_name":"Qandq_page_root"
-                }
-        return data 
+    #  def get_target_link(self, object):
+    #     data = {
+    #             "url":"/q&a/api/v1/dtls/",
+    #             "page_name":"Qandq_page_root"
+    #             }
+    #     return data 
     
 
 
