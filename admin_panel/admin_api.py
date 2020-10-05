@@ -125,7 +125,7 @@ class admin_viewseri(serializers.HyperlinkedModelSerializer):
             'channel',
             'contentowner',
             'channellist',
-            'mobilebarand',
+            # 'mobilebarand',
             'selete_channel_tag',
             'selete_channel_tags',
             'id',
