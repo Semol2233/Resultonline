@@ -136,6 +136,7 @@ class admin_viewseri(serializers.HyperlinkedModelSerializer):
             'SeoTitle',
             'Seoimgalt',
             'SeoMetaDes',
+            'keywords',
             'photo',
             # 'mobilebrand',
             'slug',
@@ -221,6 +222,7 @@ class ContddentOwner(serializers.ModelSerializer):
             'page_title',
             'focus_keyword',
             'meta_keyword',
+            'keywords',
             'description',
             'Created'
         ]

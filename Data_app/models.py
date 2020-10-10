@@ -21,7 +21,8 @@ class Channel(models.Model):
     channelname       = models.CharField(max_length=20,blank=True)
     channel_profile   = models.ImageField(upload_to="channel_profile",blank=True)
     slug_channel      = models.CharField(max_length=33,blank=False)
-    is_active         = models.BooleanField(default=True)  
+    is_active         = models.BooleanField(default=True)
+
     
     def __str__(self):
         return self.channelname
@@ -55,6 +56,7 @@ class Ownercontents(models.Model):
     meta_keyword     = models.CharField(max_length=200,blank=True)
     description      = models.TextField(blank=True)
     Created          = models.DateField(auto_now_add = True)  
+    keywords          = models.CharField(max_length=255,blank=True) 
     def __str__(self):
         return self.authorsname 
 
@@ -96,7 +98,8 @@ class PostCreate(models.Model):
     SeoTitle          = models.CharField(max_length = 155,blank=True)
     SeoMetaDes        = models.CharField(max_length = 155,blank=True)
     Seoimgalt         = models.CharField(max_length = 255,blank=True)
-    is_active         = models.BooleanField(default=True)         
+    is_active         = models.BooleanField(default=True)      
+    keywords          = models.CharField(max_length=255,blank=True)    
 
 
     def __str__(self):

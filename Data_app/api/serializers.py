@@ -223,6 +223,7 @@ class DRFPostSerializer(serializers.HyperlinkedModelSerializer):
             'Persentase',
             'reviewcount',
             'is_active',
+            'keywords'
         
 
         ]
@@ -266,6 +267,7 @@ class ChannelSerializer(serializers.HyperlinkedModelSerializer):
             'slug',
             'release_date',
             'is_active',
+            'keywords'
           
 
         ]
@@ -309,7 +311,8 @@ class dtl_rlt_data(serializers.HyperlinkedModelSerializer):
             'is_active',
             'SeoTitle',
             'SeoMetaDes',
-            'Seoimgalt'
+            'Seoimgalt',
+            'keywords'
 
         ]
 
@@ -351,6 +354,7 @@ class DRFPostSdderializer(serializers.HyperlinkedModelSerializer):
             'SeoTitle',
             'Seoimgalt',
             'SeoMetaDes',
+            'keywords',
             'is_active',
             'content_typeModel'
 
@@ -382,6 +386,7 @@ class latestdata(serializers.HyperlinkedModelSerializer):
             'is_active',
             'SeoTitle',
             'SeoMetaDes',
+            'keywords',
             'Seoimgalt'
          
         ]
@@ -527,7 +532,8 @@ class recommended_data(serializers.ModelSerializer):
             'is_active',
             'SeoTitle',
             'SeoMetaDes',
-            'Seoimgalt'
+            'Seoimgalt',
+            'keywords'
         ]
         read_only_fields = ['channel']
 
@@ -628,7 +634,8 @@ class hot_MonthList(serializers.ModelSerializer):
             'tag_creator',
             'SeoTitle',
             'SeoMetaDes',
-            'Seoimgalt'
+            'Seoimgalt',
+            'keywords'
 
         ]
 
@@ -654,7 +661,8 @@ class mixPost_serilaizar(serializers.HyperlinkedModelSerializer):
             'tag_creator',
             'SeoTitle',
             'SeoMetaDes',
-            'Seoimgalt'
+            'Seoimgalt',
+            'keywords'
         ]      
 
     
@@ -683,6 +691,7 @@ class channel_PageTag(serializers.HyperlinkedModelSerializer):
             'SeoTitle',
             'SeoMetaDes',
             'Seoimgalt',
+            'keywords',
             'selete_channel_tag'
         ]
 
