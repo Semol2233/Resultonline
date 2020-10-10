@@ -523,7 +523,7 @@ class PaginatedProjectsAPIView(APIView, PaginationHandlerMixin):
     pagination_class = Tag_ddviewr
 
     def get(self, request, category, *args, **kwargs):
-        authors = Ownercontents.objects.filter(authorsname=category).values('authorsname', 'authorsprofilrimg', 'authorsweblink','about','coverImg','page_title','meta_keyword','description')
+        authors = Ownercontents.objects.filter(authorsname=category).values('authorsname', 'authorsprofilrimg', 'authorsweblink','about','page_title','meta_keyword','description')
         if authors:
             posts = PostCreate.objects.filter(contentowners__authorsname=category).values('title', 'slug', 'details', 'photo','view','is_active','channel__slug_channel','SeoTitle','SeoMetaDes','Seoimgalt').order_by('-id')
             for author in list(authors):
