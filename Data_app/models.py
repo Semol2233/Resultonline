@@ -48,11 +48,8 @@ class Ownercontents(models.Model):
     authorsprofilrimg = models.ImageField(upload_to="author_profile" ,blank=True)
     authorsweblink    = models.URLField(max_length = 200,blank=True)
     about             = models.CharField(max_length = 5000, blank=True,default="hello" )
-    coverImg          = models.ImageField(upload_to="author_img",blank=True ,default="author_profile/dasfdad.png")
     is_active         = models.BooleanField(default=True)  
-
     page_title       = models.CharField(max_length=200,blank=True)
-    focus_keyword    = models.CharField(max_length=200,blank=True)
     meta_keyword     = models.CharField(max_length=200,blank=True)
     description      = models.TextField(blank=True)
     Created          = models.DateField(auto_now_add = True)  

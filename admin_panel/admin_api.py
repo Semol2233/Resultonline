@@ -27,7 +27,6 @@ class ContentOwner(serializers.ModelSerializer):
             'authorsprofilrimg',
             'authorsweblink',
             'about',
-            'coverImg',
             'is_active'
 
         ]
@@ -217,10 +216,8 @@ class ContddentOwner(serializers.ModelSerializer):
             'authorsprofilrimg',
             'authorsweblink',
             'about',
-            'coverImg',
             'is_active',
             'page_title',
-            'focus_keyword',
             'meta_keyword',
             'keywords',
             'description',
