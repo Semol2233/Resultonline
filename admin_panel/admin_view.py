@@ -13,7 +13,6 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 # from .pagination import PaginationHandlerMixin
 #end
-
 from django.http import HttpResponse
 import random
 import datetime
@@ -110,6 +109,7 @@ class create_tag_admin(generics.ListCreateAPIView):
 
 class admin_ownwerCreate(generics.ListCreateAPIView):
     queryset               = Ownercontents.objects.all()
+    parser_classes        = (MultiPartParser,FormParser,JSONParser)
     serializer_class       = ContddentOwner
 
 
