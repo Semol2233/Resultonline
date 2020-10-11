@@ -208,6 +208,7 @@ class admin_tagmanager(serializers.HyperlinkedModelSerializer):
 
 
 class ContddentOwner(serializers.ModelSerializer):
+    authorsprofilrimg = serializers.ImageField(required=False,max_length=None, use_url=True)
     class Meta:
         model = Ownercontents
         fields = [
