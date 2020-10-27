@@ -42,10 +42,10 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'cat_icon',
             'cat_slug',
             'List',
-            # 'is_active',
-            # 'SeoTitle',
-            # 'SeoMetaDes',
-            # 'Seoimgalt'
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
@@ -96,11 +96,11 @@ class cat_modelSrtilizer_filter(serializers.HyperlinkedModelSerializer):
             'id',
             'cat_name',
             'cat_icon',
-            'cat_slug'
-            # 'is_active'
-            # 'SeoTitle',
-            # 'SeoMetaDes',
-            # 'Seoimgalt'
+            'cat_slug',
+            'is_active'
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
