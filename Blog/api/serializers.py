@@ -78,8 +78,8 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'details',
             'photo',
             'view',
-            # 'is_active',
-            # 'SeoTitle',
+            'is_active',
+            'SeoTitle',
             'SeoMetaDes',
             'Seoimgalt'         
     
