@@ -41,11 +41,8 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'cat_full_data',
             'cat_icon',
             'cat_slug',
-            'List',
-            'is_active',
-            'SeoTitle',
-            'SeoMetaDes',
-            'Seoimgalt'
+            'List'
+ 
         ]
 
 

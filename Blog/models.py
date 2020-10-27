@@ -9,11 +9,11 @@ from datetime import datetime
 
 
 class cat_model(models.Model):
-    cat_name        = models.CharField(max_length=50)
-    cat_full_data   = models.URLField(max_length=200,blank= True,default="No link")
-    cat_icon        = models.ImageField(upload_to='Blog_cat_icon/')
-    cat_description = models.CharField(max_length=50, default="No data")
-    cat_slug        = models.SlugField(max_length=50)
+    cat_name          = models.CharField(max_length=50)
+    cat_full_data     = models.URLField(max_length=200,blank= True,default="No link")
+    cat_icon          = models.ImageField(upload_to='Blog_cat_icon/')
+    cat_description   = models.CharField(max_length=50, default="No data")
+    cat_slug          = models.SlugField(max_length=50)
     is_active         = models.BooleanField(default=True)
     SeoTitle          = models.CharField(max_length = 155,blank=True)
     SeoMetaDes        = models.CharField(max_length = 155,blank=True)
