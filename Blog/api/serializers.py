@@ -117,11 +117,11 @@ class UserPublicSrtilizer_filter(serializers.ModelSerializer):
             'photo',
             'catagry_select',
             'view',
-            'created_at',
-            'is_active',
-            'SeoTitle',
-            'SeoMetaDes',
-            'Seoimgalt'
+            'created_at'
+            # 'is_active',
+            # 'SeoTitle',
+            # 'SeoMetaDes',
+            # 'Seoimgalt'
         ]
 
 
