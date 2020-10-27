@@ -80,8 +80,8 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'view',
             # 'is_active',
             # 'SeoTitle',
-            # 'SeoMetaDes',
-            # 'Seoimgalt'         
+            'SeoMetaDes',
+            'Seoimgalt'         
     
         ]
         lookup_field = 'slug'
@@ -99,8 +99,8 @@ class cat_modelSrtilizer_filter(serializers.HyperlinkedModelSerializer):
             'cat_slug',
             # 'is_active'
             # 'SeoTitle',
-            # 'SeoMetaDes',
-            # 'Seoimgalt'
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
