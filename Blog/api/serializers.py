@@ -41,8 +41,11 @@ class cat_modelSrtilizer(serializers.HyperlinkedModelSerializer):
             'cat_full_data',
             'cat_icon',
             'cat_slug',
-            'List'
- 
+            'List',
+            'is_active',
+            'SeoTitle',
+            'SeoMetaDes',
+            'Seoimgalt'
         ]
 
 
@@ -75,10 +78,10 @@ class cat_modelSrtilizersss(serializers.ModelSerializer):
             'details',
             'photo',
             'view',
-            'is_active',
-            'SeoTitle',
-            'SeoMetaDes',
-            'Seoimgalt'         
+            # 'is_active',
+            # 'SeoTitle',
+            # 'SeoMetaDes',
+            # 'Seoimgalt'         
     
         ]
         lookup_field = 'slug'
