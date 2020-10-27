@@ -97,10 +97,10 @@ class cat_modelSrtilizer_filter(serializers.HyperlinkedModelSerializer):
             'cat_name',
             'cat_icon',
             'cat_slug',
-            'is_active'
-            'SeoTitle',
-            'SeoMetaDes',
-            'Seoimgalt'
+            # 'is_active'
+            # 'SeoTitle',
+            # 'SeoMetaDes',
+            # 'Seoimgalt'
         ]
 
 
